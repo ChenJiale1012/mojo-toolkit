@@ -8,7 +8,7 @@ const page=await context.newPage();const errors=[];
 page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text())});
 page.on('response',r=>{if(r.status()>=400) errors.push(`${r.status()} ${r.url()}`)});
 const base=process.env.TEST_URL||'http://localhost:5173';
-await page.goto(base);await page.evaluate(()=>document.fonts.ready);
+await page.goto(base);await page.evaluate(()=>document.fonts.ready);await page.waitForFunction(()=>!document.querySelector('.brand-intro'));
 assert.equal(await page.locator('h1').textContent(),'A little Mojo.A lot of possibility.');
 assert.ok(await page.evaluate(()=>document.fonts.check('14px Inter')));
 for(const family of ['Mojo Pixel Serif Draft','Mojo Serif Refined'])assert.ok(await page.evaluate(f=>document.fonts.check(`24px "${f}"`),family));
