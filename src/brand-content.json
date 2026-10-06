@@ -1,0 +1,8 @@
+{
+  "name": "Mojo",
+  "catchphrase": "Better together",
+  "fonts": [
+    {"name":"Mojo Pixel Serif Draft","id":"pixel-font","version":"0.200","role":"Wordmark and main display headings","source":"/fonts/MojoPixelSerif-Draft-Regular.ttf","path":"/downloads/MojoPixelSerif-Draft-Regular.ttf","format":"TTF"},
+    {"name":"Mojo Serif Refined","id":"refined-font","version":"0.601","role":"Subtitles and editorial section headings","source":"/fonts/MojoSerif-Refined-Regular.ttf","path":"/downloads/MojoSerif-Refined-Regular.ttf","format":"TTF"}
+  ]
+}

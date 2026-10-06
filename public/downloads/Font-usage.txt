@@ -1,0 +1,4 @@
+Mojo font usage
+Mojo Pixel Serif Draft v0.200: Wordmark and main display headings. Supplied TTF (desktop and CSS @font-face).
+Mojo Serif Refined v0.601: Subtitles and editorial section headings. Supplied TTF (desktop and CSS @font-face).
+No separate web-format font files or custom font licence/readme documents were supplied. Inter licence is included.
