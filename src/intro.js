@@ -17,7 +17,7 @@ export function startIntro(){
   overlay.querySelector('button').onclick=cleanup;
   // No focus capture, inert content, or scroll lock. A watchdog always removes it.
   schedule(cleanup,1800);
-  Promise.all([document.fonts.load('400 64px "Mojo Serif Refined"'),new Promise((resolve,reject)=>{const i=new Image();i.onload=resolve;i.onerror=reject;i.src='/brand/mojo-cat-transparent.svg'})]).then(([fonts])=>{
+  Promise.all([document.fonts.load('400 64px "Mojo Draft Logo"'),new Promise((resolve,reject)=>{const i=new Image();i.onload=resolve;i.onerror=reject;i.src='/brand/mojo-cat-transparent.svg'})]).then(([fonts])=>{
     if(finished)return;if(!fonts.length){cleanup();return}
     const word=overlay.querySelector('.brand-word');overlay.classList.add('intro-ready');word.textContent='';
     ['m','mo','moj','mojo'].forEach((text,i)=>schedule(()=>{word.textContent=text},i*170));
