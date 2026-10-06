@@ -7,7 +7,7 @@
     "dev": "vite --host 0.0.0.0",
     "build": "vite build",
     "preview": "vite preview --host 0.0.0.0",
-    "test": "node tests/check.mjs && node tests/intro.mjs && node tests/reference.mjs && node tests/refinement.mjs"
+    "test": "node tests/check.mjs && node tests/intro.mjs && node tests/reference.mjs && node tests/refinement.mjs && python3 tests/resources.py"
   },
   "dependencies": {
     "@fontsource/inter": "5.2.8",

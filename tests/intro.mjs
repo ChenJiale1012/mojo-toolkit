@@ -9,13 +9,13 @@ await page.goto(base);await page.locator('.brand-intro').waitFor();await page.lo
 assert.ok(await page.locator('main h1').count());
 const start=Date.now();await page.waitForFunction(()=>!document.querySelector('.brand-intro'));assert.ok(Date.now()-start<2000);
 const frames=await page.evaluate(()=>window.introFrames);assert.deepEqual(frames.filter(f=>f.text).map(f=>f.text),['m','mo','moj','mojo']);assert.ok(frames.every(f=>f.font));assert.equal(new Set(frames.map(f=>f.width)).size,1);
-await page.locator('nav a[href="#colour"]').click();assert.equal(await page.locator('.brand-intro').count(),0);await page.reload();assert.equal(await page.locator('.brand-intro').count(),0);
+await page.locator('nav a[href="#colour"]').click();await page.waitForFunction(()=>document.querySelector('h1')?.textContent==='Colour.');assert.equal(await page.locator('.brand-intro').count(),0);await page.reload();assert.equal(await page.locator('.brand-intro').count(),0);
 assert.equal(await page.evaluate(()=>document.body.style.overflow),'');await context.close();
 ({context,page}=await fresh());await page.goto(base);await page.getByRole('button',{name:'Skip intro'}).click();assert.equal(await page.locator('.brand-intro').count(),0);await context.close();
 ({context,page}=await fresh());await page.goto(base);await page.keyboard.press('Tab');assert.equal(await page.locator('.brand-intro').count(),0);assert.ok(await page.evaluate(()=>document.activeElement!==document.body));await context.close();
 ({context,page}=await fresh({reducedMotion:'reduce'}));await page.goto(base);assert.equal(await page.locator('.brand-intro').count(),0);await context.close();
 for(const pattern of ['**/MojoPixelSerif-Draft-Regular.ttf','**/brand/mojo-cat-transparent.svg']){
- ({context,page}=await fresh());await page.route(pattern,r=>r.abort());await page.goto(base);await page.waitForFunction(()=>!document.querySelector('.brand-intro'),{},{timeout:2500});assert.equal(await page.evaluate(()=>document.body.style.overflow),'');await page.locator('nav a[href="#colour"]').click();assert.equal(await page.locator('h1').textContent(),'Colour.');await context.close();
+ ({context,page}=await fresh());await page.route(pattern,r=>r.abort());await page.goto(base);await page.waitForFunction(()=>!document.querySelector('.brand-intro'),{},{timeout:2500});assert.equal(await page.evaluate(()=>document.body.style.overflow),'');await page.locator('nav a[href="#colour"]').click();await page.waitForFunction(()=>document.querySelector('h1')?.textContent==='Colour.');assert.equal(await page.locator('h1').textContent(),'Colour.');await context.close();
 }
 ({context,page}=await fresh());await page.addInitScript(()=>Object.defineProperty(window,'sessionStorage',{get(){throw new Error('storage unavailable')}}));await page.goto(base);await page.waitForFunction(()=>!document.querySelector('.brand-intro'),{},{timeout:2500});await context.close();
 console.log('PASS: fresh-session intro, once per session, navigation/reload, skip, keyboard access, reduced motion, font/mascot failures, unavailable storage, no scroll lock.');await browser.close();

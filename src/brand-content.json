@@ -2,7 +2,56 @@
   "name": "Mojo",
   "catchphrase": "Better together",
   "fonts": [
-    {"name":"Mojo Pixel Serif Draft","id":"pixel-font","version":"0.200","role":"Wordmark and main display headings","source":"/fonts/MojoPixelSerif-Draft-Regular.ttf","path":"/downloads/MojoPixelSerif-Draft-Regular.ttf","format":"TTF"},
-    {"name":"Mojo Serif Refined","id":"refined-font","version":"0.601","role":"Subtitles and editorial section headings","source":"/fonts/MojoSerif-Refined-Regular.ttf","path":"/downloads/MojoSerif-Refined-Regular.ttf","format":"TTF"}
-  ]
+    {
+      "name": "Mojo Pixel Serif Draft",
+      "id": "pixel-font",
+      "version": "0.200",
+      "role": "Wordmark and main display headings",
+      "source": "/fonts/MojoPixelSerif-Draft-Regular.ttf",
+      "path": "/downloads/MojoPixelSerif-Draft-Regular.ttf",
+      "format": "TTF",
+      "family": "Mojo Draft",
+      "cssFamily": "Mojo Pixel Serif Draft"
+    },
+    {
+      "name": "Mojo Serif Refined",
+      "id": "refined-font",
+      "version": "0.601",
+      "role": "Subtitles and editorial section headings",
+      "source": "/fonts/MojoSerif-Refined-Regular.ttf",
+      "path": "/downloads/MojoSerif-Refined-Regular.ttf",
+      "format": "TTF",
+      "family": "Mojo Refined",
+      "cssFamily": "Mojo Serif Refined"
+    },
+    {
+      "name": "Inter variable regular",
+      "family": "Inter",
+      "cssFamily": "Inter",
+      "id": "inter",
+      "version": "4.001",
+      "role": "Body text and interface controls",
+      "source": "/fonts/Inter-Variable.ttf",
+      "path": "/downloads/Inter-Variable.ttf",
+      "format": "TTF"
+    },
+    {
+      "name": "Inter variable italic",
+      "family": "Inter",
+      "cssFamily": "Inter",
+      "id": "inter-italic",
+      "version": "4.001",
+      "role": "Italic body text",
+      "source": "/fonts/Inter-Italic-Variable.ttf",
+      "path": "/downloads/Inter-Italic-Variable.ttf",
+      "format": "TTF"
+    }
+  ],
+  "statuses": {
+    "signature": "Approved",
+    "primaryPalette": "Proposed",
+    "secondaryPalette": "To be decided",
+    "tertiaryPalette": "To be decided",
+    "animations": "Under development"
+  }
 }
