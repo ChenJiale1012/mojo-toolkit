@@ -52,6 +52,8 @@
     "primaryPalette": "Proposed",
     "secondaryPalette": "To be decided",
     "tertiaryPalette": "To be decided",
-    "animations": "Under development"
-  }
+    "animations": "Under development",
+    "voice": "Work in progress"
+  },
+  "contact": "Tag @c.c. in #marketing on Discord."
 }
