@@ -3,6 +3,17 @@ const b=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||'/usr/b
 await p.goto(base+'/#foundations');await p.evaluate(()=>document.fonts.ready);
 assert.ok((await p.locator('.wordmark .brand-word').evaluate(e=>getComputedStyle(e).fontFamily)).includes('Mojo Draft Logo'));assert.ok(await p.evaluate(()=>document.fonts.check('49px "Mojo Draft Logo"')));
 assert.equal(await p.locator('.identity-decisions article').count(),3);
+assert.equal(await p.locator('.foundation-intro ~ .identity-decisions .technical,.brand-statement .eyebrow').count(),0);
+assert.equal(await p.locator('.type-example > b').innerText(),'Mojo.');assert.equal(await p.locator('.type-example > p').innerText(),'Better together.');
+const brandRow=p.locator('.type-example').locator('..');
+assert.equal(await brandRow.locator('h2').innerText(),'The brand line.');
+assert.deepEqual(await brandRow.locator(':scope > div:last-child p').allTextContents(),['Use ‘Mojo. Better together.’ as the main brand line.','Keep the wording and punctuation consistent across brand materials.']);
+assert.equal(await brandRow.locator('a').count(),0);
+for(const row of await p.locator('.identity-decisions article').all()){
+ const card=await row.locator(':scope > div').first().boundingBox(),heading=await row.locator('h2').boundingBox();
+ assert.ok(Math.abs(card.y-heading.y)<1,'Card and heading align at top');
+}
+
 await p.getByRole('button',{name:'Copy brand line'}).click();assert.equal(await p.evaluate(()=>navigator.clipboard.readText()),'Mojo. Better together.');
 await p.evaluate(()=>{window.scrollTo(0,0);document.activeElement.blur();document.querySelector('#toast').classList.remove('show')});
 await p.screenshot({path:'.playwright/foundations-desktop.png',fullPage:true});

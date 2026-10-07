@@ -29,8 +29,16 @@ export const assets=[
 {name:'Mojo mascot',id:'mascot',type:'Logos',format:'SVG',status:brandStatuses.signature,version:'Original',use:'Supplied original · unchanged geometry and colours',path:'/brand/mojo-cat-transparent.svg'},
 ...allFonts.map(f=>({...f,type:'Fonts',status:'Available',use:f.role+' · supplied desktop TTF; web-loadable'})),
 ...['Mojo wordmark','Combined logo','App icon'].map(name=>({name,id:name,type:'Logos',format:'Pending',status:'Unavailable',version:'—',use:'Awaiting original file',path:null}))];
-export const requestBrief='Mojo asset request\n'+contactInstruction+'\nWhat I need: [Asset]\nWhere it will be used: [Channel or context]\nWhen I need it: [Date]\nSize or format: [If relevant]';
-export const changeBrief='Mojo toolkit change\n'+contactInstruction+'\nPage: [Page name or link]\nWhat needs changing: [Change or problem]\nScreenshot: [Attach if helpful]';
+export const requestBrief=`Mojo asset request @c.c.
+What I need: [Asset]
+Where it will be used: [Channel or context]
+When I need it: [Date]
+Size or format: [If relevant]`;
+export const changeBrief=`Mojo change request @c.c.
+Page or asset: [Name or link]
+What needs changing: [Describe the change]
+Why: [Brief reason]
+Screenshot or reference: [If relevant]`;
 export const completion={
  proposed:[
   {name:'Primary colour palette',href:'#colour',text:'The five current colours need approval.'},

@@ -13,7 +13,7 @@ for(const origin of scene.mug.origins){
 const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',args:['--no-sandbox']});const base=process.env.TEST_URL||'http://localhost:5173';
 const context=await browser.newContext({viewport:{width:1920,height:1100},reducedMotion:'no-preference'});await context.addInitScript(()=>sessionStorage.setItem('mojo-brand-intro-seen','1'));const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
 await page.goto(base);await page.locator('.courtyard-scene[data-motion-state=running]').waitFor();
-assert.equal(await page.getByText('Unmistakably Mojo.',{exact:true}).count(),1);assert.equal(await page.locator('.overview-wip,.top-logo,.ambient-steam').count(),0);assert.equal(await page.locator('.topbar .brand-signature').count(),0);
+assert.equal(await page.getByText('Unmistakably Mojo.',{exact:true}).count(),1);assert.equal(await page.locator('.overview-wip,.top-logo,.ambient-steam').count(),0);assert.equal(await page.locator('.topbar .brand-signature').count(),1);
 for(const width of [1920,1440,1024,768,390,320]){
  await page.setViewportSize({width,height:1100});await page.evaluate(()=>window.scrollTo(0,0));await page.waitForFunction(()=>document.querySelector('.courtyard-scene').dataset.motionState==='running');
  const aligned=await page.locator('.courtyard-scene').evaluate(svg=>{const image=svg.querySelector('.courtyard-source');const m=svg.getScreenCTM(),i=image.getScreenCTM();return ['a','b','c','d','e','f'].every(k=>Math.abs(m[k]-i[k])<.001)});assert.ok(aligned,'Image and steam coordinate system '+width);

@@ -1,6 +1,6 @@
 # Mojo Brand Toolkit
 
-Internal reference built with Vite and vanilla JavaScript. The current refinement simplifies the overview, header, typography and merchandise pages, aligns the Quick Guide cards and fixes courtyard steam in source-image coordinates. Source: https://github.com/ChenJiale1012/mojo-toolkit.
+Internal reference built with Vite and vanilla JavaScript. The current refinement moves the logo into the header, uses “Better Together” for the overview headline, aligns the Brand foundations rows and updates the exact Discord request briefs. Recent changes shows five entries, with older updates collapsed beneath them. Source: https://github.com/ChenJiale1012/mojo-toolkit.
 
 ## Run locally
 
