@@ -1,5 +1,6 @@
 import {copyButton,escapeHtml as esc} from './controls.js';
 export const badge = (status='Proposed') => `<span class="badge ${status.toLowerCase().replaceAll(' ','-')}">${esc(status)}</span>`;
+export const keyGuidance = text => `<p class="key-guidance"><strong>${esc(text)}</strong></p>`;
 export const pageIntro = (title, text) => `<div class="chapter-heading"><h1>${esc(title)}.</h1>${text?`<p>${esc(text)}</p>`:''}</div>`;
 export const downloadLink = asset => asset.path ? `<a class="download" href="${asset.path}" download aria-label="Download ${esc(asset.name)}">Download ${asset.format} ↓</a>` : '<span class="missing">File not supplied</span>';
 export function assetCard(asset) {

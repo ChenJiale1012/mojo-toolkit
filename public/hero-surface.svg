@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600" preserveAspectRatio="none">
+  <style>@media(max-width:800px){.foliage-shadow{display:none}}</style>
+  <defs>
+    <!-- A broad reflected-light wash, rather than a circular hotspot. -->
+    <linearGradient id="sunlight" x1="0" x2="1">
+      <stop offset="0" stop-color="#F06A21" stop-opacity="0"/>
+      <stop offset=".3" stop-color="#F06A21" stop-opacity=".016"/>
+      <stop offset=".62" stop-color="#F06A21" stop-opacity=".045"/>
+      <stop offset="1" stop-color="#F06A21" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="bottom-fade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="white"/>
+      <stop offset=".58" stop-color="white"/>
+      <stop offset="1" stop-color="black"/>
+    </linearGradient>
+    <linearGradient id="open-fade" x1="0" x2="1">
+      <stop offset="0" stop-color="white"/>
+      <stop offset=".45" stop-color="white"/>
+      <stop offset=".8" stop-color="black"/>
+    </linearGradient>
+    <mask id="surface-fade"><rect width="1200" height="600" fill="url(#bottom-fade)"/></mask>
+    <mask id="quiet-open-area"><rect width="1200" height="600" fill="url(#open-fade)"/></mask>
+    <filter id="plaster" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency=".72" numOctaves="3" seed="17" stitchTiles="noStitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+    <filter id="soft-leaves" x="-25%" y="-30%" width="150%" height="160%">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+  </defs>
+  <g mask="url(#surface-fade)">
+    <rect width="1200" height="600" fill="url(#sunlight)"/>
+    <g mask="url(#quiet-open-area)">
+      <rect width="1200" height="600" filter="url(#plaster)" opacity=".015"/>
+      <!-- Uneven leaf silhouettes stay at the edges, clear of the text column. -->
+      <g class="foliage-shadow" fill="#35594A" opacity=".03" filter="url(#soft-leaves)" transform="translate(80 0)">
+        <path d="M488-24C453-15 435 15 443 48C465 37 487 7 488-24Z M514-14C494 9 496 45 515 64C532 39 533 11 514-14Z M554-20C551 11 575 30 608 31C596 6 576-10 554-20Z M588-26C611-8 641-11 658-34C630-40 608-35 588-26Z M608-6C612 24 641 39 670 35C655 9 631-4 608-6Z M674-17C677 12 704 31 737 26C724 2 700-13 674-17Z"/>
+      </g>
+      <g class="foliage-shadow" fill="#35594A" opacity=".03" filter="url(#soft-leaves)">
+        <path d="M-15 409C19 403 44 417 49 446C17 445-7 431-15 409Z M-9 465C22 441 51 445 66 466C39 480 10 481-9 465Z M32 495C38 464 59 451 85 455C83 484 62 500 32 495Z M9 515C43 507 69 518 78 544C45 551 23 538 9 515Z M62 555C65 527 84 511 111 514C111 543 92 559 62 555Z M92 576C120 554 145 559 158 581C132 597 108 594 92 576Z"/>
+      </g>
+    </g>
+  </g>
+</svg>

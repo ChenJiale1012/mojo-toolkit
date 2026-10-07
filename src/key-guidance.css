@@ -1,0 +1,5 @@
+/* Quiet shared emphasis for the few instructions that matter most. */
+.key-guidance{padding:13px 17px;margin:20px 0 24px;border-left:3px solid var(--orange);border-radius:var(--radius);background:rgba(240,106,33,.065);color:var(--ink);font:14px/1.75 Inter,Arial,sans-serif}
+.key-guidance strong{font-weight:600}
+.guide-card-description .key-guidance{margin:0}
+@media(max-width:700px){.key-guidance{padding:12px 14px;font-size:13px}}

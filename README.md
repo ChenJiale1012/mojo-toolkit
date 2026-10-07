@@ -1,6 +1,6 @@
 # Mojo Brand Toolkit
 
-Internal reference built with Vite and vanilla JavaScript. The current refinement moves the logo into the header, uses “Better Together” for the overview headline, aligns the Brand foundations rows and updates the exact Discord request briefs. Recent changes shows five entries, with older updates collapsed beneath them. Source: https://github.com/ChenJiale1012/mojo-toolkit.
+Internal reference built with Vite and vanilla JavaScript. The current refinement adds a subtle sunlit surface behind the Overview artwork and removes the sidebar Requests & updates hover border. Orange is the default logo preview; Soft ink uses a cream wordmark. Key logo instructions share a restrained highlight with the Quick Guide. Source: https://github.com/ChenJiale1012/mojo-toolkit.
 
 ## Run locally
 
@@ -30,6 +30,7 @@ With the development server running, `npm run resources` rebuilds the Quick Guid
 - `src/templates.json` lists five categories only: Social Media Banners, Presentation Templates, Email Signatures, Virtual Meeting Backgrounds and Event Posters. They have no previews, editors or download actions.
 - `src/content.js` owns navigation, resource metadata, completion lists and recorded changes. `src/working-pages.js` renders the developing pages, practical components, campus concepts and request briefs.
 - `src/controls.js` supplies pixel icons, search and copy behaviour. `src/design-tokens.css` supplies shared radius and spacing. `src/ui.js` and `src/palette.css` share the exact palette-card markup/layout with the main pages and Quick Guide. Focus on composite search fields belongs to the existing outer frame.
+- `public/hero-surface.svg` supplies a 4.5% diffuse orange wash, 1.5% static fine texture and faint 3% forest leaf shadows. It fades to cream at the bottom; the shadows are hidden on mobile. `src/scene.css` isolates the cream base, decorative surface, original masked artwork/steam, text and controls in that order. The source raster and pixel mask are unchanged.
 - `src/scene.js` places the courtyard image, its existing mask and steam in a shared SVG viewBox. `src/courtyard-scene.json` records the measured 1536 × 1024 source dimensions, mug opening and three inner emission points. One clock pauses for user pause, offscreen scenes, hidden tabs and reduced motion, and is disposed on navigation. The original raster and mask stay unchanged. Flowers are static because no separate flower/background layers are supplied.
 - `src/intro.js` reveals complete glyphs in reserved word and mascot spaces. It runs once per session, supports skip and reduced motion, and removes itself on font/mascot errors or timeout.
 - `scripts/guide.mjs` embeds the supplied fonts and cat into the standalone guide. Full-section links work from the running toolkit. Local file mode hides those links and explains how adjacent downloads work. The Close guide link returns to the toolkit’s downloads page.
