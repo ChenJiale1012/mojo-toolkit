@@ -15,7 +15,7 @@ for(const family of ['Mojo Pixel Serif Draft','Mojo Serif Refined'])assert.ok(aw
 assert.ok((await page.locator('h1').evaluate(e=>getComputedStyle(e).fontFamily)).includes('Mojo Pixel Serif Draft'));
 assert.ok((await page.locator('h2').first().evaluate(e=>getComputedStyle(e).fontFamily)).includes('Mojo Serif Refined'));
 assert.equal(await page.locator('.scene-cat').count(),0);
-assert.ok(await page.locator('.courtyard-source').evaluate(async i=>{const image=new Image();image.src=i.getAttribute('href');await image.decode();return image.naturalWidth===1536&&image.naturalHeight===1024}));
+assert.ok(await page.locator('.workspace-source').evaluate(async i=>{const image=new Image();image.src=i.getAttribute('href');await image.decode();return image.naturalWidth===1631&&image.naturalHeight===964}));
 fs.mkdirSync('/workspace/mojo-toolkit/.playwright',{recursive:true});
 await page.screenshot({path:'.playwright/desktop.png',fullPage:true});
 for(const c of chapters){await page.goto(base+'/#'+c.id);await page.waitForSelector('h1');assert.equal(await page.locator('h1').textContent(),c.title+'.');assert.equal(await page.locator('a[aria-current="page"]').count(),1)}

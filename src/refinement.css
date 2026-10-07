@@ -59,7 +59,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 .header-logo .brand-signature{gap:10px}
 .header-logo .brand-signature img{width:35px}
 .header-logo .brand-word{font-size:42px;line-height:1.1}
-.courtyard-hero .hero-copy h1{max-width:none;margin:0 0 26px;line-height:1.1}
+.overview-hero .hero-copy h1{max-width:none;margin:0 0 26px;line-height:1.1}
 /* Shared top alignment and content spacing for every foundations row. */
 .identity-decisions>article{grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);align-items:start;gap:38px}
 .identity-decisions>article>div:last-child{display:flex;flex-direction:column;align-items:flex-start;gap:16px;min-width:0}
@@ -87,7 +87,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
  .header-logo .brand-signature img{width:30px}.header-logo .brand-word{font-size:36px}
  .identity-decisions>article{grid-template-columns:minmax(0,1fr);gap:24px}
  .decision-example{padding:24px}.type-example b{font-size:42px}
- .courtyard-hero .hero-copy h1{margin-bottom:22px}
+ .overview-hero .hero-copy h1{margin-bottom:22px}
 }
 
 /* The sidebar utility is a text link, without the shared enclosing hover shadow. */
@@ -98,4 +98,4 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 /* Only the preview wordmark reverses; the original cat and other logos stay intact. */
 .logo-preview .logo-specimen .brand-word{color:var(--logo-wordmark-color,var(--ink))}
 
-.courtyard-hero .hero-copy h1 .title-period{color:var(--orange)}
+.overview-hero .hero-copy h1 .title-period{color:var(--orange)}

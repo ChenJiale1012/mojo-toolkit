@@ -1,0 +1,42 @@
+{
+  "source": "/sunlit-workspace.png",
+  "width": 1631,
+  "height": 964,
+  "sourceSha256": "34c1cbc5633cb087d966781eeefc874263348c2c48f51874d315bdfba4d5a1e0",
+  "measurement": "Measured on the supplied 1631 \u00d7 964 artwork. The orange mug opening is centred at source x=1257, y=825. Fades and steam use the same SVG coordinate system.",
+  "mug": {
+    "opening": {
+      "cx": 1257,
+      "cy": 825,
+      "rx": 20,
+      "ry": 4
+    },
+    "clip": {
+      "x": 1240,
+      "y": 781,
+      "width": 34,
+      "height": 48
+    },
+    "rise": 35,
+    "drift": 1.3,
+    "duration": 3000,
+    "peakOpacity": 0.38,
+    "origins": [
+      {
+        "x": 1249,
+        "y": 825,
+        "phase": 0
+      },
+      {
+        "x": 1257,
+        "y": 825,
+        "phase": 1000
+      },
+      {
+        "x": 1265,
+        "y": 825,
+        "phase": 2000
+      }
+    ]
+  }
+}

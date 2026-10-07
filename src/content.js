@@ -60,6 +60,7 @@ export const completion={
  ]
 };
 export const changelog=[
+ {date:'2026-10-07',title:'Sunlit Overview background',label:'Updated',summary:'The supplied Sunlit workspace replaces the courtyard on the Overview. Broad cream fades protect the text and preserve the lower pixel transition; mug steam follows the artwork at every screen size.',href:'#overview'},
  {date:'2026-10-07',title:'v0.9 · Courtyard sky and divider alignment',label:'Updated',summary:'A shared border-box boundary keeps the header and sidebar divider continuous. The Overview adds a softly blended blue sky and three static pixel clouds, with the original courtyard foreground and mug motion preserved.',href:'#overview'},
  {date:'2026-10-07',title:'v0.8 · Shared sticky header',label:'Updated',summary:'Mojo Draft title and signature share a text baseline in one cream header. Search and Quick Guide stay visible, navigation sits below the header, and section links leave space for their titles.',href:'#overview'},
  {date:'2026-10-07',title:'Sunlit workspace artwork',label:'Added',summary:'Original supplied Sunlit workspace PNG added to the Imagery & motion explorations, preserving its proportions and pixel transition.',href:'#imagery'},

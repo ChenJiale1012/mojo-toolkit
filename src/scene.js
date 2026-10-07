@@ -1,31 +1,28 @@
-import scene from './courtyard-scene.json' with {type:'json'};
-import skyWindow from './courtyard-sky-window.json' with {type:'json'};
+import scene from './sunlit-scene.json' with {type:'json'};
 export {scene as sceneConfig};
-const skyWindowShapes=skyWindow.map(([x,y,width,height])=>`<rect x="${x}" y="${y}" width="${width}" height="${height}"/>`).join('');
 
-/** Edited upper background, original foreground and steam share source coordinates. */
-export function courtyardScene(){
-  const {width,height,mug}=scene;
-  return `<div class="scene hero-environment"><svg class="courtyard-scene" data-courtyard-scene viewBox="0 0 ${width} ${height}" preserveAspectRatio="xMaxYMax meet" role="img" aria-label="Pixel-art courtyard beneath a sunlit blue sky and three cream clouds, with a leafy garden, shared worktable and orange mug">
-    <defs>
-      <mask id="courtyard-art-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="${width}" height="${height}" style="mask-type:luminance"><image href="/courtyard-mask.svg" width="${width}" height="${height}"/><g class="sky-window-cutout" fill="black" shape-rendering="crispEdges">${skyWindowShapes}</g></mask>
-      <linearGradient id="sky-ground-fade" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="black"/><stop offset=".08" stop-color="white"/><stop offset=".31" stop-color="white"/><stop offset=".44" stop-color="black"/><stop offset="1" stop-color="black"/>
-      </linearGradient>
-      <linearGradient id="sky-text-fade" x1="0" x2="1">
-        <stop offset="0" stop-color="black"/><stop offset=".30" stop-color="black"/><stop offset=".50" stop-color="white"/><stop offset="1" stop-color="white"/>
-      </linearGradient>
-      <mask id="sky-window-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="${width}" height="${height}" style="mask-type:luminance"><g fill="white" shape-rendering="crispEdges">${skyWindowShapes}</g></mask>
-      <mask id="sky-text-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="${width}" height="${height}" style="mask-type:luminance"><rect width="${width}" height="${height}" fill="url(#sky-text-fade)"/></mask>
-      <mask id="sky-background-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="${width}" height="${height}" style="mask-type:luminance">
-        <g mask="url(#sky-window-mask)"><rect width="${width}" height="${height}" fill="url(#sky-ground-fade)" mask="url(#sky-text-mask)"/></g>
-      </mask>
-      <clipPath id="mug-steam-clip"><rect x="${mug.clip.x}" y="${mug.clip.y}" width="${mug.clip.width}" height="${mug.clip.height}"/></clipPath>
-    </defs>
-    <image class="courtyard-sky" href="${scene.sky.source}" width="${width}" height="${height}" mask="url(#sky-background-mask)"/>
-    <image class="courtyard-source" href="${scene.source}" width="${width}" height="${height}" mask="url(#courtyard-art-mask)"/>
-    <g class="mug-steam" clip-path="url(#mug-steam-clip)" fill="#FFF8F0" aria-hidden="true" pointer-events="none" shape-rendering="crispEdges">${mug.origins.map((origin,i)=>`<g class="steam-wisp" data-wisp="${i}" transform="translate(${origin.x} ${origin.y})" opacity="0"><path d="M-1 0h2v-3h2v-4H1v2h-2Z"/></g>`).join('')}</g>
-  </svg></div>`;
+/** The supplied artwork, edge fades and steam share the original source coordinates. */
+export function workspaceScene(){
+ const {width,height,mug}=scene;
+ return `<div class="scene hero-environment"><svg class="workspace-scene" data-workspace-scene viewBox="0 0 ${width} ${height}" preserveAspectRatio="xMaxYMax meet" role="img" aria-label="Sunlit pixel-art workspace with an arched window overlooking the sea, a laptop, an orange mug and a sleeping cat">
+  <defs>
+   <linearGradient id="workspace-side-fade" x1="0" x2="1">
+    <stop offset="0" stop-color="black"/><stop offset=".12" stop-color="black"/>
+    <stop offset=".30" stop-color="#333"/><stop offset=".48" stop-color="#aaa"/>
+    <stop offset=".64" stop-color="white"/><stop offset="1" stop-color="white"/>
+   </linearGradient>
+   <linearGradient id="workspace-edge-fade" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="black"/><stop offset=".10" stop-color="white"/>
+    <stop offset=".89" stop-color="white"/><stop offset=".96" stop-color="#aaa"/>
+    <stop offset="1" stop-color="black"/>
+   </linearGradient>
+   <mask id="workspace-side-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="${width}" height="${height}" style="mask-type:luminance"><rect width="${width}" height="${height}" fill="url(#workspace-side-fade)"/></mask>
+   <mask id="workspace-art-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="${width}" height="${height}" style="mask-type:luminance"><rect width="${width}" height="${height}" fill="url(#workspace-edge-fade)" mask="url(#workspace-side-mask)"/></mask>
+   <clipPath id="mug-steam-clip"><rect x="${mug.clip.x}" y="${mug.clip.y}" width="${mug.clip.width}" height="${mug.clip.height}"/></clipPath>
+  </defs>
+  <image class="workspace-source" href="${scene.source}" width="${width}" height="${height}" mask="url(#workspace-art-mask)"/>
+  <g class="mug-steam" clip-path="url(#mug-steam-clip)" fill="#FFF8F0" aria-hidden="true" pointer-events="none" shape-rendering="crispEdges">${mug.origins.map((origin,i)=>`<g class="steam-wisp" data-wisp="${i}" transform="translate(${origin.x} ${origin.y})" opacity="0"><path d="M-1 0h2v-3h2v-4H1v2h-2Z"/></g>`).join('')}</g>
+ </svg></div>`;
 }
 
 /** A zero-opacity seam and bounded drift keep every loop inside the mug region. */
@@ -35,8 +32,8 @@ export function steamPose(elapsed,origin){
 }
 
 /** One clock; navigation, hidden tabs, offscreen scenes and user pause stop it. */
-export function mountCourtyardMotion(root=document){
-  const svg=root.querySelector('[data-courtyard-scene]');if(!svg)return ()=>{};
+export function mountSceneMotion(root=document){
+  const svg=root.querySelector('[data-workspace-scene]');if(!svg)return ()=>{};
   const hero=svg.closest('[data-motion-scene]'),button=hero.querySelector('[data-motion-toggle]');
   const steam=svg.querySelector('.mug-steam'),wisps=[...svg.querySelectorAll('.steam-wisp')];
   const motion=matchMedia('(prefers-reduced-motion: reduce)');
