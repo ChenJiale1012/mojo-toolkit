@@ -100,3 +100,12 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 
 /* Only the preview wordmark reverses; the original cat and other logos stay intact. */
 .logo-preview .logo-specimen .brand-word{color:var(--logo-wordmark-color,var(--ink))}
+
+/* Match the sidebar title row to the existing header height and centre line. */
+@media(min-width:801px){
+ .sidebar{padding-top:0}
+ .sidebar-label{display:flex;align-items:center;flex-shrink:0;min-height:76px;height:76px;margin:0 -20px;padding:0 32px;border-bottom:1px solid var(--border);font:400 26px/1.1 'Mojo Pixel Serif Draft',Georgia,serif;letter-spacing:-.4px;color:var(--ink);text-transform:none}
+ .sidebar nav{padding-top:18px}
+}
+@media(min-width:801px) and (max-width:1150px){.sidebar-label{margin:0 -12px;padding:0 25px;font-size:24px}}
+.courtyard-hero .hero-copy h1 .title-period{color:var(--orange)}

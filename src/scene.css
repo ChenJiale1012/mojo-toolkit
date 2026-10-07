@@ -10,4 +10,4 @@
 .courtyard-hero .hero-environment{z-index:1;pointer-events:none}
 .courtyard-hero .hero-copy{z-index:2}
 .courtyard-hero .ambient-toggle{z-index:3}
-@media(max-width:800px){.hero-surface{opacity:.75}}
+@media(max-width:800px){.hero-surface{opacity:1}}
