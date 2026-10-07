@@ -1,51 +1,45 @@
 # Mojo Brand Toolkit
 
-Editable internal reference built with Vite and vanilla JavaScript. Version 0.6 refines the artwork edge, practical guidance, font downloads, and shared approval statuses. Source is maintained in https://github.com/ChenJiale1012/mojo-toolkit. The website has not been publicly deployed. The toolkit includes shared controls, editable templates, and practical reference pages.
+Internal reference built with Vite and vanilla JavaScript. Version 0.7 polishes the controls, introduction, Quick Guide and palette cards, replaces retired templates with five categories under development, and adds illustrative merchandise concepts. Source: https://github.com/ChenJiale1012/mojo-toolkit.
 
 ## Run locally
 
-Use Node 22.12+ (tested with Node 24.19.0). In the project folder:
+Open a terminal in the extracted project folder containing `package.json`:
 
 ```sh
 npm ci
-npm run dev -- --port 5173
+npm run dev
 ```
 
-Open `http://localhost:5173` on the same computer. The development server must stay running. Hash links such as `/#colour` address individual pages.
+Open the address printed by Vite, normally `http://localhost:5173`, on the same computer. Keep the terminal running. Hash links such as `/#colour` address individual pages.
+
+## Build and check
 
 ```sh
 npm run build
-npm test                          # development server must be active
-npm run preview -- --port 4173
-TEST_URL=http://localhost:4173 npm test
+npm test
 ```
 
-Browser checks use `/usr/bin/chromium`; set `CHROMIUM_PATH` for another executable. They verify pages at desktop and mobile sizes, search, clipboard, intro behaviour, reduced motion, real downloads, archives, font loading, header controls, approval labels, and browser errors. Screenshots are saved to ignored `.playwright/`.
+Browser checks require Chromium (`CHROMIUM_PATH` defaults to `/usr/bin/chromium`) and a running development server. To check a production build, run `npm run preview` and set `TEST_URL` to the address it prints when running the tests.
 
-## Edit and regenerate
+With the development server running, `npm run resources` rebuilds the Quick Guide, supplied fonts, guide preview and download archives. Requires Node, Python and Chromium. The generator removes retired template sources and previews before packaging; no template files are distributed.
 
-- `src/brand-content.json` owns the confirmed line **Mojo. Better together.**, actual font files, and shared approval statuses. The primary signature is **Approved**; the five-colour primary palette is **Proposed**; secondary and tertiary palettes are **To be decided**; Mojo animations are **Under development**. The whole toolkit remains a working draft.
-- `src/content.js` holds chapters, colours, resource metadata, and search content. `src/reference-pages.js` renders Logo, Colour, and Typography; `src/working-pages.js` renders the work-in-progress Voice page, Templates, Imagery, Reusable components, and Requests. `src/foundations.js` owns visual decisions; Voice & language owns writing guidance.
-- `src/design-tokens.css` owns the single corner radius. `src/controls.js` and `src/shared-controls.css` own pixel copy/search controls, stable-width Copied feedback, keyboard focus, hover, pressed and disabled states. These controls are also embedded in the standalone Quick Guide.
-- `src/style.css` and `src/working-pages.css` own styling and functional interface tokens. Keep the five primary values unchanged: #F06A21, #FFF8F0, #1D1B18, #A7B59E, #35594A. Warning and error tokens are separate from brand palettes. Contrast labels are calculated from rendered colour pairs.
-- `src/brand.js` renders the supplied cat followed by lowercase mojo in Mojo Draft. The original SVG is unchanged. Size examples are illustrative; approved minimum sizes and spacing measurements have not been defined.
-- Typography uses Mojo Pixel Serif Draft for the wordmark and main headings, Mojo Serif Refined for subtitles, and Inter for body text and controls. Actual TTF files are in `public/fonts/`. Three specimen rows lead the page; technical information is expandable. Only supplied formats are offered.
-- `src/templates.json` inventories all eight templates and their uses. `scripts/resources.py` creates six refreshed SVG sources plus eight browser-editable HTML templates. The actual supplied Draft, Refined and Inter regular TTF bytes are embedded. Use the labelled fields, Save edited HTML, or Print / save as PDF. Bracketed fields are placeholders, not product claims.
-- With the dev server active, run `npm run resources` to rebuild templates, the shared Quick Guide, font files and archives, then render matching previews with `scripts/previews.mjs`. It also verifies the fonts embedded in browser PDFs using `pdffonts` (Poppler), saves ignored verification PDFs in `.playwright/`, and includes all actual sources, preview PNGs, four TTFs, Inter’s licence and the all-fonts ZIP in the starter pack. Requires Node, Python, Chromium and Poppler.
-- `scripts/guide.mjs` uses the actual shared copy-control module, statuses, logo arrangement, fonts and contact instruction. The guide can be opened from the header or downloaded; full-section links use the running toolkit, while local downloads refer to files alongside it. Standalone file mode hides full-section links and explains how to use them.
-- Discord instructions come from `src/brand-content.json`: **Tag @c.c. in #marketing on Discord.** The request page copies briefs; it does not submit a form. Its Proposed and Incomplete lists distinguish existing material from missing assets. Recorded changelog entries link to real commits; the current refinement has no invented release number.
-- `public/courtyard.png` is original concept artwork created for this project. It contains no decorative mascot. `scripts/courtyard-mask.py` uses Pillow to author a binary SVG mask from actual foreground colours without changing the image. Run it from the project root to regenerate `public/courtyard-mask.svg`. Fine cells follow foliage along the left and bottom; cream #FFF8F0 shows through transparency. No polygon clipping, blur, or random scatter is used. Pause motion and reduced motion stop the restrained steam animation.
-- `src/intro.js` plays the short signature introduction once per browser session. Skip, Escape, Tab, reduced motion, failed assets, storage restrictions, and a watchdog allow access to the toolkit. It does not lock scrolling or capture focus.
-- `node scripts/icons.mjs` regenerates padded mascot icons and the link preview with the development server running on port 5173. Set social metadata to an actual deployment URL before deploying.
+## Edit the reference
 
-## Missing assets
+- `src/brand-content.json` owns the brand line, supplied fonts, approval statuses and contact sentence. The approved signature combines the original cat on the left with lowercase mojo in Mojo Draft. Primary palette: Proposed. Voice and imagery: Work in progress. Templates and mascot animation: Under development.
+- `src/templates.json` lists five categories only: Social Media Banners, Presentation Templates, Email Signatures, Virtual Meeting Backgrounds and Event Posters. They have no previews, editors or download actions.
+- `src/content.js` owns navigation, resource metadata, completion lists and recorded changes. `src/working-pages.js` renders the developing pages, practical components, campus concepts and request briefs.
+- `src/controls.js` supplies pixel icons, search and copy behaviour. `src/design-tokens.css` supplies shared radius and spacing. `src/ui.js` and `src/palette.css` share the exact palette-card markup/layout with the main pages and Quick Guide. Focus on composite search fields belongs to the existing outer frame.
+- `src/intro.js` reveals complete glyphs in reserved word and mascot spaces. It runs once per session, supports skip and reduced motion, and removes itself on font/mascot errors or timeout.
+- `scripts/guide.mjs` embeds the supplied fonts and cat into the standalone guide. Full-section links work from the running toolkit. Local file mode hides those links and explains how adjacent downloads work. The Close guide link returns to the toolkit’s downloads page.
+- Requests and relevant footers use: **Reach out with requests or updates to @c.c. in #marketing on the company Discord.** No verified Discord URL is supplied, so the channel remains text. Copying a brief does not submit it.
 
-A standalone wordmark, combined-logo file, reversed/one-colour logo variants, and production app artwork have not been supplied. Neither have custom font licence/readme documents, separate WOFF/WOFF2 sources, or completed mascot animations. All supplied TTF files and Inter’s licence are available; no placeholder downloads are offered.
+## Assets and current limitations
 
-Product descriptions await a finalized product. Photography, product screenshots, a verified Discord channel URL, registration links, and merchandise production specifications also remain unavailable. Templates, the type scale, foundations and imagery guidance are proposed. Voice & language is Work in progress; the old writing rules have been removed from the pages and Quick Guide.
+The four supplied TTF files and original cat SVG are preserved unchanged. The courtyard artwork and overview hero are unchanged. Download cat SVG contains the mascot only, not the cat-and-wordmark arrangement. Combined-logo, standalone wordmark, reversed/one-colour exports, custom font licences and separate WOFF/WOFF2 files remain unavailable.
 
-The toolkit has no authentication or backend. Keep confidential files out of this static source. A future deployment requires explicit authorization; publish only the built `dist/` directory. Pushing source to GitHub does not deploy the website.
+The supplied Sunlit workspace screenshot has no downloadable attachment in this session. Its original image file is needed to complete the second Imagery preview; the page identifies this missing asset without substituting artwork. Upload `image(4).png` to add the actual image without regenerating it.
 
-## Export limitations
+Sticker, T-shirt and tote previews are illustrative concepts using existing identity assets. **Production artwork pending.** They are not approved or ready to order. No suppliers, prices, materials or production specifications are claimed.
 
-Browser template previews and printed PDFs use the embedded supplied fonts; the preview renderer verifies Draft, Refined and Inter font names in every PDF. Some SVG editors discard embedded fonts, so install the supplied TTFs and inspect the export. Email clients may substitute fonts or reject embedded SVG/data images; the signature editor also exports an editable HTML table; verify it in the target mail application. No PPTX or Figma files are offered.
+Brand foundations await a finalized product. The tool is editable through source; there is no authentication or server-side content editor. This GitHub repository update does not deploy a public website.

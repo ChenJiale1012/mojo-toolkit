@@ -1,0 +1,45 @@
+/* Brand-link transforms affect the complete signature, never its layout space. */
+.logo-home{background:transparent;border:0;box-shadow:none;outline:none;filter:none;display:inline-flex;align-items:center}
+.logo-home .brand-signature{transition:transform 200ms ease,opacity 200ms ease;transform-origin:center}
+.logo-home.logo-home:hover,.logo-home.logo-home:active,.logo-home.logo-home:focus-visible{background:transparent;box-shadow:none;outline:none;filter:none;transform:none}
+.logo-home:hover .brand-signature{transform:scale(1.04)}
+.logo-home:focus-visible .brand-word{text-decoration:underline;text-decoration-color:var(--forest);text-decoration-thickness:2px;text-underline-offset:7px}
+.top-logo{flex-shrink:0;padding:4px 0}.top-logo .brand-word{font-size:31px}.top-logo .brand-signature img{width:29px}
+.topbar>div{flex-shrink:0}.topbar #global-search{margin-left:auto;max-width:280px}.topbar{gap:18px}
+/* Focus on a composite field belongs to its outer frame. */
+.search-control:focus-within,#global-search:focus-within,.asset-search:focus-within{outline:none;box-shadow:none;border-color:var(--forest);background:#e7ecdf}
+.search-control input,#global-search input,.asset-search input{border:0;border-radius:0;box-shadow:none;outline:none;padding:0}
+.search-control input:focus-visible,#global-search input:focus-visible,.asset-search input:focus-visible{outline:none;box-shadow:none}
+.search-control button:focus-visible{outline:none;box-shadow:none;background:var(--forest);color:var(--cream);border-color:var(--forest)}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,summary:focus-visible{box-shadow:none}
+.chapter-heading>p,.foundation-intro>p,.guide-intro{max-width:none;text-wrap:wrap}
+.chapter-heading h1,.foundation-intro h1,.category-content h2{max-width:none;text-wrap:wrap}
+.actions{gap:var(--space-actions)}
+.page-status{margin:0 0 28px}.template-categories{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.template-category{display:flex;gap:24px;padding:30px;background:#fffbf5;border:1px solid var(--border);border-radius:var(--radius);scroll-margin-top:30px}
+.category-icon{display:grid;place-items:center;flex-shrink:0;width:54px;height:54px;background:#e7ecdf;color:var(--forest);border-radius:var(--radius)}.category-icon .pixel-icon{width:30px;height:30px}
+.category-content{min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:14px}.category-content h2{font-size:28px;line-height:1.25;margin:0}.category-content p{font-size:14px;margin:0 0 4px}.category-content .badge{margin-top:auto}
+.shortcut.template .pixel-icon{width:56px;height:56px;color:var(--forest)}
+.work-in-progress:not(.badge){max-width:none;min-height:0;aspect-ratio:auto;padding:44px;background:#fffbf5;border:1px solid var(--border);box-shadow:0 3px 12px rgba(29,27,24,.025)}
+.work-in-progress:not(.badge) h2{font:400 38px/1.2 'Mojo Pixel Serif Draft',Georgia,serif;margin:0 0 18px}.work-in-progress:not(.badge) p{max-width:none;font:16px/1.75 Inter,Arial,sans-serif;margin:0}
+.explorations{display:grid;gap:32px}.explorations .visual-frame img{width:100%;height:auto;aspect-ratio:auto;object-fit:contain;image-rendering:auto}.explorations figcaption{padding:18px 0 0}.explorations figcaption h2{font-size:29px;margin:0 0 7px}.explorations figcaption p{margin:0;color:var(--muted)}
+.missing-artwork{padding:30px;background:#fffbf5}.missing-artwork p{margin:0;font-size:14px;color:var(--muted)}
+.animation-direction{margin-top:36px;background:#fffbf5;border:1px solid var(--border);padding:24px;display:flex;justify-content:space-between;gap:18px;align-items:center}.animation-direction .reference-title{margin:0}.animation-direction h2{font-size:28px}
+.merchandise-section>p{max-width:80ch}.merchandise-concepts{display:grid;grid-template-columns:.8fr 1.2fr 1fr;gap:26px;padding:36px 0;align-items:center}.merch-concept{min-width:0}.concept-stage{height:300px;position:relative;display:flex;align-items:center;justify-content:center;background:#e7ecdf;border-radius:var(--radius);padding:25px}
+.merch-concept figcaption{padding:18px 0 0}.merch-concept h3{font-size:26px;margin:0 0 6px}.merch-concept p{font-size:12px;margin:0;color:var(--muted)}
+.sticker-concept .concept-stage{height:230px;background:#f6e3ce}.sticker-shape{background:var(--cream);border:6px solid #fffbf5;border-radius:40px;padding:15px 18px;box-shadow:2px 5px 7px rgba(29,27,24,.08);transform:rotate(-7deg)}.sticker-shape .brand-word{font-size:40px}.sticker-shape .brand-signature img{width:36px}.sticker-shape .brand-signature{gap:7px}
+.shirt-concept .concept-stage{height:370px;background:#f1ede4}.shirt-shape{height:300px;width:100%;max-width:280px}.shirt-print{position:absolute;top:42%;left:50%;transform:translateX(-50%)}.shirt-print .brand-word{font-size:31px;color:var(--cream)}.shirt-print .brand-signature img{width:27px}.shirt-print .brand-signature{gap:7px}
+.tote-concept .concept-stage{height:300px;background:#eee1cc;padding-top:62px}.tote-shape{position:relative;width:180px;height:195px;background:var(--cream);box-shadow:3px 5px 7px rgba(29,27,24,.06);border-radius:3px 3px 13px 13px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;transform:rotate(5deg)}.tote-handle{position:absolute;top:-45px;width:88px;height:63px;border:9px solid var(--cream);border-bottom:0;border-radius:44px 44px 0 0}.tote-shape .brand-word{font-size:36px}.tote-shape .brand-signature img{width:32px}.tote-shape .brand-signature{gap:7px}.tote-line{font:9px/1.5 Inter,Arial,sans-serif;color:var(--forest)}
+.event-checklist{margin:36px 0;padding:28px;border:1px solid var(--border);border-radius:var(--radius);background:#fffbf5}.event-checklist h2{font-size:31px;margin:0 0 18px}.event-checklist ul{padding-left:20px;line-height:1.8;font-size:14px}.event-checklist li{margin:10px 0}.event-checklist .badge{margin-left:12px}.contact-footer{color:var(--forest);font-size:14px}
+@media(max-width:1150px){.topbar>div{display:none}.topbar #global-search{max-width:none}.merchandise-concepts{grid-template-columns:1fr 1fr}.tote-concept{grid-column:1/-1;max-width:360px;width:100%;justify-self:center}.template-category{padding:24px;gap:18px}.category-content h2{font-size:25px}}
+@media(max-width:800px){.top-logo{display:none}.topbar{gap:10px}.template-categories{grid-template-columns:1fr;gap:18px}.template-category{padding:24px;gap:18px}.work-in-progress:not(.badge){padding:24px}.work-in-progress:not(.badge) h2{font-size:31px}.work-in-progress:not(.badge) p{font-size:15px}.merchandise-concepts{grid-template-columns:1fr;padding:20px 0;gap:28px}.tote-concept{grid-column:auto;max-width:none}.merch-concept .concept-stage{height:300px}.sticker-concept .concept-stage{height:220px}.shirt-concept .concept-stage{height:350px}.event-checklist{padding:24px}.event-checklist .badge{margin-left:0;display:table;margin-top:12px}.animation-direction{align-items:start;flex-direction:column}.animation-direction a{margin-left:0}.category-icon{width:44px;height:44px}.category-icon .pixel-icon{width:26px;height:26px}}
+@media(prefers-reduced-motion:reduce){.logo-home .brand-signature{transition:none}.logo-home:hover .brand-signature{transform:none}}
+
+.brand-intro{background:transparent}.brand-intro.intro-ready{background:var(--cream)}.intro-centre{opacity:0;transition:opacity 120ms}.intro-ready .intro-centre{opacity:1}.intro-signature{width:auto;gap:18px}.intro-signature .brand-word{width:auto;letter-spacing:-1px;font-size:78px;line-height:1.1;grid-area:1/1;align-self:center}.intro-word-space{display:grid}.intro-reserved-word{grid-area:1/1;visibility:hidden;font:400 78px/1.1 "Mojo Draft Logo",Georgia,serif;letter-spacing:-1px}.intro-signature img{width:66px;transform:none;opacity:0;transition:opacity 180ms}.intro-cat-visible .intro-signature img{opacity:1}.intro-exit{opacity:0;transition:opacity 220ms ease}.intro-exit .intro-centre{transform:none}
+@media(max-width:350px){.intro-signature .brand-word,.intro-reserved-word{font-size:68px}.intro-signature img{width:55px}.intro-signature{gap:14px}}
+.button:focus-visible,.filter:focus-visible,.logo-background:focus-visible,#mobile-menu:focus-visible,.ambient-toggle:focus-visible{outline:none;box-shadow:none;border-color:var(--forest);background:#e7ecdf;color:var(--forest)}
+.button.primary:focus-visible{background:#df5b13;color:var(--ink);border-color:var(--forest)}
+.button.subtle:focus-visible{background:#e7ecdf;border-color:var(--forest)}
+.top-guide:focus-visible{outline:none;box-shadow:none;background:#203e31;text-decoration:underline;text-underline-offset:4px}
+
+.shirt-print{background:var(--cream);padding:10px 12px;border-radius:var(--radius);top:39%}.shirt-print .brand-word{color:var(--ink)}

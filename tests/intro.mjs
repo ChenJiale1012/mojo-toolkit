@@ -5,7 +5,7 @@ const base=process.env.TEST_URL||'http://localhost:5173';
 async function fresh(options={}){let context=await browser.newContext({viewport:{width:1440,height:1000},...options});return {context,page:await context.newPage()}}
 let {context,page}=await fresh();
 await page.addInitScript(()=>{window.introFrames=[];new MutationObserver(()=>{const w=document.querySelector('.intro-ready .brand-word');if(w){const state={text:w.textContent,width:document.querySelector('.intro-signature').getBoundingClientRect().width,font:document.fonts.check('64px "Mojo Draft Logo"')};if(!window.introFrames.length||window.introFrames.at(-1).text!==state.text)window.introFrames.push(state)}}).observe(document,{childList:true,subtree:true,attributes:true})});
-await page.goto(base);await page.locator('.brand-intro').waitFor();await page.locator('.intro-ready').waitFor();
+await page.goto(base);await page.locator('.brand-intro').waitFor();await page.locator('.intro-ready').waitFor();assert.equal(await page.locator('.intro-caret').count(),0);
 assert.ok(await page.locator('main h1').count());
 const start=Date.now();await page.waitForFunction(()=>!document.querySelector('.brand-intro'));assert.ok(Date.now()-start<2000);
 const frames=await page.evaluate(()=>window.introFrames);assert.deepEqual(frames.filter(f=>f.text).map(f=>f.text),['m','mo','moj','mojo']);assert.ok(frames.every(f=>f.font));assert.equal(new Set(frames.map(f=>f.width)).size,1);

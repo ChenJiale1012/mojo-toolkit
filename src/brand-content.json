@@ -53,7 +53,23 @@
     "secondaryPalette": "To be decided",
     "tertiaryPalette": "To be decided",
     "animations": "Under development",
-    "voice": "Work in progress"
+    "voice": "Work in progress",
+    "templates": "Under development",
+    "imagery": "Work in progress"
   },
-  "contact": "Tag @c.c. in #marketing on Discord."
+  "contact": "Reach out with requests or updates to @c.c. in #marketing on the company Discord.",
+  "illustrations": [
+    {
+      "id": "courtyard",
+      "title": "Courtyard",
+      "path": "/courtyard.png",
+      "alt": "Pixel-art courtyard with cream buildings, plants and a shared worktable"
+    },
+    {
+      "id": "sunlit-workspace",
+      "title": "Sunlit workspace",
+      "path": null,
+      "alt": "Sunlit arched window, desk, laptop and sleeping cat"
+    }
+  ]
 }

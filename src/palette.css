@@ -1,0 +1,14 @@
+/* One card layout for the overview, Colour page and standalone Quick Guide. */
+.swatches{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--space-card);align-items:stretch}
+.swatch{display:flex;flex-direction:column;background:#fffbf5;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;min-width:0}
+.swatch .paint{height:140px;flex-shrink:0;padding:14px}
+.swatch .paint>span{font:10px/1.4 Inter,Arial,sans-serif;background:rgba(255,248,240,.72);padding:6px 8px;border-radius:var(--radius)}
+.swatch .swatch-info{display:flex;flex-direction:column;flex:1;padding:20px 16px;gap:12px}
+.swatch .swatch-info strong{font:600 13px/1.5 Inter,Arial,sans-serif;margin:0}
+.swatch .swatch-role{font:13px/1.7 Inter,Arial,sans-serif;color:var(--ink);margin:0 0 6px}
+.swatch .hex{display:flex;align-items:center;justify-content:space-between;margin: auto 0 0;width:100%;min-height:40px;padding:8px 6px;gap:6px;background:transparent;border:1px solid transparent;color:var(--muted);font:500 12px/1.4 Inter,Arial,sans-serif;white-space:nowrap}
+.swatch .hex .copy-text{font:inherit;white-space:nowrap}.swatch .hex .pixel-icon{width:18px;height:18px}
+.swatch .hex:hover,.swatch .hex:focus-visible{background:#e7ecdf;border-color:var(--forest);box-shadow:none;outline:none;color:var(--forest)}
+@media(max-width:1050px) and (min-width:801px){.swatches{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:800px){.swatches{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-card)}.swatch:last-child{grid-column:1/-1}.swatch .paint{height:110px}.swatch .swatch-info{padding:18px 14px}.swatch .swatch-role{font-size:12px}}
+@media(max-width:350px){.swatches{grid-template-columns:1fr}.swatch:last-child{grid-column:auto}}

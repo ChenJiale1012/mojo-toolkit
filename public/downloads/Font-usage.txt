@@ -3,4 +3,4 @@ Mojo Pixel Serif Draft v0.200: Wordmark and main display headings. Supplied TTF.
 Mojo Serif Refined v0.601: Subtitles and editorial section headings. Supplied TTF.
 Inter variable regular v4.001: Body text and interface controls. Supplied TTF.
 Inter variable italic v4.001: Italic body text. Supplied TTF.
-Browser template editors embed the actual Draft, Refined, and Inter regular files; SVG editors may ignore embedded fonts, so install the supplied fonts and verify exports. Email font support varies by client. Custom licence documents and separate WOFF/WOFF2 sources have not been supplied. Inter licence is included.
+Custom licence documents and separate WOFF/WOFF2 sources have not been supplied. Inter licence is included.

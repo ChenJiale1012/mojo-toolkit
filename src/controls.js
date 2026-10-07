@@ -1,7 +1,7 @@
 /** Shared, dependency-free controls used by the toolkit and standalone guide. */
 export const escapeHtml = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export function pixelIcon(name='copy') {
-  const paths={copy:'M6 2h10v2h2v12h-2V4H6zM2 6h10v2h2v10H2zm2 2v8h8V8z',search:'M4 2h7v2h2v7h-2v2H4v-2H2V4h2zm0 2v7h7V4zm9 8h2v2h2v2h2v3h-3v-2h-2v-2h-2z'};
+  const paths={copy:'M6 2h10v2h2v12h-2V4H6zM2 6h10v2h2v10H2zm2 2v8h8V8z',banners:'M2 3h16v14H2zm2 2v10h12V5zm2 2h8v2H6zm0 4h5v2H6z',presentation:'M2 2h16v12h-7v3h4v2H5v-2h4v-3H2zm2 2v8h12V4zm2 2h8v2H6z',email:'M2 4h16v12H2zm2 2v2h2v2h2v2h4v-2h2V8h2V6h-2v2h-2v2H8V8H6V6zm0 5v3h12v-3h-2v2H6v-2z',meeting:'M2 4h11v12H2zm2 2v8h7V6zm11 1h2V5h2v10h-2v-2h-2z',poster:'M4 2h12v16H4zm2 2v12h8V4zm2 2h4v4H8zm0 6h4v2H8z',search:'M4 2h7v2h2v7h-2v2H4v-2H2V4h2zm0 2v7h7V4zm9 8h2v2h2v2h2v3h-3v-2h-2v-2h-2z'};
   return `<svg class="pixel-icon" viewBox="0 0 20 20" aria-hidden="true" shape-rendering="crispEdges"><path d="${paths[name]||paths.copy}"/></svg>`;
 }
 export function copyButton(text, label='Copy text', extraClass='', visibleLabel=label) {

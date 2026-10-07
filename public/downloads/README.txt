@@ -1,10 +1,12 @@
-Mojo Toolkit — resource refinement
+Mojo Toolkit — current brand resources
 signature: Approved.
 primaryPalette: Proposed.
 secondaryPalette: To be decided.
 tertiaryPalette: To be decided.
 animations: Under development.
 voice: Work in progress.
-Tag @c.c. in #marketing on Discord.
-HTML editors: open locally, change the labelled fields, Save edited HTML, or Print / save as PDF. Fonts and original cat are embedded. SVG sources: edit text in a compatible vector editor; install the supplied TTFs if embedded fonts are ignored. Email signature font support varies by mail client. Preview PNGs are rendered from the actual source files.
-Quick Guide: full-section links work when served by the running toolkit; standalone font downloads refer to files in this folder.
+templates: Under development.
+imagery: Work in progress.
+Reach out with requests or updates to @c.c. in #marketing on the company Discord.
+Includes supplied fonts, Inter licence, original cat SVG, primary palette tokens and Quick Guide. The cat SVG does not contain a wordmark or combined logo. Templates are under development; this pack contains no templates.
+Quick Guide: full-section links work when served by the running toolkit; standalone downloads refer to files in this folder.
