@@ -1,4 +1,4 @@
-/* One SVG viewport scales/crops the raster, mask and all motion together. */
+/* One SVG viewport scales the sky/cloud edit, original foreground and motion together. */
 .courtyard-scene{position:absolute;inset:0;display:block;width:100%;height:100%;overflow:hidden;pointer-events:none}
 .courtyard-source{image-rendering:auto}.mug-steam{pointer-events:none}.steam-wisp{transform-origin:0 0}
 @media(max-width:800px){.courtyard-scene{top:auto;bottom:0;height:clamp(220px,66.67vw,360px)}}

@@ -9,6 +9,23 @@ const errors=[];page.on('pageerror',e=>errors.push(e.message));
 fs.mkdirSync('.playwright',{recursive:true});
 const header=page.locator('.toolkit-header');
 const controls=['.header-logo','#global-search','.top-guide'];
+// Browser zoom reduces the CSS viewport and increases physical pixel density.
+// Check both desktop breakpoints at the requested 100%, 125% and 150% scales.
+for(const desktopWidth of [1440,1920])for(const zoom of [1,1.25,1.5]){
+ const zoomContext=await browser.newContext({viewport:{width:Math.round(desktopWidth/zoom),height:Math.round(1000/zoom)},deviceScaleFactor:zoom,reducedMotion:'reduce'});
+ const zoomPage=await zoomContext.newPage();await zoomPage.goto(base+'/#foundations');await zoomPage.evaluate(()=>document.fonts.ready);
+ async function boundary(){return zoomPage.evaluate(()=>{
+  const header=document.querySelector('.toolkit-header'),sidebar=document.querySelector('.sidebar');
+  const line=getComputedStyle(header,'::after'),side=getComputedStyle(sidebar),h=header.getBoundingClientRect(),s=sidebar.getBoundingClientRect();
+  const right=h.x+parseFloat(line.left)+parseFloat(line.width);
+  return {header:[right-parseFloat(line.borderRightWidth),right],sidebar:[s.right-parseFloat(side.borderRightWidth),s.right],height:h.height,top:h.top};
+ })}
+ const initial=await boundary();assert.deepEqual(initial.header,initial.sidebar,'Same border interval at '+desktopWidth+' / '+zoom);
+ assert.equal(initial.header[1]-initial.header[0],1,'One border only');
+ await zoomPage.evaluate(()=>window.scrollTo(0,700));await zoomPage.waitForTimeout(50);
+ assert.deepEqual(await boundary(),initial,'Sticky divider does not shift');
+ await zoomPage.screenshot({path:`.playwright/divider-${desktopWidth}-${zoom}.png`});await zoomContext.close();
+}
 async function baselines(){
  return page.evaluate(()=>['.sidebar-label','.topbar .brand-word'].map(selector=>{
   // A zero-height inline box exposes the font baseline, including its actual metrics.
@@ -71,4 +88,4 @@ await page.locator('.brand-intro').waitFor();
 assert.ok(await page.evaluate(()=>Number(getComputedStyle(document.querySelector('.brand-intro')).zIndex)>Number(getComputedStyle(document.querySelector('.toolkit-header')).zIndex)));
 await page.waitForFunction(()=>!document.querySelector('.brand-intro'));
 assert.deepEqual(errors,[]);await browser.close();
-console.log('PASS: loaded-font baseline, stable sticky header and controls on four long pages/eight widths, mobile menu, search, deep links and overlay stacking.');
+console.log('PASS: continuous divider at 100/125/150% zoom scales, loaded-font baseline, stable sticky header and controls on four long pages/eight widths, mobile menu, search, deep links and overlay stacking.');

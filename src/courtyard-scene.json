@@ -42,5 +42,12 @@
   "flowers": {
     "mode": "static",
     "reason": "Flowers and their underlying scenery are baked into one raster; no separate flower or clean background layers are supplied."
+  },
+  "sky": {
+    "source": "/courtyard-sky-edit.png",
+    "sourceSha256": "77a51256063a1fcf87c652ffc915524ea57b54b1930b949c5e4990407132547b",
+    "clouds": "Three static pixel-art clouds in the edited upper background.",
+    "integration": "Edited sky and three static clouds sit behind the unchanged original foreground. A connected upper-cream-sky window opens baked background patches, without removing cream globally. Source pixels below y=451, architecture, plants and mug remain unchanged.",
+    "window": "courtyard-sky-window.json"
   }
 }

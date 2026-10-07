@@ -7,7 +7,7 @@ export const brandStatuses=brandContent.statuses;
 export const illustrations=brandContent.illustrations;
 export const allFonts=brandContent.fonts;
 export const customFonts=allFonts.filter(f=>f.family!=='Inter');
-export const meta={version:'0.8',updated:'7 October 2026',status:'Working draft'};
+export const meta={version:'0.9',updated:'7 October 2026',status:'Working draft'};
 export const palette=[{name:'Mojo orange',hex:'#F06A21',role:'Use for key actions and highlights.'},{name:'Warm cream',hex:'#FFF8F0',role:'Use for backgrounds.'},{name:'Soft ink',hex:'#1D1B18',role:'Use for text.'},{name:'Sage',hex:'#A7B59E',role:'Use for supporting backgrounds.'},{name:'Forest',hex:'#35594A',role:'Use for dark sections and emphasis.'}];
 export const chapters=[
 {id:'foundations',n:'01',title:'Brand foundations',short:'What makes us Mojo',description:'A shared starting point for how we show up.',items:[['Brand line',brandLine],['Visual identity','Original cat plus lowercase Mojo Draft; cream and ink for reading; orange for emphasis; pixel display details with Inter body text.'],['Product descriptions','We’re waiting for the product to be finalized before fully approving the brand foundations.']]},
@@ -60,6 +60,7 @@ export const completion={
  ]
 };
 export const changelog=[
+ {date:'2026-10-07',title:'v0.9 · Courtyard sky and divider alignment',label:'Updated',summary:'A shared border-box boundary keeps the header and sidebar divider continuous. The Overview adds a softly blended blue sky and three static pixel clouds, with the original courtyard foreground and mug motion preserved.',href:'#overview'},
  {date:'2026-10-07',title:'v0.8 · Shared sticky header',label:'Updated',summary:'Mojo Draft title and signature share a text baseline in one cream header. Search and Quick Guide stay visible, navigation sits below the header, and section links leave space for their titles.',href:'#overview'},
  {date:'2026-10-07',title:'Sunlit workspace artwork',label:'Added',summary:'Original supplied Sunlit workspace PNG added to the Imagery & motion explorations, preserving its proportions and pixel transition.',href:'#imagery'},
  {date:'2026-10-06',title:'Layout and courtyard motion refinements',label:'Updated',commit:'b902f7e',summary:'Simpler overview, grouped logo backgrounds, coordinated Quick Guide cards, plain merchandise cards and measured mug steam. Flower movement remains static because separate layers are unavailable.',href:'#overview'},

@@ -1,5 +1,5 @@
 /* The title, signature and controls share one row, above both scroll areas. */
-:root{--header-height:76px;--sidebar-width:244px;--header-inset:46px}
+:root{--header-height:76px;--sidebar-width:244px;--sidebar-border-width:1px;--header-inset:46px}
 html{scroll-padding-top:var(--header-height)}
 .shell main [id]{scroll-margin-top:20px}
 .toolkit-header{
@@ -8,7 +8,8 @@ html{scroll-padding-top:var(--header-height)}
  align-content:center;align-items:first baseline;
  background:var(--cream);border-bottom:1px solid var(--border);
 }
-.toolkit-header::after{content:'';position:absolute;inset:0 auto 0 var(--sidebar-width);border-left:1px solid var(--border);pointer-events:none}
+/* Both dividers are the right border INSIDE the same sidebar-width box. */
+.toolkit-header::after{content:'';position:absolute;inset:0 auto 0 0;width:var(--sidebar-width);box-sizing:border-box;border-right:var(--sidebar-border-width) solid var(--border);pointer-events:none}
 .toolkit-header.is-scrolled{box-shadow:0 3px 8px rgba(29,27,24,.06)}
 .toolkit-header .sidebar-label{
  display:block;min-height:0;height:auto;margin:0;padding:0 32px;
@@ -20,7 +21,7 @@ html{scroll-padding-top:var(--header-height)}
 .header-logo,.header-logo .brand-signature{align-items:baseline}
 .header-logo .brand-signature img{align-self:center}
 .topbar #global-search,.top-guide,#mobile-menu{align-self:center}
-.sidebar{inset:var(--header-height) auto 0 0;width:var(--sidebar-width);padding:18px 20px 22px;z-index:20}
+.sidebar{inset:var(--header-height) auto 0 0;width:var(--sidebar-width);box-sizing:border-box;border-right:var(--sidebar-border-width) solid var(--border);padding:18px 20px 22px;z-index:20}
 .shell{margin-left:var(--sidebar-width)}
 .skip{z-index:40}
 @media(min-width:801px) and (max-width:1150px){
