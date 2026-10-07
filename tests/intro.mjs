@@ -18,4 +18,35 @@ for(const pattern of ['**/MojoPixelSerif-Draft-Regular.ttf','**/brand/mojo-cat-t
  ({context,page}=await fresh());await page.route(pattern,r=>r.abort());await page.goto(base);await page.waitForFunction(()=>!document.querySelector('.brand-intro'),{},{timeout:2500});assert.equal(await page.evaluate(()=>document.body.style.overflow),'');await page.locator('nav a[href="#colour"]').click();await page.waitForFunction(()=>document.querySelector('h1')?.textContent==='Colour.');assert.equal(await page.locator('h1').textContent(),'Colour.');await context.close();
 }
 ({context,page}=await fresh());await page.addInitScript(()=>Object.defineProperty(window,'sessionStorage',{get(){throw new Error('storage unavailable')}}));await page.goto(base);await page.waitForFunction(()=>!document.querySelector('.brand-intro'),{},{timeout:2500});await context.close();
-console.log('PASS: fresh-session intro, once per session, navigation/reload, skip, keyboard access, reduced motion, font/mascot failures, unavailable storage, no scroll lock.');await browser.close();
+// Cold font loading must keep the rendered page covered, not flash it before
+// the logo animation. Use a held request rather than relying on cache timing.
+({context,page}=await fresh());
+let releaseFont;const fontGate=new Promise(resolve=>{releaseFont=resolve});
+await page.route('**/MojoPixelSerif-Draft-Regular.ttf',async route=>{await fontGate;await route.continue()});
+await page.goto(base,{waitUntil:'commit'});
+await page.locator('main h1').waitFor();
+assert.equal(await page.locator('.intro-ready').count(),0);
+assert.deepEqual(await page.locator('.brand-intro').evaluate(e=>{const s=getComputedStyle(e);return [s.backgroundColor,s.opacity,s.position]}),['rgb(255, 248, 240)','1','fixed']);
+await page.waitForTimeout(150);
+assert.equal(await page.locator('.brand-intro').evaluate(e=>getComputedStyle(e).backgroundColor),'rgb(255, 248, 240)');
+releaseFont();await page.locator('.intro-ready').waitFor();
+await page.waitForFunction(()=>!document.querySelector('.brand-intro'));await context.close();
+// The cover exists even before the application bundle executes. A late or
+// failed bundle must not introduce an animation after the watchdog/skip.
+for(const outcome of ['resume','expired','skip','failed']){
+ ({context,page}=await fresh());
+ let releaseBundle;const bundleGate=new Promise(resolve=>{releaseBundle=resolve});
+ await page.route(/\/(?:src\/main\.js|assets\/index-[^/]+\.js)(?:\?.*)?$/,async route=>{await bundleGate;if(outcome==='failed')await route.abort();else await route.continue()});
+ await page.goto(base,{waitUntil:'commit'});await page.locator('#brand-intro').waitFor();
+ assert.equal(await page.locator('main').count(),0,'Cover precedes application render');
+ assert.equal(await page.locator('#brand-intro').evaluate(e=>getComputedStyle(e).backgroundColor),'rgb(255, 248, 240)');
+ if(outcome==='skip')await page.getByRole('button',{name:'Skip intro'}).click();
+ if(outcome==='expired')await page.waitForFunction(()=>!document.querySelector('.brand-intro'),{},{timeout:2500});
+ releaseBundle();
+ if(outcome!=='failed')await page.locator('main h1').waitFor();
+ if(outcome==='resume')await page.locator('.intro-ready').waitFor();
+ await page.waitForFunction(()=>!document.querySelector('.brand-intro'),{},{timeout:2500});
+ await page.waitForTimeout(100);assert.equal(await page.locator('.brand-intro').count(),0,'No late restart');
+ await context.close();
+}
+console.log('PASS: opaque cover before bundle/font readiness, no delayed restart, bundle failure watchdog, complete reserved glyphs, once per session, skip/keyboard, reduced motion, asset failures, unavailable storage, no scroll lock.');await browser.close();
