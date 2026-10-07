@@ -7,3 +7,13 @@
 .action:focus-visible,.guide-top button:focus-visible{outline:none;box-shadow:none;background:#e7ecdf;border-color:var(--forest);color:var(--forest)}.action.primary:focus-visible,.guide-top button:focus-visible{background:#203e31;color:var(--cream);text-decoration:underline;text-underline-offset:4px}
 
 .badge.under-development{background:#e7ecdf;color:var(--forest)}
+
+/* A shared flexible card structure aligns the identity pair without fixed heights. */
+.guide-grid{align-items:stretch}.guide-card{display:flex;flex-direction:column;gap:22px}
+.guide-card .guide-section-title{margin:0}.guide-card .guide-section-title h2{margin:0;font-size:31px;line-height:1.2}
+.guide-card-body{display:flex;flex-direction:column;gap:18px;flex:1}
+.guide-card-specimen{display:flex;align-items:center;flex:1;padding:12px 0}
+.guide-card-specimen .brand-signature,.guide-card-specimen .brand-line{margin:0}
+.guide-card-description p{margin:0;font-size:14px}.guide-card-description .file-note{margin-top:12px}
+.guide-card>.guide-actions{margin:0;padding-top:2px}.guide-card>.guide-actions>*{min-height:var(--control-height);padding:11px 14px;font:500 12px/1.5 Inter,Arial,sans-serif}
+@media(max-width:700px){.guide-grid{align-items:start}.guide-card{gap:22px}.guide-card .guide-section-title h2{font-size:28px}.guide-card-body{flex:none}.guide-card-specimen{flex:none}.guide-card>.guide-actions>*{width:100%;justify-content:center}}

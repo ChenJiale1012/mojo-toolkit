@@ -15,12 +15,12 @@ for(const family of ['Mojo Pixel Serif Draft','Mojo Serif Refined'])assert.ok(aw
 assert.ok((await page.locator('h1').evaluate(e=>getComputedStyle(e).fontFamily)).includes('Mojo Pixel Serif Draft'));
 assert.ok((await page.locator('h2').first().evaluate(e=>getComputedStyle(e).fontFamily)).includes('Mojo Serif Refined'));
 assert.equal(await page.locator('.scene-cat').count(),0);
-assert.ok(await page.locator('.scene img').first().evaluate(i=>i.complete&&i.naturalWidth>0));
+assert.ok(await page.locator('.courtyard-source').evaluate(async i=>{const image=new Image();image.src=i.getAttribute('href');await image.decode();return image.naturalWidth===1536&&image.naturalHeight===1024}));
 fs.mkdirSync('/workspace/mojo-toolkit/.playwright',{recursive:true});
 await page.screenshot({path:'.playwright/desktop.png',fullPage:true});
 for(const c of chapters){await page.goto(base+'/#'+c.id);await page.waitForSelector('h1');assert.equal(await page.locator('h1').textContent(),c.title+'.');assert.equal(await page.locator('a[aria-current="page"]').count(),1)}
 await page.goto(base+'/#colour');await page.getByRole('button',{name:'Copy Mojo orange HEX'}).click();await page.waitForFunction(()=>document.querySelector('#toast').textContent==='Copied');assert.equal(await page.evaluate(()=>navigator.clipboard.readText()),'#F06A21');
-await page.goto(base+'/#typography');await page.evaluate(()=>document.fonts.ready);assert.ok(await page.evaluate(()=>document.fonts.check('italic 14px Inter')));await page.locator('#specimen').fill('Make something lovely.');assert.equal(await page.locator('#specimen').inputValue(),'Make something lovely.');
+await page.goto(base+'/#typography');await page.evaluate(()=>document.fonts.load('italic 14px Inter'));assert.ok(await page.evaluate(()=>document.fonts.check('italic 14px Inter')));await page.locator('#specimen').fill('Make something lovely.');assert.equal(await page.locator('#specimen').inputValue(),'Make something lovely.');
 await page.locator('#search-input').fill('campus');await page.locator('#global-search').evaluate(f=>f.requestSubmit());await page.waitForSelector('.search-results');assert.ok(await page.locator('.search-results a[href="#campus"]').count());
 await page.goto(base+'/#downloads');await page.getByRole('button',{name:'Fonts',exact:true}).click();assert.equal(await page.locator('.asset-card').count(),4);await page.locator('#asset-search').fill('Inter');assert.equal(await page.locator('.asset-card').count(),2);await page.locator('#asset-search').fill('zzzzzz');assert.equal(await page.locator('.asset-card').count(),0);assert.ok(await page.getByText('No matching resources.').count());
 for(const a of assets.filter(a=>a.path)){const r=await context.request.get(base+a.path);assert.equal(r.status(),200,a.path);assert.ok((await r.body()).length>100,a.path)}

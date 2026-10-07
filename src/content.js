@@ -7,7 +7,7 @@ export const brandStatuses=brandContent.statuses;
 export const illustrations=brandContent.illustrations;
 export const allFonts=brandContent.fonts;
 export const customFonts=allFonts.filter(f=>f.family!=='Inter');
-export const meta={version:'0.7',updated:'7 October 2026',status:'Working draft'};
+export const meta={version:'0.7',updated:'6 October 2026',status:'Working draft'};
 export const palette=[{name:'Mojo orange',hex:'#F06A21',role:'Use for key actions and highlights.'},{name:'Warm cream',hex:'#FFF8F0',role:'Use for backgrounds.'},{name:'Soft ink',hex:'#1D1B18',role:'Use for text.'},{name:'Sage',hex:'#A7B59E',role:'Use for supporting backgrounds.'},{name:'Forest',hex:'#35594A',role:'Use for dark sections and emphasis.'}];
 export const chapters=[
 {id:'foundations',n:'01',title:'Brand foundations',short:'What makes us Mojo',description:'A shared starting point for how we show up.',items:[['Brand line',brandLine],['Visual identity','Original cat plus lowercase Mojo Draft; cream and ink for reading; orange for emphasis; pixel display details with Inter body text.'],['Product descriptions','We’re waiting for the product to be finalized before fully approving the brand foundations.']]},
@@ -52,7 +52,8 @@ export const completion={
  ]
 };
 export const changelog=[
- {date:'2026-10-07',title:'Toolkit polish and work in progress',label:'Updated',summary:'Template categories under development, refined Quick Guide and controls, a calmer introduction, and merchandise concepts with production artwork pending.',href:'#templates'},
+ {date:'2026-10-06',title:'Layout and courtyard motion refinements',label:'Updated',summary:'Simpler overview, grouped logo backgrounds, coordinated Quick Guide cards, plain merchandise cards and measured mug steam. Flower movement remains static because separate layers are unavailable.',href:'#overview'},
+ {date:'2026-10-07',title:'Toolkit polish and work in progress',label:'Updated',summary:'Template categories under development, refined Quick Guide and controls, a calmer introduction, and merchandise concepts with production artwork pending.',href:'#templates',commit:'2e04c46'},
  {date:'2026-10-06',title:'Shared controls and practical resources',label:'Updated',summary:'Branded copy controls, refreshed templates, visual imagery examples, a compact Quick Guide, and Discord request briefs.',href:'#templates',commit:'f241104'},
  {date:'2026-10-06',title:'Artwork edge and reference pages',label:'Updated',summary:'Foliage transparency, shared approval statuses, simple logo and colour examples, and all-font downloads.',href:'#imagery',commit:'b695ba4'},
  {date:'2026-10-06',title:'Better together and font downloads',label:'Updated',summary:'Confirmed brand line, visual foundations, and supplied custom TTF downloads.',href:'#typography',commit:'0498730'},

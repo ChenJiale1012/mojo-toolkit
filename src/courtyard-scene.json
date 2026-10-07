@@ -1,0 +1,46 @@
+{
+  "source": "/courtyard.png",
+  "width": 1536,
+  "height": 1024,
+  "sourceSha256": "ba9ac9265d0a0f2e0e744a8bfba3af3c42421a2439cc6546fe345b34451ac0ff",
+  "measurement": "Measured on the original 1536 \u00d7 1024 raster with a pixel grid. Dark mug opening spans approximately x=1293\u20131326, y=610\u2013616; emission origins sit within its central dark area.",
+  "mug": {
+    "opening": {
+      "cx": 1310,
+      "cy": 613,
+      "rx": 16,
+      "ry": 3.5
+    },
+    "clip": {
+      "x": 1294,
+      "y": 570,
+      "width": 33,
+      "height": 46
+    },
+    "rise": 35,
+    "drift": 1.3,
+    "duration": 3000,
+    "peakOpacity": 0.38,
+    "origins": [
+      {
+        "x": 1304,
+        "y": 614,
+        "phase": 0
+      },
+      {
+        "x": 1310,
+        "y": 614,
+        "phase": 1000
+      },
+      {
+        "x": 1316,
+        "y": 614,
+        "phase": 2000
+      }
+    ]
+  },
+  "flowers": {
+    "mode": "static",
+    "reason": "Flowers and their underlying scenery are baked into one raster; no separate flower or clean background layers are supplied."
+  }
+}
