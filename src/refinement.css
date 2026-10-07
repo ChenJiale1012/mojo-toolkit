@@ -55,7 +55,6 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 @media(max-width:800px){.logo-preview .logo-specimen{height:240px}.logo-preview-footer{padding:16px;gap:12px}.preview-background-label{width:100%}.preview-background-controls{gap:7px}.preview-background-controls .logo-background{font-size:11px;padding:7px 8px}.merchandise-cards{grid-template-columns:1fr;gap:16px}.merchandise-card{padding:24px}}
 
 /* One header logo, with its layout space fixed during the existing hover zoom. */
-.sidebar-label{padding:0 12px 24px;line-height:1.5}
 .header-logo{padding:0;flex-shrink:0}
 .header-logo .brand-signature{gap:10px}
 .header-logo .brand-signature img{width:35px}
@@ -80,8 +79,6 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 .older-count{font-weight:400;color:var(--muted)}
 .older-updates .changelog{margin:0}
 @media(max-width:800px){
- .sidebar{display:none;position:absolute;inset:128px 0 auto;max-height:calc(100dvh - 128px);overflow:auto;width:100%;padding:20px 22px;border-bottom:1px solid var(--border)}
- .sidebar.open{display:block}.sidebar-label{display:none}.sidebar nav,.sidebar.open nav{display:block;margin:0}
  .topbar{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:42px 42px;height:128px;padding:16px 15px;gap:12px}
  .header-logo{grid-area:1/1;justify-self:start}
  #mobile-menu{grid-area:1/2;justify-self:end;display:block}
@@ -101,11 +98,4 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 /* Only the preview wordmark reverses; the original cat and other logos stay intact. */
 .logo-preview .logo-specimen .brand-word{color:var(--logo-wordmark-color,var(--ink))}
 
-/* Match the sidebar title row to the existing header height and centre line. */
-@media(min-width:801px){
- .sidebar{padding-top:0}
- .sidebar-label{display:flex;align-items:center;flex-shrink:0;min-height:76px;height:76px;margin:0 -20px;padding:0 32px;border-bottom:1px solid var(--border);font:400 26px/1.1 'Mojo Pixel Serif Draft',Georgia,serif;letter-spacing:-.4px;color:var(--ink);text-transform:none}
- .sidebar nav{padding-top:18px}
-}
-@media(min-width:801px) and (max-width:1150px){.sidebar-label{margin:0 -12px;padding:0 25px;font-size:24px}}
 .courtyard-hero .hero-copy h1 .title-period{color:var(--orange)}

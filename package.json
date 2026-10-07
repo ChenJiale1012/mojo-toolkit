@@ -1,13 +1,13 @@
 {
   "name": "mojo-brand-toolkit",
-  "version": "0.1.0",
+  "version": "0.8.0",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
     "build": "vite build",
     "preview": "vite preview --host 0.0.0.0",
-    "test": "node tests/check.mjs && node tests/intro.mjs && node tests/reference.mjs && node tests/refinement.mjs && node tests/practical-resources.mjs && node tests/scene.mjs && python3 tests/resources.py",
+    "test": "node tests/header.mjs && node tests/check.mjs && node tests/intro.mjs && node tests/reference.mjs && node tests/refinement.mjs && node tests/practical-resources.mjs && node tests/scene.mjs && python3 tests/resources.py",
     "resources": "python3 scripts/resources.py && node scripts/previews.mjs"
   },
   "dependencies": {

@@ -1,0 +1,39 @@
+/* The title, signature and controls share one row, above both scroll areas. */
+:root{--header-height:76px;--sidebar-width:244px;--header-inset:46px}
+html{scroll-padding-top:var(--header-height)}
+.shell main [id]{scroll-margin-top:20px}
+.toolkit-header{
+ position:sticky;top:0;z-index:30;height:var(--header-height);
+ display:grid;grid-template-columns:var(--sidebar-width) minmax(0,1fr);
+ align-content:center;align-items:first baseline;
+ background:var(--cream);border-bottom:1px solid var(--border);
+}
+.toolkit-header::after{content:'';position:absolute;inset:0 auto 0 var(--sidebar-width);border-left:1px solid var(--border);pointer-events:none}
+.toolkit-header.is-scrolled{box-shadow:0 3px 8px rgba(29,27,24,.06)}
+.toolkit-header .sidebar-label{
+ display:block;min-height:0;height:auto;margin:0;padding:0 32px;
+ font:400 30px/1.1 'Mojo Pixel Serif Draft',Georgia,serif;
+ letter-spacing:-.4px;color:var(--ink);text-transform:none;
+}
+.toolkit-header .topbar{height:auto;border:0;padding:0 var(--header-inset);min-width:0;align-items:baseline}
+/* Export the word's baseline through the flex groups, rather than the image's bottom. */
+.header-logo,.header-logo .brand-signature{align-items:baseline}
+.header-logo .brand-signature img{align-self:center}
+.topbar #global-search,.top-guide,#mobile-menu{align-self:center}
+.sidebar{inset:var(--header-height) auto 0 0;width:var(--sidebar-width);padding:18px 20px 22px;z-index:20}
+.shell{margin-left:var(--sidebar-width)}
+.skip{z-index:40}
+@media(min-width:801px) and (max-width:1150px){
+ :root{--sidebar-width:210px;--header-inset:28px}
+ .toolkit-header .sidebar-label{padding-inline:25px;font-size:28px}
+ .sidebar{padding-inline:12px}
+}
+@media(max-width:800px){
+ :root{--header-height:128px;--sidebar-width:0px;--header-inset:15px}
+ .toolkit-header{display:block}
+ .toolkit-header::after,.toolkit-header .sidebar-label{display:none}
+ .toolkit-header .topbar{height:var(--header-height);padding:16px var(--header-inset);align-items:center}
+ .sidebar{display:none;position:fixed;inset:var(--header-height) 0 auto;width:100%;max-height:calc(100dvh - var(--header-height));overflow-y:auto;padding:20px 22px;border-bottom:1px solid var(--border)}
+ .sidebar.open{display:block}
+ .sidebar nav,.sidebar.open nav{display:block;margin:0;overflow:visible}
+}
