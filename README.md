@@ -39,7 +39,7 @@ With the development server running, `npm run resources` rebuilds the Quick Guid
 
 The four supplied TTF files and original cat SVG are preserved unchanged. The courtyard artwork and overview hero are unchanged. Download cat SVG contains the mascot only, not the cat-and-wordmark arrangement. Combined-logo, standalone wordmark, reversed/one-colour exports, custom font licences and separate WOFF/WOFF2 files remain unavailable.
 
-The supplied Sunlit workspace screenshot has no downloadable attachment in this session. Its original image file is needed to complete the second Imagery preview; the page shows only available artwork, with no replacement image or placeholder. The missing original is listed under Requests & updates. Upload `image(4).png` to add the actual image without regenerating it.
+Imagery & motion shows the supplied Courtyard and Sunlit workspace artwork as current explorations. The original Sunlit PNG is preserved at `public/sunlit-workspace.png`, including its proportions, transparency and pixel transition. The overview hero remains the Courtyard artwork.
 
 The merchandise page has plain text cards for stickers, T-shirts and totes. **Production artwork pending.** No mockups, order actions, suppliers, prices, materials or production specifications are supplied.
 

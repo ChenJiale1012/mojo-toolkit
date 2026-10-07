@@ -52,7 +52,8 @@ export const completion={
  ]
 };
 export const changelog=[
- {date:'2026-10-06',title:'Layout and courtyard motion refinements',label:'Updated',summary:'Simpler overview, grouped logo backgrounds, coordinated Quick Guide cards, plain merchandise cards and measured mug steam. Flower movement remains static because separate layers are unavailable.',href:'#overview'},
+ {date:'2026-10-07',title:'Sunlit workspace artwork',label:'Added',summary:'Original supplied Sunlit workspace PNG added to the Imagery & motion explorations, preserving its proportions and pixel transition.',href:'#imagery'},
+ {date:'2026-10-06',title:'Layout and courtyard motion refinements',label:'Updated',commit:'b902f7e',summary:'Simpler overview, grouped logo backgrounds, coordinated Quick Guide cards, plain merchandise cards and measured mug steam. Flower movement remains static because separate layers are unavailable.',href:'#overview'},
  {date:'2026-10-07',title:'Toolkit polish and work in progress',label:'Updated',summary:'Template categories under development, refined Quick Guide and controls, a calmer introduction, and merchandise concepts with production artwork pending.',href:'#templates',commit:'2e04c46'},
  {date:'2026-10-06',title:'Shared controls and practical resources',label:'Updated',summary:'Branded copy controls, refreshed templates, visual imagery examples, a compact Quick Guide, and Discord request briefs.',href:'#templates',commit:'f241104'},
  {date:'2026-10-06',title:'Artwork edge and reference pages',label:'Updated',summary:'Foliage transparency, shared approval statuses, simple logo and colour examples, and all-font downloads.',href:'#imagery',commit:'b695ba4'},
