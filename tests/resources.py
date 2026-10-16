@@ -14,7 +14,7 @@ for archive in ['mojo-fonts.zip', 'mojo-starter-pack.zip']:
             supplied = (root / 'public' / font['source'].lstrip('/')).read_bytes()
             assert pack.read(Path(font['path']).name) == supplied, (archive, font['name'])
             assert (root / 'public' / font['path'].lstrip('/')).read_bytes() == supplied
-        for name in ['Inter-LICENSE.txt', 'Font-usage.txt']:
+        for name in ['NunitoSans-OFL.txt', 'Font-usage.txt', 'NunitoSans-Variable.woff2', 'NunitoSans-Italic-Variable.woff2', 'NunitoSans-source.json']:
             assert pack.read(name) == (downloads / name).read_bytes(), (archive, name)
         if archive == 'mojo-starter-pack.zip':
             for name in ['README.txt', 'quick-guide.html', 'palette.css', 'mojo-cat-transparent.svg', 'mojo-fonts.zip']:
@@ -36,7 +36,7 @@ for stale in ['palette approved', 'approved colour values', 'one quarter', 'mini
     assert stale not in (guide + readme).lower(), stale
 for colour in ['#F06A21', '#FFF8F0', '#1D1B18', '#A7B59E', '#35594A']:
     assert colour in guide
-print('PASS: four unchanged font files, Inter licence, guide/status data, original cat and palette in both valid archives.')
+print('PASS: four current font files, Nunito Sans licence, guide/status data, original cat and palette in both valid archives.')
 
 assert len(json.loads((root/'src/templates.json').read_text()))==5
 assert brand['contact'] in guide and brand['contact'] in readme

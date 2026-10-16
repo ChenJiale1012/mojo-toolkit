@@ -1,19 +1,24 @@
-/* One semantic copy button per colour, shared with the standalone Quick Guide. */
-.palette-region{container-type:inline-size}
-.swatches{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-card);align-items:stretch}
-.swatch.hex{position:relative;display:flex;flex-direction:column;align-items:stretch;min-width:0;width:auto;height:252px;margin:0;padding:20px;text-align:left;background:var(--swatch-colour);color:var(--swatch-text);border:0;border-radius:var(--radius);overflow:hidden;outline:none;box-shadow:none;font:var(--button-font);letter-spacing:var(--button-tracking);white-space:normal}
+/* A neutral backing makes the exact cream colour visible without edging cards. */
+.palette-region{container-type:inline-size;padding:12px;background:rgba(29,27,24,.055);border-radius:12px}
+.swatches{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:stretch}
+.swatch.hex{position:relative;display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;min-width:0;width:auto;height:240px;margin:0;padding:20px;text-align:left;background:var(--swatch-colour);color:var(--swatch-text);border:0;border-radius:var(--radius);overflow:hidden;outline:none;box-shadow:none;font:var(--button-font);letter-spacing:var(--tracking);white-space:normal;clip-path:none;transform:none}
 .swatch .swatch-info{display:flex;flex-direction:column;gap:12px;padding:0;min-width:0}
-.swatch .swatch-info strong{font:var(--button-font);min-height:2.6em;margin:0;color:inherit}
-.swatch .hex-code{font:var(--button-font);white-space:nowrap}
-.swatch .swatch-rgb{display:block;font:400 var(--type-label)/var(--leading-body) Inter,Arial,sans-serif;min-height:2.6em;opacity:1;transition:opacity 180ms ease}
+.swatch .swatch-info strong{font:400 28px/1.05 var(--font-heading);height:62px;min-height:62px;margin:0;color:inherit;overflow-wrap:normal}
+.swatch .hex-code{font:500 14px/1.3 var(--font-body);white-space:nowrap}
+.swatch .swatch-rgb{display:block;font:400 12px/1.3 var(--font-body);min-height:2.6em;opacity:1;transition:opacity 180ms ease}
 .swatch .copy-text{position:absolute;bottom:20px;left:20px;text-align:left;font:var(--button-font)}
-.swatch .pixel-icon{position:absolute;right:20px;bottom:20px;width:18px;height:18px;color:inherit}
+.swatch .pixel-icon{position:absolute;right:20px;bottom:20px;width:16px;height:16px;color:inherit}
 .swatch.hex:hover,.swatch.hex:focus,.swatch.hex:active,.swatch.hex.copied{background:var(--swatch-colour);color:var(--swatch-text);transform:none;border:0;filter:none;outline:none;box-shadow:none}
-.swatch.hex:focus-visible{outline:none;box-shadow:none;background:var(--swatch-colour);color:var(--swatch-text)}
 .swatch.hex:focus-visible .swatch-info strong{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px}
 .swatch.hex::before,.swatch.hex::after{content:none}
 .swatch:last-child{grid-column:1/-1}
-.palette-guidance{margin:28px 0}.palette-guidance ul{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.palette-guidance li{font-size:var(--type-small);line-height:var(--leading-body)}
+.palette-heading{display:flex;justify-content:space-between;align-items:center;gap:12px 24px;flex-wrap:wrap;margin-bottom:16px}
+.palette-heading .reference-title{margin:0;gap:12px}.palette-heading h2{margin:0}
+.palette-helper{font:400 14px/1.3 var(--font-body);color:var(--muted);margin:0}
+.chapter-heading.colour-heading{padding:12px 0 24px}.colour-heading h1{margin:0}
+.palette-guidance{margin:24px 0 32px}.palette-guidance h3{margin:0 0 12px}
+.palette-usage{margin:0;max-width:760px}.palette-usage>div{display:grid;grid-template-columns:160px minmax(0,1fr);gap:16px;padding:8px 0;border-bottom:1px solid var(--border);font:400 14px/1.3 var(--font-body)}
+.palette-usage dt{font-weight:600}.palette-usage dd{margin:0}
 @media(hover:hover) and (pointer:fine){
  @container(min-width:850px){
   .swatches{display:flex}
@@ -24,7 +29,7 @@
  }
 }
 @container(max-width:280px){.swatches{grid-template-columns:1fr}.swatch:last-child{grid-column:auto}}
+@media(max-width:500px){.palette-usage>div{grid-template-columns:1fr;gap:4px}.palette-heading h2{font-size:28px}.swatch .swatch-info strong{font-size:26px}.palette-region{padding:10px}.swatch.hex{padding:16px}.swatch .pixel-icon{right:16px;bottom:16px}.swatch .copy-text{left:16px;bottom:16px}}
 @media(prefers-reduced-motion:reduce){.swatch.hex,.swatch .swatch-rgb{transition:none!important}}
 @media print{.swatches{display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}.swatch.hex{height:200px;padding:12px;print-color-adjust:exact}.swatch:last-child{grid-column:auto}.swatch .swatch-rgb{opacity:1}.swatch .copy-text,.swatch .pixel-icon{display:none}}
-/* Hybrid touch devices also keep a stable, fully labelled grid. */
 @media(any-pointer:coarse){.swatches{display:grid}.swatch .swatch-rgb{opacity:1}}

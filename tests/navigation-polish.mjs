@@ -18,7 +18,7 @@ try {
  for(const [width,height] of [[1440,900],[1024,600],[801,480]]){
   await page.setViewportSize({width,height});
   const rows=await links.evaluateAll(es=>es.map(e=>{const b=e.getBoundingClientRect(),i=e.querySelector('.nav-icon'),t=e.querySelector('.nav-label'),ib=i.getBoundingClientRect(),tb=t.getBoundingClientRect(),s=getComputedStyle(t);return {height:b.height,icon:[ib.width,ib.height],gap:tb.x-ib.right,labelWidth:tb.width,labelScroll:t.scrollWidth,textOverflow:s.textOverflow,whiteSpace:s.whiteSpace,font:s.fontFamily,hidden:i.getAttribute('aria-hidden'),viewBox:i.getAttribute('viewBox')}}));
-  for(const row of rows){assert.equal(row.height,44,'Compact single-line desktop rows '+width);assert.deepEqual(row.icon,[20,20]);assert.equal(row.gap,11);assert.ok(row.labelScroll<=row.labelWidth+1);assert.equal(row.textOverflow,'clip');assert.equal(row.whiteSpace,'normal');assert.match(row.font,/Inter/);assert.equal(row.hidden,'true');assert.equal(row.viewBox,'0 0 20 20')}
+  for(const row of rows){assert.equal(row.height,44,'Compact single-line desktop rows '+width);assert.deepEqual(row.icon,[20,20]);assert.equal(row.gap,11);assert.ok(row.labelScroll<=row.labelWidth+1);assert.equal(row.textOverflow,'clip');assert.equal(row.whiteSpace,'normal');assert.match(row.font,/Nunito Sans/);assert.equal(row.hidden,'true');assert.equal(row.viewBox,'0 0 20 20')}
   for(const item of [{id:'overview',title:'Better Together'},...chapters]){
    const link=nav.locator(`a[href="#${item.id}"]`);await link.scrollIntoViewIfNeeded();
    const box=await link.boundingBox();await link.hover();assert.deepEqual(await link.boundingBox(),box,'Hover does not shift row');
@@ -44,7 +44,7 @@ try {
   await swatches.nth(index).hover();
   for(let sample=0;sample<4;sample++){
    await page.waitForTimeout(40);const metrics=await swatches.evaluateAll(es=>es.map(e=>({y:e.querySelector('.hex-code').getBoundingClientRect().y,height:e.getBoundingClientRect().height,left:e.getBoundingClientRect().left,right:e.getBoundingClientRect().right})));
-   assert.ok(metrics.every(m=>Math.abs(m.y-baseline)<1&&m.height===252),'Stable labels/height during transitions');
+   assert.ok(metrics.every(m=>Math.abs(m.y-baseline)<1&&m.height===240),'Stable labels/height during transitions');
    const r=await page.locator('.swatches').boundingBox();assert.ok(Math.abs(metrics[0].left-r.x)<1&&Math.abs(metrics.at(-1).right-(r.x+r.width))<1,'The expanding row always fills its width');
    assert.equal(await page.locator('.swatch:hover').count(),1);
   }

@@ -16,6 +16,6 @@ export function colourCards(palette) {
   return `<div class="palette-region"><div class="swatches" aria-label="Primary colour palette">${palette.map(p=>{
     const rgb=p.hex.slice(1).match(/../g).map(v=>parseInt(v,16)).join(', ');
     const foreground=['#35594A','#1D1B18'].includes(p.hex)?'#FFF8F0':'#1D1B18';
-    return `<button type="button" class="swatch hex" style="--swatch-colour:${p.hex};--swatch-text:${foreground}" data-copy="${p.hex}" aria-label="Copy ${esc(p.name)} HEX" aria-describedby="colour-${p.hex.slice(1)}"><span class="swatch-info"><strong>${esc(p.name)}</strong><span class="hex-code">${p.hex}</span><span class="swatch-rgb" id="colour-${p.hex.slice(1)}">RGB ${rgb}</span></span><span class="copy-text"><span class="copy-label">Copy HEX</span><span class="copy-feedback" aria-hidden="true">Copied.</span></span>${pixelIcon()}</button>`;
+    return `<button type="button" class="swatch hex" style="--swatch-colour:${p.hex};--swatch-text:${foreground}" data-copy="${p.hex}" aria-label="Copy ${esc(p.name)} HEX" aria-describedby="colour-${p.hex.slice(1)}"><span class="swatch-info"><strong>${esc(p.name)}</strong><span class="hex-code">${p.hex}</span><span class="swatch-rgb" id="colour-${p.hex.slice(1)}">RGB ${rgb}</span></span><span class="copy-text"><span class="copy-feedback" aria-hidden="true">Copied.</span></span>${pixelIcon()}</button>`;
   }).join('')}</div></div>`;
 }

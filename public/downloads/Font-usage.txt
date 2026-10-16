@@ -1,6 +1,6 @@
 Mojo font usage
 Mojo Pixel Serif Draft v0.200: Wordmark and main display headings. Supplied TTF.
 Mojo Serif Refined v0.601: Subtitles and editorial section headings. Supplied TTF.
-Inter variable regular v4.001: Body text and interface controls. Supplied TTF.
-Inter variable italic v4.001: Italic body text. Supplied TTF.
-Custom licence documents and separate WOFF/WOFF2 sources have not been supplied. Inter licence is included.
+Nunito Sans variable regular v3.101: Body text (Regular), controls (Medium), emphasis (Semibold). Supplied TTF.
+Nunito Sans variable italic v3.101: Italic body text. Supplied TTF.
+Custom Mojo licence documents and WOFF/WOFF2 files have not been supplied. Nunito Sans SIL OFL licence and self-hosted WOFF2 files are included.

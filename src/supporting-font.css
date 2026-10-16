@@ -1,0 +1,7 @@
+/* Nunito Sans variable fonts from Google Fonts, licensed under SIL OFL 1.1.
+   Source TTFs, licence and pinned provenance are retained in public/fonts. */
+@font-face{font-family:'Nunito Sans';src:url('/fonts/NunitoSans-Variable.woff2') format('woff2');font-weight:200 1000;font-style:normal;font-display:swap}
+@font-face{font-family:'Nunito Sans';src:url('/fonts/NunitoSans-Italic-Variable.woff2') format('woff2');font-weight:200 1000;font-style:italic;font-display:swap}
+:root{--font-body:'Nunito Sans',Arial,sans-serif}
+
+:where(b,strong){font-weight:600}
