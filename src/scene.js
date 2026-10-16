@@ -32,27 +32,33 @@ export function steamPose(elapsed,origin){
   return {x:origin.x+mug.drift*Math.sin(2*Math.PI*t),y:origin.y-mug.rise*t,opacity:mug.peakOpacity*Math.sin(Math.PI*t)**2};
 }
 
-/** One clock; navigation, hidden tabs, offscreen scenes and user pause stop it. */
+/** One finite, visible-time flourish; background/offscreen time never advances it. */
+export const SCENE_MOTION_DURATION=4800;
 export function mountSceneMotion(root=document){
   const svg=root.querySelector('[data-workspace-scene]');if(!svg)return ()=>{};
-  const hero=svg.closest('[data-motion-scene]'),button=hero.querySelector('[data-motion-toggle]');
   const steam=svg.querySelector('.mug-steam'),wisps=[...svg.querySelectorAll('.steam-wisp')];
   const motion=matchMedia('(prefers-reduced-motion: reduce)');
-  let disposed=false,visible=false,ready=false,paused=false,elapsed=0,lastTime=null,stopFrame=null;
-  function draw(){wisps.forEach((wisp,i)=>{const pose=steamPose(elapsed,scene.mug.origins[i]);wisp.setAttribute('transform',`translate(${pose.x.toFixed(3)} ${pose.y.toFixed(3)})`);wisp.setAttribute('opacity',pose.opacity.toFixed(4))})}
+  let disposed=false,visible=false,ready=false,failed=false,elapsed=0,lastTime=null,stopFrame=null;
+  function draw(){
+    const fade=Math.max(0,Math.min(1,(SCENE_MOTION_DURATION-elapsed)/800)),envelope=fade*fade*(3-2*fade);
+    wisps.forEach((wisp,i)=>{const pose=steamPose(elapsed,scene.mug.origins[i]);wisp.setAttribute('transform',`translate(${pose.x.toFixed(3)} ${pose.y.toFixed(3)})`);wisp.setAttribute('opacity',(pose.opacity*envelope).toFixed(4))});
+  }
   function stop(){stopFrame?.();stopFrame=null;lastTime=null}
-  function running(){return !disposed&&ready&&visible&&!paused&&!document.hidden&&!motion.matches}
-  function tick(time){if(!running())return;if(lastTime!==null)elapsed+=Math.min(time-lastTime,100);lastTime=time;draw()}
+  function running(){return !disposed&&ready&&visible&&!document.hidden&&!motion.matches&&elapsed<SCENE_MOTION_DURATION}
+  function tick(time){
+    if(!running())return;
+    if(lastTime!==null)elapsed=Math.min(SCENE_MOTION_DURATION,elapsed+Math.max(0,time-lastTime));
+    lastTime=time;draw();if(elapsed>=SCENE_MOTION_DURATION)sync();
+  }
   function sync(){
     if(disposed)return;
     steam.style.display=motion.matches||!ready?'none':'';
-    svg.dataset.motionState=motion.matches?'reduced':!ready?'loading':paused?'paused':document.hidden?'hidden':!visible?'offscreen':'running';
+    svg.dataset.motionState=failed?'asset-unavailable':motion.matches?'reduced':!ready?'loading':elapsed>=SCENE_MOTION_DURATION?'settled':document.hidden?'hidden':!visible?'offscreen':'running';
     if(running()){if(!stopFrame)stopFrame=animate(tick)}else stop();
   }
-  function toggle(){paused=!paused;button.setAttribute('aria-pressed',String(paused));button.textContent=paused?'Resume motion':'Pause motion';button.setAttribute('aria-label',paused?'Resume ambient motion':'Pause ambient motion');hero.classList.toggle('ambient-paused',paused);sync()}
   const observer=typeof IntersectionObserver==='function'?new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;sync()},{threshold:0}):null;
   if(observer)observer.observe(svg);else visible=true;
-  const image=new Image();image.onload=()=>{ready=true;sync()};image.onerror=()=>{stop();steam.style.display='none';svg.dataset.motionState='asset-unavailable';button.disabled=true;button.textContent='Static illustration'};image.src=scene.source;
-  button.addEventListener('click',toggle);document.addEventListener('visibilitychange',sync);motion.addEventListener('change',sync);sync();
-  return ()=>{disposed=true;stop();observer?.disconnect();button.removeEventListener('click',toggle);document.removeEventListener('visibilitychange',sync);motion.removeEventListener('change',sync);image.onload=null;image.onerror=null};
+  const image=new Image();image.onload=()=>{if(!disposed){ready=true;sync()}};image.onerror=()=>{if(!disposed){failed=true;ready=false;sync()}};image.src=scene.source;
+  document.addEventListener('visibilitychange',sync);motion.addEventListener('change',sync);sync();
+  return ()=>{disposed=true;stop();observer?.disconnect();document.removeEventListener('visibilitychange',sync);motion.removeEventListener('change',sync);image.onload=null;image.onerror=null};
 }

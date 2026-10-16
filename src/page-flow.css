@@ -1,0 +1,28 @@
+/* Ordinary sections use alignment and spacing; only functional boundaries draw lines. */
+.bottom-band,.logo-application,.mascot-animations{padding-block:20px;margin-top:24px}
+.font-specimen-row{padding:12px 0 24px;margin:0 0 12px}
+.palette-pending{margin:28px 0;gap:28px}.palette-pending section{padding:8px 0}
+.incorrect-examples article{padding:12px 0}
+.reuse-block{padding:20px 0;margin-bottom:16px}
+.changelog-section{margin-top:36px;padding-top:0}.changelog li{padding:18px 0}
+.completion-list li{padding:12px 0}
+.logo-preview-footer{border:0}
+/* Shared surfaces measure the coloured area, independently of caption length. */
+.identity-decisions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin:28px 0 36px}
+.identity-decisions>article{display:flex;flex-direction:column;gap:22px;padding:0;min-width:0}
+.identity-decisions .decision-example{box-sizing:border-box;container-type:inline-size;width:100%;aspect-ratio:4/3;min-height:0;padding:24px;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:var(--radius)}
+.identity-decisions>article>div:last-child{gap:14px}
+.identity-decisions .brand-signature{gap:8px;max-width:100%}
+.identity-decisions .signature-example .brand-word{font-size:clamp(28px,22cqi,62px)}
+.identity-decisions .signature-example img{width:clamp(26px,20cqi,57px);height:auto}
+.identity-decisions .palette-example{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:8px}
+.identity-decisions .palette-example>span{height:auto;min-height:0;font-size:clamp(28px,14cqi,40px);border-radius:4px}
+.identity-decisions .type-example{flex-direction:column;gap:12px;text-align:center}
+.identity-decisions .type-example b{font-size:clamp(32px,22cqi,62px)}
+.identity-decisions .type-example p{font:400 clamp(18px,9cqi,24px)/1.2 var(--font-heading)}
+@media(max-width:1000px){.identity-decisions{grid-template-columns:minmax(0,1fr);max-width:520px;gap:32px}.identity-decisions .decision-example{padding:24px}}
+@media(max-width:500px){.identity-decisions{gap:28px}.identity-decisions>article{gap:18px}}
+.foundation-intro{padding:12px 0 0}.foundation-intro h1{margin:0}
+.identity-decisions{margin-top:24px;margin-bottom:28px}
+.identity-decisions .palette-example{align-items:stretch;justify-content:stretch}
+.strategic-pending{margin:24px 0 0;padding:0;max-width:70ch}

@@ -24,7 +24,7 @@
  background:var(--button-face);border:1px solid var(--button-edge);box-shadow:0 2px 0 var(--button-depth);
  transform:translateY(0);transition:background-color var(--motion-hover) var(--motion-ease),border-color var(--motion-hover) var(--motion-ease),box-shadow var(--motion-release) var(--motion-ease),transform var(--motion-release) var(--motion-ease);
 }
-:is(.button.primary,.action.primary,.search-control button):not(.swatch){--button-face:var(--orange,#F06A21);--button-hover:#e9611b}
+:is(.button.primary,.action.primary):not(.swatch){--button-face:var(--orange,#F06A21);--button-hover:#e9611b}
 :is(.top-guide,.guide-top button):not(.swatch){--button-face:var(--forest,#35594A);--button-hover:#2e5042;--button-ink:var(--cream,#FFF8F0)}
 :is(.button.quiet,.text-link,.commit-link,.ambient-toggle,.intro-skip):not(.swatch){--button-face:transparent;--button-hover:rgba(53,89,74,.07);--button-ink:var(--forest,#35594A);--button-edge:transparent;--button-depth:transparent}
 @media(hover:hover) and (pointer:fine){
@@ -51,3 +51,6 @@ summary{min-height:36px;padding-block:9px}
 @media(hover:hover) and (pointer:fine){.filter:not([aria-pressed="true"]):hover{background:rgba(29,27,24,.05);color:var(--ink)}}
 @media(any-pointer:coarse){:root{--button-min-height:44px}.search-control button,#global-search button{min-width:38px;min-height:38px}.search-control,#global-search{min-height:44px;padding:2px 6px}}
 @media(prefers-reduced-motion:reduce){:is(button,.button,.action,.download,.text-link,.commit-link,.top-guide),:is(button,.button,.action,.download,.text-link,.commit-link,.top-guide)::before{transition:none!important}}
+.search-control button,#global-search button{--button-face:transparent;--button-hover:rgba(29,27,24,.06);--button-ink:var(--muted);--button-edge:rgba(29,27,24,.16);--button-depth:rgba(29,27,24,.1)}
+.search-control button::before,#global-search button::before{inset:4px;border-radius:4px;box-shadow:0 1px 0 var(--button-depth)}
+.search-control button:active::before,#global-search button:active::before{box-shadow:none}

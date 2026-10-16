@@ -11,7 +11,7 @@ assert.deepEqual(await brandRow.locator(':scope > div:last-child p').allTextCont
 assert.equal(await brandRow.locator('a').count(),0);
 for(const row of await p.locator('.identity-decisions article').all()){
  const card=await row.locator(':scope > div').first().boundingBox(),heading=await row.locator('h2').boundingBox();
- assert.ok(Math.abs(card.y-heading.y)<1,'Card and heading align at top');
+ assert.ok(heading.y>=card.y+card.height+18,'Captions sit outside the preview');
 }
 
 await p.getByRole('button',{name:'Copy brand line'}).click();assert.equal(await p.evaluate(()=>navigator.clipboard.readText()),'Mojo. Better together.');

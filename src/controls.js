@@ -8,7 +8,7 @@ export function copyButton(text, label='Copy text', extraClass='', visibleLabel=
   return `<button type="button" class="copy-button ${extraClass}" data-copy="${escapeHtml(text)}" aria-label="${escapeHtml(label)}">${pixelIcon()}<span class="copy-text"><span class="copy-label">${escapeHtml(visibleLabel)}</span><span class="copy-feedback" aria-hidden="true">Copied</span></span></button>`;
 }
 export function searchControl(id='global-search', inputId='search-input', value='') {
-  return `<form id="${id}" data-toolkit-search class="search-control"><label for="${inputId}" class="pixel-search-icon">${pixelIcon('search')}<span class="sr-only">Search the toolkit</span></label><input id="${inputId}" aria-label="Search toolkit" placeholder="Search the toolkit" value="${escapeHtml(value)}"><button type="submit" aria-label="Run search">↵</button></form>`;
+  return `<form id="${id}" data-toolkit-search class="search-control"><label for="${inputId}" class="pixel-search-icon">${pixelIcon('search')}<span class="sr-only">Search the toolkit</span></label><input id="${inputId}" aria-label="Search toolkit" placeholder="Search toolkit" value="${escapeHtml(value)}"><button type="submit" aria-label="Run search" title="Search (Enter)">↵</button></form>`;
 }
 export function bindCopyControls(root=document, announce=()=>{}) {
   const timers=new Map();
