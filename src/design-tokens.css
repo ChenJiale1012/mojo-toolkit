@@ -1,1 +1,2 @@
 :root{--radius:8px;--space-actions:14px;--space-card:16px;--space-section:36px;--padding-panel:28px;--control-height:42px}
+:root{--type-display:64px;--type-h1:48px;--type-h2:32px;--type-h3:24px;--type-large:18px;--type-body:16px;--type-small:14px;--type-label:12px;--leading-heading:1;--leading-draft:1.1;--leading-body:1.3;--tracking:-.01em;--font-display:'Mojo Pixel Serif Draft',MojoDraft,Georgia,serif;--font-heading:'Mojo Serif Refined',MojoRefined,Georgia,serif;--font-body:Inter,Arial,sans-serif}

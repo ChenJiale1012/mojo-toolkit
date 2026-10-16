@@ -1,4 +1,4 @@
-import {copyButton,escapeHtml as esc} from './controls.js';
+import {copyButton,pixelIcon,escapeHtml as esc} from './controls.js';
 export const badge = (status='Proposed') => `<span class="badge ${status.toLowerCase().replaceAll(' ','-')}">${esc(status)}</span>`;
 export const keyGuidance = text => `<p class="key-guidance"><strong>${esc(text)}</strong></p>`;
 export const pageIntro = (title, text) => `<div class="chapter-heading"><h1>${esc(title)}.</h1>${text?`<p>${esc(text)}</p>`:''}</div>`;
@@ -13,5 +13,9 @@ export function assetCard(asset) {
 }
 
 export function colourCards(palette) {
-  return `<div class="swatches">${palette.map(p=>`<article class="swatch"><div class="paint" style="background:${p.hex}">${p.name==='Mojo orange'?'<span>Our signature</span>':''}</div><div class="swatch-info"><strong>${esc(p.name)}</strong><p class="swatch-role">${esc(p.role)}</p>${copyButton(p.hex,`Copy ${p.name} HEX`,'hex',p.hex)}</div></article>`).join('')}</div>`;
+  return `<div class="palette-region"><div class="swatches" aria-label="Primary colour palette">${palette.map(p=>{
+    const rgb=p.hex.slice(1).match(/../g).map(v=>parseInt(v,16)).join(', ');
+    const foreground=['#35594A','#1D1B18'].includes(p.hex)?'#FFF8F0':'#1D1B18';
+    return `<button type="button" class="swatch hex" style="--swatch-colour:${p.hex};--swatch-text:${foreground}" data-copy="${p.hex}" aria-label="Copy ${esc(p.name)} HEX" aria-describedby="colour-${p.hex.slice(1)}"><span class="swatch-info"><strong>${esc(p.name)}</strong><span class="hex-code">${p.hex}</span><span class="swatch-rgb" id="colour-${p.hex.slice(1)}">RGB ${rgb}</span></span><span class="copy-text"><span class="copy-label">Copy HEX</span><span class="copy-feedback" aria-hidden="true">Copied.</span></span>${pixelIcon()}</button>`;
+  }).join('')}</div></div>`;
 }

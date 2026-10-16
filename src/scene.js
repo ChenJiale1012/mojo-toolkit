@@ -1,3 +1,4 @@
+import {animate} from './animation.js';
 import scene from './sunlit-scene.json' with {type:'json'};
 export {scene as sceneConfig};
 
@@ -37,16 +38,16 @@ export function mountSceneMotion(root=document){
   const hero=svg.closest('[data-motion-scene]'),button=hero.querySelector('[data-motion-toggle]');
   const steam=svg.querySelector('.mug-steam'),wisps=[...svg.querySelectorAll('.steam-wisp')];
   const motion=matchMedia('(prefers-reduced-motion: reduce)');
-  let disposed=false,visible=false,ready=false,paused=false,elapsed=0,lastTime=null,frame=0;
+  let disposed=false,visible=false,ready=false,paused=false,elapsed=0,lastTime=null,stopFrame=null;
   function draw(){wisps.forEach((wisp,i)=>{const pose=steamPose(elapsed,scene.mug.origins[i]);wisp.setAttribute('transform',`translate(${pose.x.toFixed(3)} ${pose.y.toFixed(3)})`);wisp.setAttribute('opacity',pose.opacity.toFixed(4))})}
-  function stop(){cancelAnimationFrame(frame);frame=0;lastTime=null}
+  function stop(){stopFrame?.();stopFrame=null;lastTime=null}
   function running(){return !disposed&&ready&&visible&&!paused&&!document.hidden&&!motion.matches}
-  function tick(time){frame=0;if(!running())return;if(lastTime!==null)elapsed+=Math.min(time-lastTime,100);lastTime=time;draw();frame=requestAnimationFrame(tick)}
+  function tick(time){if(!running())return;if(lastTime!==null)elapsed+=Math.min(time-lastTime,100);lastTime=time;draw()}
   function sync(){
     if(disposed)return;
     steam.style.display=motion.matches||!ready?'none':'';
     svg.dataset.motionState=motion.matches?'reduced':!ready?'loading':paused?'paused':document.hidden?'hidden':!visible?'offscreen':'running';
-    if(running()){if(!frame)frame=requestAnimationFrame(tick)}else stop();
+    if(running()){if(!stopFrame)stopFrame=animate(tick)}else stop();
   }
   function toggle(){paused=!paused;button.setAttribute('aria-pressed',String(paused));button.textContent=paused?'Resume motion':'Pause motion';button.setAttribute('aria-label',paused?'Resume ambient motion':'Pause ambient motion');hero.classList.toggle('ambient-paused',paused);sync()}
   const observer=typeof IntersectionObserver==='function'?new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;sync()},{threshold:0}):null;

@@ -1,14 +1,28 @@
-/* One card layout for the overview, Colour page and standalone Quick Guide. */
-.swatches{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--space-card);align-items:stretch}
-.swatch{display:flex;flex-direction:column;background:#fffbf5;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;min-width:0}
-.swatch .paint{height:140px;flex-shrink:0;padding:14px}
-.swatch .paint>span{font:10px/1.4 Inter,Arial,sans-serif;background:rgba(255,248,240,.72);padding:6px 8px;border-radius:var(--radius)}
-.swatch .swatch-info{display:flex;flex-direction:column;flex:1;padding:20px 16px;gap:12px}
-.swatch .swatch-info strong{font:600 13px/1.5 Inter,Arial,sans-serif;margin:0}
-.swatch .swatch-role{font:13px/1.7 Inter,Arial,sans-serif;color:var(--ink);margin:0 0 6px}
-.swatch .hex{display:flex;align-items:center;justify-content:space-between;margin: auto 0 0;width:100%;min-height:40px;padding:8px 6px;gap:6px;background:transparent;border:1px solid transparent;color:var(--muted);font:500 12px/1.4 Inter,Arial,sans-serif;white-space:nowrap}
-.swatch .hex .copy-text{font:inherit;white-space:nowrap}.swatch .hex .pixel-icon{width:18px;height:18px}
-.swatch .hex:hover,.swatch .hex:focus-visible{background:#e7ecdf;border-color:var(--forest);box-shadow:none;outline:none;color:var(--forest)}
-@media(max-width:1050px) and (min-width:801px){.swatches{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media(max-width:800px){.swatches{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-card)}.swatch:last-child{grid-column:1/-1}.swatch .paint{height:110px}.swatch .swatch-info{padding:18px 14px}.swatch .swatch-role{font-size:12px}}
-@media(max-width:350px){.swatches{grid-template-columns:1fr}.swatch:last-child{grid-column:auto}}
+/* One semantic copy button per colour, shared with the standalone Quick Guide. */
+.palette-region{container-type:inline-size}
+.swatches{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-card);align-items:stretch}
+.swatch.hex{position:relative;display:flex;flex-direction:column;align-items:stretch;min-width:0;width:auto;height:252px;margin:0;padding:20px;text-align:left;background:var(--swatch-colour);color:var(--swatch-text);border:0;border-radius:var(--radius);overflow:hidden;box-shadow:inset 0 0 0 1px rgba(29,27,24,.16);font:400 var(--type-small)/var(--leading-body) Inter,Arial,sans-serif;letter-spacing:var(--tracking);white-space:normal}
+.swatch .swatch-info{display:flex;flex-direction:column;gap:12px;padding:0;min-width:0}
+.swatch .swatch-info strong{font:600 var(--type-small)/var(--leading-body) Inter,Arial,sans-serif;min-height:2.6em;margin:0;color:inherit}
+.swatch .hex-code{font:500 var(--type-small)/var(--leading-body) Inter,Arial,sans-serif;white-space:nowrap}
+.swatch .swatch-rgb{display:block;font:400 var(--type-label)/var(--leading-body) Inter,Arial,sans-serif;min-height:2.6em;opacity:1;transition:opacity 180ms ease}
+.swatch .copy-text{position:absolute;bottom:20px;left:20px;text-align:left;font:500 var(--type-label)/var(--leading-body) Inter,Arial,sans-serif}
+.swatch .pixel-icon{position:absolute;right:20px;bottom:20px;width:18px;height:18px;color:inherit}
+.swatch.hex:hover,.swatch.hex:active,.swatch.hex.copied{background:var(--swatch-colour);color:var(--swatch-text);transform:none;border:0;filter:none;box-shadow:inset 0 0 0 1px currentColor}
+.swatch.hex:focus-visible{outline:3px solid var(--ink);outline-offset:4px;box-shadow:inset 0 0 0 3px var(--cream);background:var(--swatch-colour);color:var(--swatch-text)}
+.swatch:last-child{grid-column:1/-1}
+.palette-guidance{margin:28px 0}.palette-guidance ul{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.palette-guidance li{font-size:var(--type-small);line-height:var(--leading-body)}
+@media(hover:hover) and (pointer:fine){
+ @container(min-width:850px){
+  .swatches{display:flex}
+  .swatch.hex{flex-grow:1;flex-basis:0;min-width:0;transition:flex-grow 500ms cubic-bezier(0,0,.2,1)}
+  .swatch .swatch-rgb{opacity:0}
+  .swatches:has(.swatch:focus-visible) .swatch:focus-visible,.swatches:not(:has(.swatch:focus-visible)) .swatch:hover{flex-grow:2.4}
+  .swatch:focus-visible .swatch-rgb,.swatches:not(:has(.swatch:focus-visible)) .swatch:hover .swatch-rgb{opacity:1}
+ }
+}
+@container(max-width:280px){.swatches{grid-template-columns:1fr}.swatch:last-child{grid-column:auto}}
+@media(prefers-reduced-motion:reduce){.swatch.hex,.swatch .swatch-rgb{transition:none!important}}
+@media print{.swatches{display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}.swatch.hex{height:200px;padding:12px;print-color-adjust:exact}.swatch:last-child{grid-column:auto}.swatch .swatch-rgb{opacity:1}.swatch .copy-text,.swatch .pixel-icon{display:none}}
+/* Hybrid touch devices also keep a stable, fully labelled grid. */
+@media(any-pointer:coarse){.swatches{display:grid}.swatch .swatch-rgb{opacity:1}}

@@ -16,3 +16,5 @@ button[aria-pressed="true"],.filter.selected{background:var(--forest);color:var(
 .search-control input:focus-visible{outline:none;box-shadow:none;border:0;border-radius:0}.search-control button:focus-visible{outline:none;box-shadow:none;background:var(--forest);color:var(--cream)}
 /* Bordered controls reuse their existing edge and surface for keyboard focus. */
 .copy-button:focus-visible{outline:none;box-shadow:none;border-color:var(--forest);background:#e7ecdf;color:var(--forest)}
+
+.copy-failed .copy-label{visibility:hidden}.copy-failed .copy-feedback{visibility:visible}

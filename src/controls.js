@@ -11,18 +11,25 @@ export function searchControl(id='global-search', inputId='search-input', value=
   return `<form id="${id}" data-toolkit-search class="search-control"><label for="${inputId}" class="pixel-search-icon">${pixelIcon('search')}<span class="sr-only">Search the toolkit</span></label><input id="${inputId}" aria-label="Search toolkit" placeholder="Search the toolkit" value="${escapeHtml(value)}"><button type="submit" aria-label="Run search">↵</button></form>`;
 }
 export function bindCopyControls(root=document, announce=()=>{}) {
-  const timers=new WeakMap();
+  const timers=new Map();
+  let disposed=false;
+  function feedback(button,message,success){
+    clearTimeout(timers.get(button));
+    button.classList.toggle('copied',success);button.classList.toggle('copy-failed',!success);
+    const label=button.querySelector('.copy-feedback');if(label)label.textContent=success?'Copied.':'Copy failed.';
+    announce(message);
+    timers.set(button,setTimeout(()=>{button.classList.remove('copied','copy-failed');timers.delete(button)},1800));
+  }
   const handler=async event=>{
     const button=event.target.closest('[data-copy]');
     if(!button||button.disabled||button.getAttribute('aria-disabled')==='true')return;
     try {
       await navigator.clipboard.writeText(button.dataset.copy);
-      clearTimeout(timers.get(button));button.classList.add('copied');announce('Copied');
-      timers.set(button,setTimeout(()=>button.classList.remove('copied'),1800));
-    } catch { announce('Clipboard unavailable. Select and copy the displayed text.'); }
+      if(!disposed)feedback(button,'Copied',true);
+    } catch { if(!disposed)feedback(button,`Could not copy. Clipboard unavailable. Value: ${button.dataset.copy}`,false); }
   };
   root.addEventListener('click',handler);
-  return ()=>root.removeEventListener('click',handler);
+  return ()=>{disposed=true;root.removeEventListener('click',handler);timers.forEach(clearTimeout);timers.clear()};
 }
 export function bindSearchControls(root=document, navigate=term=>{location.hash='search='+encodeURIComponent(term)}) {
   const handler=event=>{
