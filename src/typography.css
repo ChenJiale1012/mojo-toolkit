@@ -10,8 +10,8 @@ h3,.merchandise-card h3,.completion-grid h3,.changelog h3,.guidance h3,.asset-in
 .identity-decisions p,.category-content p,.logo-rule-grid p,.work-in-progress:not(.badge) p,.guide-card-description p,.request-panel p{font-size:var(--type-body);line-height:var(--leading-body)}
 .merchandise-card p,.completion-list p,.completion-grid>section>p,.changelog p,.guidance p,.asset-info p,.shortcut p,.font-specimen-row p,.explorations figcaption p,.contact-footer,.muted,.font-row p{font-size:var(--type-small);line-height:var(--leading-body)}
 .button,.download,.text-link,.missing,.filter,.audiences a,.nav-link,.search-control input,.topbar #global-search input,.search-control button,.copy-button,.guide-actions .action{font-size:var(--type-small);line-height:var(--leading-body);letter-spacing:var(--tracking)}
-.technical,.badge,.eyebrow,.edition,.nav-group,.sidebar-bottom,.sidebar-bottom p,.hero-foot,.toolkit-status,footer,footer>span:last-child,.top-guide,.specimen label{font-size:var(--type-label);line-height:var(--leading-body);letter-spacing:var(--tracking)}
-.nav-link{padding:10px 13px}.asset-info p{min-height:0}.shortcut h3{display:block}.shortcut h3 .inline-icon{margin-left:6px}
+.technical,.badge,.eyebrow,.edition,.hero-foot,.toolkit-status,footer,footer>span:last-child,.top-guide,.specimen label{font-size:var(--type-label);line-height:var(--leading-body);letter-spacing:var(--tracking)}
+.asset-info p{min-height:0}.shortcut h3{display:block}.shortcut h3 .inline-icon{margin-left:6px}
 .shortcut-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.asset-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 .font-sample{font-size:clamp(32px,4vw,var(--type-display));line-height:var(--leading-draft);overflow-wrap:anywhere}
 .font-specimen-row h2{font:500 var(--type-large)/var(--leading-body) var(--font-body);letter-spacing:var(--tracking)}
@@ -32,3 +32,6 @@ h3,.merchandise-card h3,.completion-grid h3,.changelog h3,.guidance h3,.asset-in
 .ambient-toggle,.logo-background,.commit-link{font-size:var(--type-label);line-height:var(--leading-body)}
 .dependency-note{font-size:var(--type-small)}.discord-contact p{font-size:var(--type-body)}
 @media(max-width:800px){.overview-hero .hero-copy>p{font-size:var(--type-body)}}
+
+.shell main{padding-bottom:40px}.section-heading>div:has(>.badge){display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.release-info{font-size:var(--type-small);color:var(--muted);margin:0 0 24px}.updates-heading h2{margin-bottom:12px}.merchandise-card h3{margin:0}

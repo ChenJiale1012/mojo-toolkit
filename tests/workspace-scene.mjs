@@ -32,7 +32,7 @@ for(const width of [1920,1440,1024,768,390,320]){
  });
  assert.ok(Math.abs(framing.scale[0]-framing.scale[1])<.001,'No image stretching');
  for(const p of framing.points)assert.ok(p.x>=framing.bounds.left&&p.x<=framing.bounds.right&&p.y>=framing.bounds.top&&p.y<=framing.bounds.bottom,'Key objects remain in frame');
- if(width<=800)assert.ok(await page.evaluate(()=>document.querySelector('.workspace-scene').getBoundingClientRect().top>=document.querySelector('.hero-foot').getBoundingClientRect().bottom),'Mobile artwork stays below the text');
+ if(width<=800)assert.ok(await page.evaluate(()=>document.querySelector('.workspace-scene').getBoundingClientRect().top>=document.querySelector('.hero-copy').getBoundingClientRect().bottom),'Mobile artwork stays below the text');
  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
  await page.screenshot({path:'.playwright/sunlit-overview-'+width+'.png'});
 }

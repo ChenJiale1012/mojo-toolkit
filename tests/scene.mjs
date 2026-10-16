@@ -14,7 +14,7 @@ for(const origin of scene.mug.origins){
 const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',args:['--no-sandbox']});const base=process.env.TEST_URL||'http://localhost:5173';
 const context=await browser.newContext({viewport:{width:1920,height:1100},reducedMotion:'no-preference'});await context.addInitScript(()=>sessionStorage.setItem('mojo-brand-intro-seen','1'));const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
 await page.goto(base);await page.locator('.workspace-scene[data-motion-state=running]').waitFor();
-assert.equal(await page.getByText('Unmistakably Mojo.',{exact:true}).count(),1);assert.equal(await page.locator('.overview-wip,.top-logo,.ambient-steam').count(),0);assert.equal(await page.locator('.topbar .brand-signature').count(),1);
+assert.equal(await page.getByRole('heading',{name:'Primary colour palette.',exact:true}).count(),1);assert.equal(await page.locator('.overview-wip,.top-logo,.ambient-steam').count(),0);assert.equal(await page.locator('.topbar .brand-signature').count(),1);
 const surface=page.locator('.hero-surface');await surface.evaluate(i=>i.decode());assert.equal(await surface.getAttribute('aria-hidden'),'true');assert.equal(await surface.getAttribute('alt'),'');assert.equal(await surface.evaluate(e=>getComputedStyle(e).pointerEvents),'none');
 assert.deepEqual(await page.locator('.hero-surface,.hero-environment,.hero-copy,.ambient-toggle').evaluateAll(es=>es.map(e=>getComputedStyle(e).zIndex)),['0','1','2','3'],'Surface, artwork, text and controls stacking');
 assert.equal(await page.locator('.overview-hero').evaluate(e=>getComputedStyle(e).backgroundColor),'rgb(255, 248, 240)');

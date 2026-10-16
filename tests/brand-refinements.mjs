@@ -19,7 +19,8 @@ try {
  assert.equal(await swatches.first().locator('.swatch-rgb').evaluate(e=>getComputedStyle(e).opacity),'1');
  await p.keyboard.press('Tab');await swatches.nth(2).focus();await swatches.nth(0).hover();await p.waitForTimeout(550);
  w=await widths();assert.ok(Math.abs((w[2]-40)/(w[0]-40)-2.4)<.02,'Keyboard focus wins over hover');
- assert.equal(await swatches.nth(2).evaluate(e=>getComputedStyle(e).outlineWidth),'3px');
+ assert.equal(await swatches.nth(2).evaluate(e=>getComputedStyle(e).outlineStyle),'none');
+ assert.equal(await swatches.nth(2).locator('strong').evaluate(e=>getComputedStyle(e).textDecorationLine),'underline');
  const alignment=await swatches.locator('.hex-code').evaluateAll(es=>es.map(e=>e.getBoundingClientRect().y));assert.ok(Math.max(...alignment)-Math.min(...alignment)<1);
  for(let i=0;i<5;i++){
   await swatches.nth(i).focus();await p.keyboard.press('Enter');await p.waitForFunction(()=>document.querySelector('#toast').textContent==='Copied');
@@ -34,8 +35,8 @@ try {
  await swatches.first().click();await p.waitForFunction(()=>document.querySelector('.swatch').classList.contains('copy-failed'));
  assert.ok((await p.locator('#toast').textContent()).includes('Could not copy'));assert.equal(await swatches.first().evaluate(e=>e.classList.contains('copied')),false);
  await p.reload();await p.evaluate(()=>document.fonts.ready);await swatches.first().hover();await p.waitForTimeout(600);await p.screenshot({path:'.playwright/refinements-colour.png',fullPage:true});
- assert.match(await p.locator('body').evaluate(e=>getComputedStyle(e).cursor),/arrow\.svg.*2 2/);
- assert.match(await swatches.first().evaluate(e=>getComputedStyle(e).cursor),/pointer\.svg.*12 2/);
+ assert.match(await p.locator('body').evaluate(e=>getComputedStyle(e).cursor),/arrow\.svg.*1 1/);
+ assert.match(await swatches.first().evaluate(e=>getComputedStyle(e).cursor),/pointer\.svg.*8 1/);
  assert.equal(await p.locator('#search-input').evaluate(e=>getComputedStyle(e).cursor),'text');
  for(const path of ['/cursors/arrow.svg','/cursors/pointer.svg'])assert.equal((await context.request.get(base+path)).status(),200);
  await p.goto(base+'/#typography');await p.evaluate(()=>document.fonts.ready);
