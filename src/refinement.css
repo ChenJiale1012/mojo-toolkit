@@ -41,8 +41,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 .logo-preview .logo-specimen{border:0;border-radius:0;background:transparent;height:290px}
 .logo-preview-footer{display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding:16px 22px;border-top:1px solid var(--border);background:rgba(255,248,240,.88)}
 .preview-background-label{font:500 12px/1.5 Inter,Arial,sans-serif;color:var(--muted)}
-.preview-background-controls{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
-.preview-background-controls .logo-background{display:inline-flex;align-items:center;gap:7px;margin:0;padding:7px 9px;border:1px solid transparent;border-radius:var(--radius);font:12px/1.5 Inter,Arial,sans-serif;min-height:34px;background:transparent;color:var(--ink)}
+.preview-background-controls{display:flex;align-items:center;flex-wrap:wrap;gap:8px}.preview-background-controls .logo-background{display:inline-flex;align-items:center;gap:7px;margin:0;padding:var(--button-padding-block) var(--button-padding-inline);border:1px solid transparent;border-radius:var(--radius);min-height:var(--button-min-height);background:transparent;color:var(--ink)}
 .background-swatch{width:13px;height:13px;border:1px solid rgba(29,27,24,.2);border-radius:3px;flex-shrink:0}
 .background-check{visibility:hidden;font-size:11px;color:var(--forest)}
 .preview-background-controls .logo-background.selected{background:#e7ecdf;border-color:#b5c2ad;color:var(--forest)}
@@ -52,7 +51,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 .merchandise-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin:28px 0 0}
 .merchandise-card{padding:28px;border:1px solid var(--border);border-radius:var(--radius);background:#fffbf5}
 .merchandise-card h3{font:28px/1.25 'Mojo Serif Refined',Georgia,serif;margin:0 0 14px}.merchandise-card p{font:14px/1.75 Inter,Arial,sans-serif;margin:0}
-@media(max-width:800px){.logo-preview .logo-specimen{height:240px}.logo-preview-footer{padding:16px;gap:12px}.preview-background-label{width:100%}.preview-background-controls{gap:7px}.preview-background-controls .logo-background{font-size:11px;padding:7px 8px}.merchandise-cards{grid-template-columns:1fr;gap:16px}.merchandise-card{padding:24px}}
+@media(max-width:800px){.logo-preview .logo-specimen{height:240px}.logo-preview-footer{padding:16px;gap:12px}.preview-background-label{width:100%}.preview-background-controls{gap:7px}.preview-background-controls .logo-background{padding:var(--button-padding-block) var(--button-padding-inline)}.merchandise-cards{grid-template-columns:1fr;gap:16px}.merchandise-card{padding:24px}}
 
 /* One header logo, with its layout space fixed during the existing hover zoom. */
 .header-logo{padding:0;flex-shrink:0}
@@ -81,7 +80,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 @media(max-width:800px){
  .topbar{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:42px 42px;height:128px;padding:16px 15px;gap:12px}
  .header-logo{grid-area:1/1;justify-self:start}
- #mobile-menu{grid-area:1/2;justify-self:end;display:block}
+ #mobile-menu{grid-area:1/2;justify-self:end;display:inline-flex}
  .topbar #global-search{grid-area:2/1;width:100%;max-width:none;margin:0;min-width:0}
  .top-guide{grid-area:2/2;justify-content:center;height:42px}
  .header-logo .brand-signature img{width:30px}.header-logo .brand-word{font-size:36px}

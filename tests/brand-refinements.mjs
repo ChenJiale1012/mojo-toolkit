@@ -37,12 +37,12 @@ try {
  await p.reload();await p.evaluate(()=>document.fonts.ready);await swatches.first().hover();await p.waitForTimeout(600);await p.screenshot({path:'.playwright/refinements-colour.png',fullPage:true});
  assert.match(await p.locator('body').evaluate(e=>getComputedStyle(e).cursor),/arrow\.svg.*1 1/);
  assert.match(await swatches.first().evaluate(e=>getComputedStyle(e).cursor),/pointer\.svg.*8 1/);
- assert.equal(await p.locator('#search-input').evaluate(e=>getComputedStyle(e).cursor),'text');
+ assert.match(await p.locator('#search-input').evaluate(e=>getComputedStyle(e).cursor),/text\.svg.*9 9/);
  for(const path of ['/cursors/arrow.svg','/cursors/pointer.svg'])assert.equal((await context.request.get(base+path)).status(),200);
  await p.goto(base+'/#typography');await p.evaluate(()=>document.fonts.ready);
  assert.deepEqual(await p.locator('.type-table tbody td:first-of-type').allTextContents(),['64px','48px','32px','24px','18px','16px','14px','12px']);
  assert.deepEqual(await p.locator('.font-specimen-row h2').allTextContents(),['Mojo Draft','Mojo Refined','Inter']);
- assert.equal(await p.locator('#specimen').evaluate(e=>getComputedStyle(e).cursor),'text');
+ assert.match(await p.locator('#specimen').evaluate(e=>getComputedStyle(e).cursor),/text\.svg.*9 9/);
  assert.equal(await p.locator('#specimen').evaluate(e=>getComputedStyle(e).resize),'vertical');
  assert.equal(await p.locator('h1').evaluate(e=>getComputedStyle(e).fontSize),'48px');
  assert.equal(await p.locator('.typography-rules h2').evaluate(e=>getComputedStyle(e).lineHeight),'32px');

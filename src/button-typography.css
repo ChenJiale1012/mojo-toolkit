@@ -1,0 +1,21 @@
+/* Also loaded before the app bundle so the intro's skip button uses the same font. */
+@font-face{font-family:Inter;src:url('/fonts/Inter-Variable.ttf') format('truetype');font-weight:100 900;font-style:normal;font-display:swap}
+:root{
+ --button-font:500 14px/1.2 Inter,Arial,sans-serif;
+ --button-tracking:-.01em;
+ --button-min-height:42px;
+ --button-padding-block:11px;
+ --button-padding-inline:14px;
+}
+/* Action links and native buttons share a label role, regardless of surface or state. */
+:is(button,input[type="button"],input[type="submit"],input[type="reset"],[role="button"],.button,.action,.download,.text-link,.commit-link,.top-guide,summary){font:var(--button-font);letter-spacing:var(--button-tracking)}
+:is(button,input[type="button"],input[type="submit"],input[type="reset"],[role="button"],.button,.action,.download,.text-link,.commit-link,.top-guide){display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:var(--button-min-height);min-width:var(--button-min-height);padding:var(--button-padding-block) var(--button-padding-inline);text-align:center}
+summary{min-height:var(--button-min-height);padding-block:12px}
+/* The only compact geometry: an icon-only submit button inside a 42px search field.
+   Its font stays 14px and the 32px hit area exceeds the 24px minimum target size. */
+.search-control button,#global-search button{min-height:32px;min-width:32px;padding:0;flex-shrink:0}
+.search-control,#global-search{padding:4px 8px;min-height:42px}
+:is(button,.button,.action,.download,.text-link,.commit-link,.top-guide) :is(.pixel-icon,.inline-icon){flex-shrink:0;width:18px;height:18px}
+.copy-text{font:inherit;letter-spacing:inherit}
+/* An SVG wrapped in a span must not contribute an inline baseline/descent gap. */
+:is(button,.button,.action,.download,.text-link,.commit-link,.top-guide)>span:has(>svg){display:inline-flex;align-items:center}

@@ -1,12 +1,12 @@
 /* One semantic copy button per colour, shared with the standalone Quick Guide. */
 .palette-region{container-type:inline-size}
 .swatches{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-card);align-items:stretch}
-.swatch.hex{position:relative;display:flex;flex-direction:column;align-items:stretch;min-width:0;width:auto;height:252px;margin:0;padding:20px;text-align:left;background:var(--swatch-colour);color:var(--swatch-text);border:0;border-radius:var(--radius);overflow:hidden;outline:none;box-shadow:none;font:400 var(--type-small)/var(--leading-body) Inter,Arial,sans-serif;letter-spacing:var(--tracking);white-space:normal}
+.swatch.hex{position:relative;display:flex;flex-direction:column;align-items:stretch;min-width:0;width:auto;height:252px;margin:0;padding:20px;text-align:left;background:var(--swatch-colour);color:var(--swatch-text);border:0;border-radius:var(--radius);overflow:hidden;outline:none;box-shadow:none;font:var(--button-font);letter-spacing:var(--button-tracking);white-space:normal}
 .swatch .swatch-info{display:flex;flex-direction:column;gap:12px;padding:0;min-width:0}
-.swatch .swatch-info strong{font:600 var(--type-small)/var(--leading-body) Inter,Arial,sans-serif;min-height:2.6em;margin:0;color:inherit}
-.swatch .hex-code{font:500 var(--type-small)/var(--leading-body) Inter,Arial,sans-serif;white-space:nowrap}
+.swatch .swatch-info strong{font:var(--button-font);min-height:2.6em;margin:0;color:inherit}
+.swatch .hex-code{font:var(--button-font);white-space:nowrap}
 .swatch .swatch-rgb{display:block;font:400 var(--type-label)/var(--leading-body) Inter,Arial,sans-serif;min-height:2.6em;opacity:1;transition:opacity 180ms ease}
-.swatch .copy-text{position:absolute;bottom:20px;left:20px;text-align:left;font:500 var(--type-label)/var(--leading-body) Inter,Arial,sans-serif}
+.swatch .copy-text{position:absolute;bottom:20px;left:20px;text-align:left;font:var(--button-font)}
 .swatch .pixel-icon{position:absolute;right:20px;bottom:20px;width:18px;height:18px;color:inherit}
 .swatch.hex:hover,.swatch.hex:focus,.swatch.hex:active,.swatch.hex.copied{background:var(--swatch-colour);color:var(--swatch-text);transform:none;border:0;filter:none;outline:none;box-shadow:none}
 .swatch.hex:focus-visible{outline:none;box-shadow:none;background:var(--swatch-colour);color:var(--swatch-text)}

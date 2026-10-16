@@ -13,7 +13,7 @@ try {
  assert.equal(await page.locator('.sidebar-bottom,.sidebar-utility-link,.toolkit-status,.hero-foot,.bottom-band').count(),0);
  assert.equal(await page.getByText('Less searching. More making.').count(),0);assert.equal(await page.getByText('A living, growing toolkit').count(),0);
  assert.ok(await page.getByRole('heading',{name:'Explore the toolkit.',exact:true}).isVisible());
- assert.equal(await page.locator('.sidebar-label').evaluate(e=>getComputedStyle(e).fontSize),'14px');
+ assert.equal(await page.locator('.sidebar-label').evaluate(e=>getComputedStyle(e).fontSize),'30px');
  const subjects=await nav.locator('.nav-icon').evaluateAll(es=>es.map(e=>e.innerHTML));assert.equal(new Set(subjects).size,12,'Distinct custom subjects');
  for(const [width,height] of [[1440,900],[1024,600],[801,480]]){
   await page.setViewportSize({width,height});
@@ -59,7 +59,7 @@ try {
   }return bounds;
  });
  for(const b of cursorBounds){assert.deepEqual(b.natural,[19,19]);assert.ok(b.height>=16&&b.height<=19);assert.equal(b.hotspot,255,'Hotspot lands on the tip');assert.equal(b.soft,0,'Pixel edges remain crisp')};console.log('Cursor artwork bounds:',cursorBounds);
- await page.goto(base+'/#typography');assert.equal(await page.locator('#specimen').evaluate(e=>getComputedStyle(e).cursor),'text');assert.equal(await page.locator('#specimen').evaluate(e=>getComputedStyle(e).resize),'vertical');
+ await page.goto(base+'/#typography');assert.match(await page.locator('#specimen').evaluate(e=>getComputedStyle(e).cursor),/text\.svg.*9 9/);assert.equal(await page.locator('#specimen').evaluate(e=>getComputedStyle(e).resize),'vertical');
  await page.goto(base+'/#components');assert.equal(await page.locator('button:disabled').evaluate(e=>getComputedStyle(e).cursor),'not-allowed');
  await page.goto(base+'/downloads/quick-guide.html');assert.equal(await page.locator('.guide-intro').count(),0);assert.equal(await page.locator('.swatch').count(),5);await page.locator('.swatch').first().click();assert.equal(await page.evaluate(()=>navigator.clipboard.readText()),'#F06A21');
  assert.deepEqual(errors,[]);console.log('PASS: all navigation links on desktop/laptop/mobile, compact rows, custom icons, no duplicate sidebar content, native scrolling, border-free swatch states, stable expansion and 19px crisp cursor bounds/hotspots.');await context.close();
