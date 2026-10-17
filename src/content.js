@@ -7,7 +7,7 @@ export const brandStatuses=brandContent.statuses;
 export const illustrations=brandContent.illustrations;
 export const allFonts=brandContent.fonts;
 export const customFonts=allFonts.filter(f=>f.family!=='Nunito Sans');
-export const meta={version:'0.9',updated:'16 October 2026',status:'Working draft'};
+export const meta={version:'0.9',updated:'17 October 2026',status:'Working draft'};
 export const palette=[{name:'Mojo orange',hex:'#F06A21',role:'Brand accents and emphasis.'},{name:'Warm cream',hex:'#FFF8F0',role:'Main backgrounds.'},{name:'Soft ink',hex:'#1D1B18',role:'Body text and strong contrast.'},{name:'Sage',hex:'#A7B59E',role:'Supporting backgrounds.'},{name:'Forest',hex:'#35594A',role:'Headings and deeper accents.'}];
 export const chapters=[
 {id:'foundations',n:'01',title:'Brand foundations',short:'Brand foundations',description:'Visual identity decisions and the confirmed brand line.',items:[['Brand line',brandLine],['Visual identity','Original cat plus lowercase Mojo Pixel; cream and ink for reading; orange for emphasis; pixel display details with Nunito Sans body text.'],['Product descriptions','We’re waiting for the product to be finalized before fully approving the brand foundations.']]},
@@ -60,6 +60,7 @@ export const completion={
  ]
 };
 export const changelog=[
+ {date:'2026-10-17',title:'Forest-green toolkit favicon',label:'Updated',summary:'The supplied forest-green cat favicon now identifies the toolkit in browser tabs, bookmarks and home-screen icons. SVG, multi-size ICO and PNG assets replace the cream icon; versioned references refresh caches and existing icon URLs remain available.',href:'#logos'},
  {date:'2026-10-16',title:'Compact navigation and calmer colour cards',label:'Updated',summary:'Shared 44px navigation rows, twelve custom pixel icons and shorter labels. Cursors reduced to 19px; repeated slogans, the Overview status strip and sidebar footer removed. Swatches use an internal keyboard underline with no added border or shadow.',href:'#overview'},
  {date:'2026-10-16',title:'Scroll, typography and palette refinements',label:'Updated',commit:'1877608',summary:'Gentle desktop wheel easing, a shared typography scale, local pixel cursors and copyable expanding colour swatches. Touch and reduced-motion scrolling remain native; fonts and palette values are unchanged.',href:'#colour'},
  {date:'2026-10-07',title:'Sunlit Overview background',label:'Updated',summary:'The supplied Sunlit workspace replaces the courtyard on the Overview. Broad cream fades protect the text and preserve the lower pixel transition; mug steam follows the artwork at every screen size.',href:'#overview'},
