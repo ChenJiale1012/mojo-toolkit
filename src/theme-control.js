@@ -3,6 +3,6 @@ const choices=[
  ['dark','Dark','M9 2h3v2h-2v2H9v5h2v2h5v-1h2v3h-2v2h-3v1H7v-1H4v-2H2v-3H1V8h1V5h2V3h5zm-4 3v2H4v5h1v2h3v2h5v-1h1v-1h-4v-2H8V9H7V6h1V4H7v1z'],
  ['system','Use system setting','M2 2h16v12h-7v2h4v2H5v-2h4v-2H2zm2 2v8h12V4z']
 ];
-export function themeControl(location='header'){
- return `<div class="theme-control theme-control--${location}" role="group" aria-label="Colour theme">${choices.map(([value,label,path])=>`<button type="button" class="theme-option" data-theme-option="${value}" aria-label="${label}" title="${label}" aria-pressed="${value==='system'}"><svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" shape-rendering="crispEdges"><path fill-rule="evenodd" d="${path}"/></svg></button>`).join('')}</div>`;
+export function themeControl(location='sidebar'){
+ return `<div class="theme-control theme-control--${location}" role="group" aria-label="Colour theme" data-theme-control><span class="theme-indicator" aria-hidden="true"></span>${choices.map(([value,label,path])=>`<button type="button" class="theme-option" data-theme-option="${value}" aria-label="${label}" title="${label}" aria-pressed="${value==='system'}"><svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" shape-rendering="crispEdges"><path fill-rule="evenodd" d="${path}"/></svg></button>`).join('')}</div>`;
 }
