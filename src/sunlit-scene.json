@@ -39,5 +39,9 @@
       }
     ]
   },
-  "foliageRepair": "/workspace-foliage-repair.png"
+  "foliageRepair": "/workspace-foliage-repair.png",
+  "nightSource": "/night-workspace.png",
+  "nightSourceSha256": "de3fab4fd907ebd6ec20480e9752e3f53e9bcaf35f3a15d9a820afecce969282",
+  "nightFoliageRepair": "/night-workspace-foliage-repair.png",
+  "registration": "Both supplied canvases are 1631 x 964 and share identical rendering coordinates. Edge correlation finds approximately 1px intrinsic differences at the window and desk objects. Neither source is stretched, shifted or edited to compensate."
 }

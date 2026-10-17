@@ -9,7 +9,7 @@ const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||'
 const page=await browser.newPage({viewport:{width:1440,height:1000},reducedMotion:'reduce'});
 const errors=[];page.on('pageerror',e=>errors.push(e.message));
 await page.goto(process.env.TEST_URL||'http://localhost:5173');await page.waitForLoadState('networkidle');
-assert.equal(await page.locator('.workspace-source').getAttribute('href'),'/sunlit-workspace.png');
+assert.equal(await page.locator('.workspace-source[data-source-theme=light]').getAttribute('href'),'/sunlit-workspace.png');
 assert.equal(await page.locator('.courtyard-source,.courtyard-sky').count(),0);
 const pixels=await page.evaluate(async()=>{
  const width=1631,height=964,svg=document.querySelector('.workspace-scene').cloneNode(true);

@@ -4,7 +4,7 @@
  function valid(value){return ['light','dark','system'].includes(value)?value:'system'}
  try{choice=valid(localStorage.getItem(key))}catch(error){}
  function sync(){document.querySelectorAll('[data-theme-option]').forEach(function(button){button.setAttribute('aria-pressed',String(button.dataset.themeOption===choice))})}
- function apply(){var theme=choice==='system'?(system.matches?'dark':'light'):choice;document.documentElement.dataset.theme=theme;document.documentElement.dataset.themePreference=choice;document.documentElement.style.colorScheme=theme;var meta=document.querySelector('meta[name="theme-color"]');if(meta)meta.content=theme==='dark'?'#211F1C':'#FFF8F0';sync()}
+ function apply(){var theme=choice==='system'?(system.matches?'dark':'light'):choice;document.documentElement.dataset.theme=theme;document.documentElement.dataset.themePreference=choice;document.documentElement.style.colorScheme=theme;var meta=document.querySelector('meta[name="theme-color"]');if(meta)meta.content=theme==='dark'?'#201C18':'#FFF8F0';sync()}
  function choose(value){choice=valid(value);try{localStorage.setItem(key,choice)}catch(error){}apply()}
  window.MojoTheme={getPreference:function(){return choice},setPreference:choose,syncControls:sync};
  apply();system.addEventListener('change',function(){if(choice==='system')apply()});
@@ -26,10 +26,10 @@
  --nav-hover:#EEE9DF;--nav-active:#F8E7D8;--depth:rgba(29,27,24,.14);--scene-wash:#FFF8F0;
 }
 :root[data-theme="dark"]{
- --page-bg:#211F1C;--surface:#2B2824;--surface-soft:#332F2A;--surface-tint:#30382F;--sidebar-bg:#25221F;
+ --page-bg:#201C18;--surface:#2B2824;--surface-soft:#332F2A;--surface-tint:#30382F;--sidebar-bg:#25221F;
  --text:#FFF8F0;--text-muted:#C2B8AA;--line:#514A41;--line-strong:#827567;
  --accent:#F06A21;--green:#B4C7A6;--focus:#F0C39E;--control-bg:#342F29;--control-text:#FFF8F0;
- --nav-hover:#35302A;--nav-active:#473124;--depth:rgba(0,0,0,.3);--scene-wash:#211F1C;
+ --nav-hover:#35302A;--nav-active:#473124;--depth:rgba(0,0,0,.3);--scene-wash:#201C18;
 }
 :root{--radius:8px;--space-actions:14px;--space-card:16px;--space-section:36px;--padding-panel:28px;--control-height:42px}
 :root{--type-display:64px;--type-h1:48px;--type-h2:32px;--type-h3:24px;--type-large:18px;--type-body:16px;--type-small:14px;--type-label:12px;--leading-heading:1;--leading-draft:1.1;--leading-body:1.3;--tracking:-.01em;--font-display:'Mojo Pixel Serif Draft',MojoDraft,Georgia,serif;--font-heading:'Mojo Serif Refined',MojoRefined,Georgia,serif}
