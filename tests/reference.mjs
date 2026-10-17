@@ -1,7 +1,7 @@
 import {chromium} from '@playwright/test';import assert from 'node:assert/strict';import fs from 'node:fs';
 const b=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',args:['--no-sandbox']});const c=await b.newContext({permissions:['clipboard-read','clipboard-write'],viewport:{width:1440,height:1000},reducedMotion:'reduce'});const p=await c.newPage();const base=process.env.TEST_URL||'http://localhost:5173';
 await p.goto(base+'/#foundations');await p.evaluate(()=>document.fonts.ready);
-assert.ok((await p.locator('.wordmark .brand-word').evaluate(e=>getComputedStyle(e).fontFamily)).includes('Mojo Draft Logo'));assert.ok(await p.evaluate(()=>document.fonts.check('49px "Mojo Draft Logo"')));
+assert.ok((await p.locator('.wordmark .brand-word').evaluate(e=>getComputedStyle(e).fontFamily)).includes('Mojo Pixel'));assert.ok(await p.evaluate(()=>document.fonts.check('49px "Mojo Pixel"')));
 assert.equal(await p.locator('.identity-decisions article').count(),3);
 assert.equal(await p.locator('.foundation-intro ~ .identity-decisions .technical,.brand-statement .eyebrow').count(),0);
 assert.equal(await p.locator('.type-example > b').innerText(),'Mojo.');assert.equal(await p.locator('.type-example > p').innerText(),'Better together.');
@@ -25,4 +25,4 @@ for(const path of ['/icons/favicon.png?v=4','/icons/apple-touch-icon.png?v=4','/
 const manifest=await (await c.request.get(base+'/site.webmanifest?v=4')).json();assert.equal(manifest.icons.length,2);assert.equal(await p.locator('link[rel="apple-touch-icon"]').count(),1);
 await p.goto(base+'/#components');await p.getByText('How to reuse it',{exact:true}).nth(1).click();await p.getByRole('button',{name:'Copy button markup'}).click();assert.equal(await p.evaluate(()=>navigator.clipboard.readText()),'<a class="button primary" href="/brand/mojo-cat-transparent.svg" download aria-label="Download cat SVG">Download cat SVG ↓</a>');
 await p.goto(base);await p.locator('#search-input').fill('signature');await p.locator('#global-search').evaluate(f=>f.requestSubmit());await p.waitForSelector('.search-results');assert.ok(await p.locator('.search-results a[href="#foundations"]').count());
-console.log('PASS: draft-font logo, visual identity decisions, brand/implementation copy, responsive foundations, browser favicon decoding, icon/manifest endpoints, guidance search.');await b.close();
+console.log('PASS: Mojo Pixel logo, visual identity decisions, brand/implementation copy, responsive foundations, browser favicon decoding, icon/manifest endpoints, guidance search.');await b.close();

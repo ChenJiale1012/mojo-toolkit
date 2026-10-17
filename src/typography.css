@@ -1,26 +1,26 @@
 /* Shared roles, loaded after component layout rules. The logo keeps its own metrics. */
 body{font:400 var(--type-body)/var(--leading-body) var(--font-body);letter-spacing:var(--tracking)}
 p,li{font-size:var(--type-body);line-height:var(--leading-body);letter-spacing:var(--tracking)}
-h1,.chapter-heading h1{font:400 clamp(36px,4vw,var(--type-h1))/var(--leading-draft) var(--font-display);letter-spacing:var(--tracking)}
+h1,.chapter-heading h1{font:400 clamp(36px,4vw,var(--type-h1))/var(--leading-pixel) var(--font-display);letter-spacing:var(--tracking)}
 h2,.bottom-band h2,.request-panel h2,.completion-section>h2,.changelog-section>h2,.category-content h2,.section-heading h2,.reference-title h2,.palette-pending h2,.logo-rule-grid h2,.identity-decisions h2,.explorations figcaption h2,.animation-direction h2,.event-checklist h2,.work-in-progress:not(.badge) h2,.type-scale h2,.subheading{font:400 clamp(28px,3vw,var(--type-h2))/var(--leading-heading) var(--font-heading);letter-spacing:var(--tracking)}
 h3,.merchandise-card h3,.completion-grid h3,.changelog h3,.guidance h3,.asset-info h3,.shortcut h3,.creation h3,.pair h3,.request h3,.logo-application h3{font:400 var(--type-h3)/var(--leading-heading) var(--font-heading);letter-spacing:var(--tracking)}
-.overview-hero .hero-copy h1{font-family:var(--font-display);font-weight:400;letter-spacing:var(--tracking);font-size:clamp(40px,4.45vw,var(--type-display));line-height:var(--leading-draft);max-width:12ch}
+.overview-hero .hero-copy h1{font-family:var(--font-display);font-weight:400;letter-spacing:var(--tracking);font-size:clamp(40px,4.45vw,var(--type-display));line-height:var(--leading-pixel);max-width:12ch}
 .hero-copy>p,.chapter-heading>p,.foundation-intro p{font-size:var(--type-large);line-height:var(--leading-body)}
 .hero-copy>p{max-width:38ch}
 .identity-decisions p,.category-content p,.logo-rule-grid p,.work-in-progress:not(.badge) p,.guide-card-description p,.request-panel p{font-size:var(--type-body);line-height:var(--leading-body)}
 .merchandise-card p,.completion-list p,.completion-grid>section>p,.changelog p,.guidance p,.asset-info p,.shortcut p,.font-specimen-row p,.explorations figcaption p,.contact-footer,.muted,.font-row p{font-size:var(--type-small);line-height:var(--leading-body)}.missing,.audiences a,.search-control input,.topbar #global-search input{font-size:var(--type-small);line-height:var(--leading-body);letter-spacing:var(--tracking)}.technical,.badge,.eyebrow,.edition,.hero-foot,.toolkit-status,footer,footer>span:last-child,.specimen label{font-size:var(--type-label);line-height:var(--leading-body);letter-spacing:var(--tracking)}
 .asset-info p{min-height:0}.shortcut h3{display:block}.shortcut h3 .inline-icon{margin-left:6px}
 .shortcut-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.asset-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-.font-sample{font-size:clamp(32px,4vw,var(--type-display));line-height:var(--leading-draft);overflow-wrap:anywhere}
+.font-sample{font-size:clamp(32px,4vw,var(--type-display));line-height:var(--leading-pixel);overflow-wrap:anywhere}
 .font-specimen-row h2{font:500 var(--type-large)/var(--leading-body) var(--font-body);letter-spacing:var(--tracking)}
-.specimen textarea{font-size:clamp(28px,4vw,var(--type-h1));line-height:var(--leading-draft)}
+.specimen textarea{font-size:clamp(28px,4vw,var(--type-h1));line-height:var(--leading-pixel)}
 .typography-rules{margin:40px 0}.type-table-wrap{overflow-x:auto}.type-table{width:100%;border-collapse:collapse;font-size:var(--type-small);text-align:left}.type-table caption{text-align:left;margin:16px 0}.type-table th,.type-table td{padding:14px 12px;border-bottom:1px solid var(--border)}.type-table th{font-weight:600}.type-adjustment{color:var(--green)}
 .guide-section h1{font-family:var(--font-display)}.guide-section h2,.guide-section-title h2,.guide-card .guide-section-title h2{font:400 var(--type-h2)/var(--leading-heading) var(--font-heading);letter-spacing:var(--tracking)}
 @media(min-width:1500px){.shortcut-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.asset-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:800px){.hero-copy>p{font-size:var(--type-body)}.overview-hero .hero-copy h1{font-size:clamp(38px,8vw,52px)}.bottom-band{align-items:start;gap:24px;flex-direction:column}}
 @media(max-width:500px){.shortcut-grid,.asset-grid{grid-template-columns:1fr}.pair-grid,.example-grid,.guidance-grid{grid-template-columns:1fr}.type-table th,.type-table td{padding:12px 6px}.reference-title{gap:12px}}
 
-.foundation-intro h2{font:400 clamp(36px,4vw,var(--type-h1))/var(--leading-draft) var(--font-display);letter-spacing:var(--tracking)}
+.foundation-intro h2{font:400 clamp(36px,4vw,var(--type-h1))/var(--leading-pixel) var(--font-display);letter-spacing:var(--tracking)}
 .font-specimen-row:nth-child(2) .font-sample{line-height:var(--leading-heading)}
 .font-specimen-row:nth-child(3) .font-sample{line-height:var(--leading-body)}
 .request-panel pre{font:400 var(--type-small)/var(--leading-body) var(--font-body)}

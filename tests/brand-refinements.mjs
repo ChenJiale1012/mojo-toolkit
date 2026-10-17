@@ -41,7 +41,7 @@ try {
  for(const path of ['/cursors/arrow.svg','/cursors/pointer.svg'])assert.equal((await context.request.get(base+path)).status(),200);
  await p.goto(base+'/#typography');await p.evaluate(()=>document.fonts.ready);
  assert.deepEqual(await p.locator('.type-table tbody td:first-of-type').allTextContents(),['64px','48px','32px','24px','18px','16px','14px','12px']);
- assert.deepEqual(await p.locator('.font-specimen-row h2').allTextContents(),['Mojo Draft','Mojo Refined','Nunito Sans']);
+ assert.deepEqual(await p.locator('.font-specimen-row h2').allTextContents(),['Mojo Pixel','Mojo Serif','Nunito Sans']);
  assert.match(await p.locator('#specimen').evaluate(e=>getComputedStyle(e).cursor),/text\.svg.*9 9/);
  assert.equal(await p.locator('#specimen').evaluate(e=>getComputedStyle(e).resize),'vertical');
  assert.equal(await p.locator('h1').evaluate(e=>getComputedStyle(e).fontSize),'48px');

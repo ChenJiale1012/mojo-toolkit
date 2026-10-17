@@ -1,0 +1,89 @@
+[
+  {
+    "family": "Mojo Pixel",
+    "filename": "MojoPixel-Regular.ttf",
+    "legacyFilename": "MojoPixelSerif-Draft-Regular.ttf",
+    "version": "0.200",
+    "originalSha256": "4f375741807fd739e25e6e03c5e67beba2467a5da3f81dfbec014008c5045410",
+    "preservedTables": {
+      "head": "bb43d1ab2730f393e97a66d2e2bf5d4963a7b677eab398a54730cad7e7116805",
+      "hhea": "371686932ba2c00ef47dd5ec8053bab643f9b1db85fc818fe21bccd6af6d72f8",
+      "maxp": "4d2a8006687791a2b986cd271389da3e5d2be5600ecb1dbd68c28644360c2aa7",
+      "OS/2": "4d5d09894f7883b1c4bd5b514dbcde21f7412abcd28582375321549e35b1847b",
+      "hmtx": "c99486fb7bf8a62e315ff4dcde49042118c034e9fc42225b63ad363724b49f20",
+      "cmap": "6f2689d3182f6f4a8c34e8292477f9cd2ba93bb3fd700196cc55bea1c16ceefe",
+      "loca": "13fe6eb1de32b10ae64a2fa1602af83313aa9076759ed74d509af1921eac03fb",
+      "glyf": "429ec73da09e8d142368c452de56301463099dcbd312873e32123626b676e365",
+      "kern": "08a0c8aed9a165816fcdbb16cbf84bf6beaf1ae401337ab6eb0d044aa6545dde",
+      "post": "5ab2357222bc065a550ea16bb2619f9d19a3e729509cc0d1b770e4b63c86cc5a",
+      "GPOS": "698e4f02b21de6423d2aa435317a4bf4a8aabbff41a5c3403b27ea25a2b11cfa",
+      "GSUB": "087a50c4ba08686ce2ff02960ce34c25f3ac193182f1358740895a55597fb5ce"
+    },
+    "preservedNames": [
+      {
+        "id": 0,
+        "platform": 1,
+        "encoding": 0,
+        "language": 0,
+        "text": "Mojo Pixel Serif \u2014 original draft artwork, 2026."
+      },
+      {
+        "id": 5,
+        "platform": 1,
+        "encoding": 0,
+        "language": 0,
+        "text": "Version 0.200"
+      },
+      {
+        "id": 0,
+        "platform": 3,
+        "encoding": 1,
+        "language": 1033,
+        "text": "Mojo Pixel Serif \u2014 original draft artwork, 2026."
+      },
+      {
+        "id": 5,
+        "platform": 3,
+        "encoding": 1,
+        "language": 1033,
+        "text": "Version 0.200"
+      }
+    ]
+  },
+  {
+    "family": "Mojo Serif",
+    "filename": "MojoSerif-Regular.ttf",
+    "legacyFilename": "MojoSerif-Refined-Regular.ttf",
+    "version": "0.601",
+    "originalSha256": "3f7e337311e92d05b4de4c7d92399289a8092411717bb9ef83990bbcea5fa056",
+    "preservedTables": {
+      "head": "6676779c9271dfd529f6d53115c455f30976d18ca9e3273cc5e5356d45b64b74",
+      "hhea": "c38abb38c049f872b50c8c81da8029549edf58e29b90ab469aa45a4b3ba692d0",
+      "maxp": "07293747a4cb207fd6abd6e5826f4c6d0ce59dccf1ef79ce5c3be982049b1dc7",
+      "OS/2": "5400d6b11eef19e3dfb3a5a724d8ec81392057ef7917e148dd13a47c7e6da7f9",
+      "hmtx": "ae21e4a715328536a0bd1f173359c4cb7bdd51844b32fe0f51fd75788e9267b0",
+      "cmap": "6f2689d3182f6f4a8c34e8292477f9cd2ba93bb3fd700196cc55bea1c16ceefe",
+      "loca": "c5d03c187f5798a53bcfd63637c06af1a11220855ca8fb1f1357d0883072aec5",
+      "glyf": "2d20e4e8e51ac69e683e52c84bdd30596c4b7c0a068c13769b0471e2f12668c0",
+      "post": "5ab2357222bc065a550ea16bb2619f9d19a3e729509cc0d1b770e4b63c86cc5a",
+      "GPOS": "ffec45c7fb759f046dadd9d3f6608bad1db0e5134ab1230add1eac458087bc62",
+      "GSUB": "087a50c4ba08686ce2ff02960ce34c25f3ac193182f1358740895a55597fb5ce"
+    },
+    "preservedNames": [
+      {
+        "id": 5,
+        "platform": 1,
+        "encoding": 0,
+        "language": 0,
+        "text": "Version 0.601"
+      },
+      {
+        "id": 5,
+        "platform": 3,
+        "encoding": 1,
+        "language": 1033,
+        "text": "Version 0.601"
+      }
+    ]
+  }
+]

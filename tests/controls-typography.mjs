@@ -17,7 +17,7 @@ try {
  for(const width of [1440,1024,768,390,320]){
   await page.setViewportSize({width,height:1000});
   for(const c of [{id:'overview'},...chapters]){await page.goto(base+'/#'+c.id);await page.evaluate(()=>document.fonts.ready);if(c.id==='components')await page.locator('details').evaluateAll(es=>es.forEach(e=>e.open=true));await checkActions(c.id+' '+width)}
-  if(width>800){const title=await page.locator('.sidebar-label').evaluate(e=>{const c=getComputedStyle(e);return [c.fontFamily,c.fontSize,c.fontWeight,c.lineHeight,c.color,c.letterSpacing]});assert.match(title[0],/Mojo Pixel Serif Draft/);assert.deepEqual(title.slice(1),[width>1150?'30px':'28px','400',width>1150?'33px':'30.8px','rgb(29, 27, 24)','-0.4px']);assert.equal(await page.locator('.nav-icon').count(),12);assert.equal(await page.locator('.sidebar-bottom').count(),0)}
+  if(width>800){const title=await page.locator('.sidebar-label').evaluate(e=>{const c=getComputedStyle(e);return [c.fontFamily,c.fontSize,c.fontWeight,c.lineHeight,c.color,c.letterSpacing]});assert.match(title[0],/Mojo Pixel/);assert.deepEqual(title.slice(1),[width>1150?'30px':'28px','400',width>1150?'33px':'30.8px','rgb(29, 27, 24)','-0.4px']);assert.equal(await page.locator('.nav-icon').count(),12);assert.equal(await page.locator('.sidebar-bottom').count(),0)}
   await page.goto(base+'/downloads/quick-guide.html');await page.evaluate(()=>document.fonts.ready);await checkActions('Guide '+width);
  }
  // Compare button states with the same geometry and font, including active mouse press.

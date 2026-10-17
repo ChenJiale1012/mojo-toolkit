@@ -12,7 +12,7 @@ try{
   for(let i=0;i<5;i++){
    await cards.nth(i).hover();await page.waitForTimeout(width>=1200?550:10);
    const metrics=await cards.evaluateAll(es=>es.map(e=>{const s=getComputedStyle(e),n=e.querySelector('strong'),h=e.querySelector('.hex-code');return {height:e.clientHeight,overflow:e.scrollWidth>e.clientWidth,font:getComputedStyle(n).fontFamily,nameHeight:n.clientHeight,hexY:h.offsetTop,border:s.borderWidth,shadow:s.boxShadow}}));
-   assert.ok(metrics.every(m=>m.height===240&&!m.overflow&&m.border==='0px'&&m.shadow==='none'&&m.font.includes('Mojo Serif Refined')),JSON.stringify({width,metrics}));
+   assert.ok(metrics.every(m=>m.height===240&&!m.overflow&&m.border==='0px'&&m.shadow==='none'&&m.font.includes('Mojo Serif')),JSON.stringify({width,metrics}));
    assert.equal(new Set(metrics.map(m=>m.nameHeight)).size,1,'Shared name space');
   }
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));

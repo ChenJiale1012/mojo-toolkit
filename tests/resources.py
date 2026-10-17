@@ -2,14 +2,41 @@
 import json
 import base64
 import zipfile
+from hashlib import sha256
+from fontTools.ttLib import TTFont
 from pathlib import Path
 
 root = Path(__file__).resolve().parents[1]
 brand = json.loads((root / 'src/brand-content.json').read_text())
 downloads = root / 'public/downloads'
+renames = json.loads((root / 'scripts/font-renames.json').read_text())
+for spec in renames:
+    path = root / 'public/fonts' / spec['filename']
+    font = TTFont(path, lazy=True, recalcTimestamp=False, recalcBBoxes=False)
+    # Compare raw SFNT tables with the original supplied fonts, independently
+    # of FontTools' naming API and without reserializing outlines or metrics.
+    assert set(font.reader.keys()) == set(spec['preservedTables']) | {'name'}
+    for tag, expected in spec['preservedTables'].items():
+        data = font.reader[tag]
+        if tag == 'head':
+            data = data[:8] + b'\0' * 4 + data[12:]
+        assert sha256(data).hexdigest() == expected, (spec['family'], tag)
+    expected_names = {1: spec['family'], 2: 'Regular', 3: spec['family'].replace(' ', '') + '-Regular;' + spec['version'],
+                      4: spec['family'] + ' Regular', 6: spec['family'].replace(' ', '') + '-Regular',
+                      16: spec['family'], 17: 'Regular'}
+    for name_id, expected in expected_names.items():
+        records = [n for n in font['name'].names if n.nameID == name_id]
+        assert records and {n.toUnicode() for n in records} == {expected}, (spec['family'], name_id)
+    for record in spec['preservedNames']:
+        assert font['name'].getName(record['id'], record['platform'], record['encoding'], record['language']).toUnicode() == record['text']
+    for folder in ['fonts', 'downloads']:
+        for filename in [spec['filename'], spec['legacyFilename']]:
+            assert (root / 'public' / folder / filename).read_bytes() == path.read_bytes(), filename
+print('PASS: installed Mojo Pixel/Serif naming metadata, byte-identical original non-naming tables, copyright/version records and legacy URL aliases.')
 for archive in ['mojo-fonts.zip', 'mojo-starter-pack.zip']:
     with zipfile.ZipFile(downloads / archive) as pack:
         assert pack.testzip() is None, archive
+        assert not {f['legacyFilename'] for f in renames} & set(pack.namelist()), archive
         for font in brand['fonts']:
             supplied = (root / 'public' / font['source'].lstrip('/')).read_bytes()
             assert pack.read(Path(font['path']).name) == supplied, (archive, font['name'])

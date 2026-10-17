@@ -3,10 +3,14 @@ from pathlib import Path
 import json
 import shutil
 import subprocess
+import sys
 import zipfile
 root=Path(__file__).resolve().parents[1]
 out=root/'public/downloads';out.mkdir(exist_ok=True)
 brand=json.loads((root/'src/brand-content.json').read_text())
+renames=json.loads((root/'scripts/font-renames.json').read_text())
+legacy_fonts={f['legacyFilename'] for f in renames}
+subprocess.run([sys.executable,str(root/'scripts/rename-fonts.py')],check=True)
 # Remove retired template files and their previews so none can enter the packs.
 retired=['social','demo','spotlight','recruitment','campus','partnership','slides','signature']
 for name in retired:
@@ -19,8 +23,8 @@ shutil.copyfile(root/'public/brand/mojo-cat-transparent.svg',out/'mojo-cat-trans
 (out/'workspace-scene.svg').unlink(missing_ok=True)
 for name in ['NunitoSans-Variable.woff2','NunitoSans-Italic-Variable.woff2','NunitoSans-source.json']:shutil.copyfile(root/'public/fonts'/name,out/name)
 shutil.copyfile(root/'public/fonts/NunitoSans-OFL.txt',out/'NunitoSans-OFL.txt')
-(out/'Font-usage.txt').write_text('Mojo font usage\n'+''.join(f"{f['name']} v{f['version']}: {f['role']}. Supplied TTF.\n" for f in brand['fonts'])+'Custom Mojo licence documents and WOFF/WOFF2 files have not been supplied. Nunito Sans SIL OFL licence and self-hosted WOFF2 files are included.\n')
-(out/'README.txt').write_text('Mojo Toolkit — current brand resources\n'+''.join(f'{k}: {v}.\n' for k,v in brand['statuses'].items())+brand['contact']+'\nIncludes supplied fonts, Nunito Sans licence, original cat SVG, primary palette tokens, cursor SVGs and Quick Guide. The cat SVG does not contain a wordmark or combined logo. Templates are under development; this pack contains no templates.\nQuick Guide: full-section links work when served by the running toolkit; standalone downloads refer to files in this folder.\n')
+(out/'Font-usage.txt').write_text('Mojo font usage\n'+''.join(f"{f['name']} v{f['version']}: {f['role']} Supplied TTF.\n" for f in brand['fonts'])+'Mojo Pixel and Mojo Serif retain the original glyphs, outlines, metrics, layout tables, font versions and copyright/licensing records. Only naming metadata has changed. Nunito Sans is unchanged.\nCustom Mojo licence documents and WOFF/WOFF2 files have not been supplied. Nunito Sans SIL OFL licence and self-hosted WOFF2 files are included.\n')
+(out/'README.txt').write_text('Mojo Toolkit — current brand resources\n'+''.join(f'{k}: {v}.\n' for k,v in brand['statuses'].items())+brand['contact']+'\nIncludes Mojo Pixel, Mojo Serif, unchanged Nunito Sans, Nunito Sans licence, original cat SVG, primary palette tokens, cursor SVGs and Quick Guide. Install MojoPixel-Regular.ttf and MojoSerif-Regular.ttf; their installed family names are Mojo Pixel and Mojo Serif. See Font-usage.txt for their roles. The cat SVG does not contain a wordmark or combined logo. Templates are under development; this pack contains no templates.\nQuick Guide: full-section links work when served by the running toolkit; standalone downloads refer to files in this folder.\n')
 # Runtime SVGs are the single source for previews and downloads.
 cursors=json.loads((root/'src/cursors.json').read_text())
 cursor_out=out/'cursors';cursor_out.mkdir(exist_ok=True)
@@ -34,5 +38,5 @@ with zipfile.ZipFile(out/'mojo-fonts.zip','w',zipfile.ZIP_DEFLATED) as z:
  for name in ['Font-usage.txt','NunitoSans-OFL.txt','NunitoSans-Variable.woff2','NunitoSans-Italic-Variable.woff2','NunitoSans-source.json']:z.write(out/name,name)
 with zipfile.ZipFile(out/'mojo-starter-pack.zip','w',zipfile.ZIP_DEFLATED) as z:
  for p in sorted(out.rglob('*')):
-  if p.is_file() and p.name!='mojo-starter-pack.zip':z.write(p,str(p.relative_to(out)))
+  if p.is_file() and p.name!='mojo-starter-pack.zip' and p.name not in legacy_fonts:z.write(p,str(p.relative_to(out)))
 print('Generated supplied assets, Quick Guide and archives; retired templates removed.')

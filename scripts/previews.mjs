@@ -10,5 +10,5 @@ await page.goto(base+'/downloads/quick-guide.html');await page.evaluate(()=>docu
 await page.screenshot({path:'public/previews/quick-guide.png',fullPage:true});await browser.close();
 fs.mkdirSync('public/downloads/previews',{recursive:true});
 fs.copyFileSync('public/previews/quick-guide.png','public/downloads/previews/quick-guide.png');
-execFileSync('python3',['-c',`from pathlib import Path\nimport zipfile\np=Path('public/downloads')\nwith zipfile.ZipFile(p/'mojo-starter-pack.zip','w',zipfile.ZIP_DEFLATED) as z:\n for file in sorted(p.rglob('*')):\n  if file.is_file() and file.name!='mojo-starter-pack.zip':z.write(file,str(file.relative_to(p)))`]);
+execFileSync('python3',['-c',`from pathlib import Path\nimport zipfile, json\nlegacy={f['legacyFilename'] for f in json.loads(Path('scripts/font-renames.json').read_text())}\np=Path('public/downloads')\nwith zipfile.ZipFile(p/'mojo-starter-pack.zip','w',zipfile.ZIP_DEFLATED) as z:\n for file in sorted(p.rglob('*')):\n  if file.is_file() and file.name!='mojo-starter-pack.zip' and file.name not in legacy:z.write(file,str(file.relative_to(p)))`]);
 console.log('Updated Quick Guide preview and template-free starter pack.');

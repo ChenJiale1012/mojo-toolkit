@@ -22,7 +22,7 @@ export function startIntro(){
   const word=overlay.querySelector('.brand-word');
   word.insertAdjacentHTML('beforebegin','<span class="intro-reserved-word">mojo</span>');
   const space=document.createElement('span');space.className='intro-word-space';word.before(space);space.append(overlay.querySelector('.intro-reserved-word'),word);
-  Promise.all([document.fonts.load('400 64px "Mojo Draft Logo"'),new Promise((resolve,reject)=>{const i=new Image();i.onload=resolve;i.onerror=reject;i.src='/brand/mojo-cat-transparent.svg'})]).then(([fonts])=>{
+  Promise.all([document.fonts.load('400 64px "Mojo Pixel"'),new Promise((resolve,reject)=>{const i=new Image();i.onload=resolve;i.onerror=reject;i.src='/brand/mojo-cat-transparent.svg'})]).then(([fonts])=>{
     if(finished)return;if(!fonts.length){cleanup();return}
     word.textContent='m';overlay.classList.add('intro-ready');
     [['mo',190],['moj',410],['mojo',590]].forEach(([text,ms])=>schedule(()=>{word.textContent=text},ms));

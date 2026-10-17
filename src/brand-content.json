@@ -3,26 +3,26 @@
   "catchphrase": "Better together",
   "fonts": [
     {
-      "name": "Mojo Pixel Serif Draft",
+      "name": "Mojo Pixel",
       "id": "pixel-font",
       "version": "0.200",
-      "role": "Wordmark and main display headings",
-      "source": "/fonts/MojoPixelSerif-Draft-Regular.ttf",
-      "path": "/downloads/MojoPixelSerif-Draft-Regular.ttf",
+      "role": "Our pixel display font, used for the wordmark and prominent titles.",
+      "source": "/fonts/MojoPixel-Regular.ttf",
+      "path": "/downloads/MojoPixel-Regular.ttf",
       "format": "TTF",
-      "family": "Mojo Draft",
-      "cssFamily": "Mojo Pixel Serif Draft"
+      "family": "Mojo Pixel",
+      "cssFamily": "Mojo Pixel"
     },
     {
-      "name": "Mojo Serif Refined",
-      "id": "refined-font",
+      "name": "Mojo Serif",
+      "id": "serif-font",
       "version": "0.601",
-      "role": "Subtitles and editorial section headings",
-      "source": "/fonts/MojoSerif-Refined-Regular.ttf",
-      "path": "/downloads/MojoSerif-Refined-Regular.ttf",
+      "role": "Our serif font for headings.",
+      "source": "/fonts/MojoSerif-Regular.ttf",
+      "path": "/downloads/MojoSerif-Regular.ttf",
       "format": "TTF",
-      "family": "Mojo Refined",
-      "cssFamily": "Mojo Serif Refined"
+      "family": "Mojo Serif",
+      "cssFamily": "Mojo Serif"
     },
     {
       "name": "Nunito Sans variable regular",
@@ -30,7 +30,7 @@
       "cssFamily": "Nunito Sans",
       "id": "nunito",
       "version": "3.101",
-      "role": "Body text (Regular), controls (Medium), emphasis (Semibold)",
+      "role": "Our font for body text and interface controls.",
       "source": "/fonts/NunitoSans-Variable.ttf",
       "path": "/downloads/NunitoSans-Variable.ttf",
       "format": "TTF"
@@ -41,7 +41,7 @@
       "cssFamily": "Nunito Sans",
       "id": "nunito-italic",
       "version": "3.101",
-      "role": "Italic body text",
+      "role": "Our font for body text and interface controls.",
       "source": "/fonts/NunitoSans-Italic-Variable.ttf",
       "path": "/downloads/NunitoSans-Italic-Variable.ttf",
       "format": "TTF"

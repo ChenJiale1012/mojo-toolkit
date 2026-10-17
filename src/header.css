@@ -13,7 +13,7 @@ html{scroll-padding-top:var(--header-height)}
 .toolkit-header.is-scrolled{box-shadow:0 3px 8px rgba(29,27,24,.06)}
 .toolkit-header .sidebar-label{
  display:block;min-height:0;height:auto;margin:0;padding:0 32px;
- font:400 30px/1.1 'Mojo Pixel Serif Draft',Georgia,serif;
+ font:400 30px/1.1 'Mojo Pixel',Georgia,serif;
  letter-spacing:-.4px;color:var(--text);text-transform:none;
 }
 .toolkit-header .topbar{height:auto;border:0;padding:0 var(--header-inset);min-width:0;align-items:baseline}
