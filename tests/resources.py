@@ -88,3 +88,27 @@ with zipfile.ZipFile(downloads/'mojo-cursors.zip') as pack:
 with zipfile.ZipFile(downloads/'mojo-starter-pack.zip') as pack:
     assert pack.read('mojo-cursors.zip')==(downloads/'mojo-cursors.zip').read_bytes()
 print('PASS: three genuine standalone cursor SVGs, exact runtime bytes, display sizes/hotspots/fallback README and bundled cursor ZIP.')
+
+# The supplied icon ZIP, its extracted docs/assets and starter pack must agree.
+icon_zip=downloads/'mojo-toolkit-favicon-cream.zip'
+with zipfile.ZipFile(icon_zip) as supplied, zipfile.ZipFile(downloads/'mojo-starter-pack.zip') as starter:
+    assert supplied.testzip() is None
+    assert starter.read(icon_zip.name)==icon_zip.read_bytes()
+    for name in supplied.namelist():
+        assert starter.read('toolkit-icons/'+name)==supplied.read(name), name
+        assert (downloads/'toolkit-icons'/name).read_bytes()==supplied.read(name), name
+        if name.startswith('favicon'):
+            assert (root/'public'/name).read_bytes()==supplied.read(name), name
+    geometry=json.loads(supplied.read('geometry.json'))
+    assert geometry['catSourceBounds']==[1189,1026]
+    assert geometry['background']=='#FFF8F0' and geometry['canvas']==64
+    assert geometry['catWidth']==.75*64 and geometry['cornerRadius']==.1875*64
+    assert abs(geometry['catHeight']-.75*64*1026/1189)<1e-12
+    assert geometry['marginHorizontal']==.125*64
+    assert abs(geometry['marginVertical']-(64-geometry['catHeight'])/2)<1e-12
+    doc=supplied.read('BRAND-GUIDELINES.md').decode()
+    for formula in ['0.75 × S','0.75 × S × 1026 / 1189','0.125 × S','(S − cat height) / 2','0.1875 × S']:
+        assert formula in doc, formula
+for filename,alias in [('favicon-32.png','favicon.png'),('favicon-180.png','apple-touch-icon.png'),('favicon-192.png','icon-192.png'),('favicon-512.png','icon-512.png')]:
+    assert (root/'public'/filename).read_bytes()==(root/'public/icons'/alias).read_bytes()
+print('PASS: exact supplied cream icon ZIP/assets, source geometry, construction formulas, legacy aliases and starter-pack contents.')

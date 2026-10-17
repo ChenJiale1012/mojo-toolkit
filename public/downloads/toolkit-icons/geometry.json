@@ -1,0 +1,14 @@
+{
+  "background": "#FFF8F0",
+  "canvas": 64,
+  "cornerRadius": 12,
+  "catSourceBounds": [
+    1189,
+    1026
+  ],
+  "catWidth": 48,
+  "catHeight": 41.41968040370059,
+  "marginHorizontal": 8,
+  "marginVertical": 11.290159798149705,
+  "scale": 0.040370058873002525
+}

@@ -11,6 +11,22 @@ brand=json.loads((root/'src/brand-content.json').read_text())
 renames=json.loads((root/'scripts/font-renames.json').read_text())
 legacy_fonts={f['legacyFilename'] for f in renames}
 subprocess.run([sys.executable,str(root/'scripts/rename-fonts.py')],check=True)
+# The supplied icon package, documentation and source geometry stay byte-exact.
+icon_dir=out/'toolkit-icons';icon_dir.mkdir(exist_ok=True)
+with zipfile.ZipFile(out/'mojo-toolkit-favicon-cream.zip') as icons:
+ names=icons.namelist()
+ assert all(Path(n).name==n and n not in ['.','..'] for n in names)
+ for old in icon_dir.iterdir():
+  if old.is_file() and old.name not in names:old.unlink()
+ for name in names:(icon_dir/name).write_bytes(icons.read(name))
+
+def write_archive(path, files):
+ """Avoid rewriting unrelated archives when their exact contents are unchanged."""
+ if path.exists():
+  with zipfile.ZipFile(path) as previous:
+   if set(previous.namelist())=={name for _,name in files} and all(previous.read(name)==source.read_bytes() for source,name in files):return
+ with zipfile.ZipFile(path,'w',zipfile.ZIP_DEFLATED) as pack:
+  for source,name in files:pack.write(source,name)
 # Remove retired template files and their previews so none can enter the packs.
 retired=['social','demo','spotlight','recruitment','campus','partnership','slides','signature']
 for name in retired:
@@ -24,19 +40,14 @@ shutil.copyfile(root/'public/brand/mojo-cat-transparent.svg',out/'mojo-cat-trans
 for name in ['NunitoSans-Variable.woff2','NunitoSans-Italic-Variable.woff2','NunitoSans-source.json']:shutil.copyfile(root/'public/fonts'/name,out/name)
 shutil.copyfile(root/'public/fonts/NunitoSans-OFL.txt',out/'NunitoSans-OFL.txt')
 (out/'Font-usage.txt').write_text('Mojo font usage\n'+''.join(f"{f['name']} v{f['version']}: {f['role']} Supplied TTF.\n" for f in brand['fonts'])+'Mojo Pixel and Mojo Serif retain the original glyphs, outlines, metrics, layout tables, font versions and copyright/licensing records. Only naming metadata has changed. Nunito Sans is unchanged.\nCustom Mojo licence documents and WOFF/WOFF2 files have not been supplied. Nunito Sans SIL OFL licence and self-hosted WOFF2 files are included.\n')
-(out/'README.txt').write_text('Mojo Toolkit — current brand resources\n'+''.join(f'{k}: {v}.\n' for k,v in brand['statuses'].items())+brand['contact']+'\nIncludes Mojo Pixel, Mojo Serif, unchanged Nunito Sans, Nunito Sans licence, original cat SVG, primary palette tokens, cursor SVGs and Quick Guide. Install MojoPixel-Regular.ttf and MojoSerif-Regular.ttf; their installed family names are Mojo Pixel and Mojo Serif. See Font-usage.txt for their roles. The cat SVG does not contain a wordmark or combined logo. Templates are under development; this pack contains no templates.\nQuick Guide: full-section links work when served by the running toolkit; standalone downloads refer to files in this folder.\n')
+(out/'README.txt').write_text('Mojo Toolkit — current brand resources\n'+''.join(f'{k}: {v}.\n' for k,v in brand['statuses'].items())+brand['contact']+'\nIncludes Mojo Pixel, Mojo Serif, unchanged Nunito Sans, Nunito Sans licence, original cat SVG, supplied cream toolkit icons, primary palette tokens, cursor SVGs and Quick Guide. Toolkit icons and exact construction formulas are in toolkit-icons/; the original supplied archive is mojo-toolkit-favicon-cream.zip. Install MojoPixel-Regular.ttf and MojoSerif-Regular.ttf; their installed family names are Mojo Pixel and Mojo Serif. See Font-usage.txt for their roles. The cat SVG does not contain a wordmark or combined logo. Templates are under development; this pack contains no templates.\nQuick Guide: full-section links work when served by the running toolkit; standalone downloads refer to files in this folder.\n')
 # Runtime SVGs are the single source for previews and downloads.
 cursors=json.loads((root/'src/cursors.json').read_text())
 cursor_out=out/'cursors';cursor_out.mkdir(exist_ok=True)
 for c in cursors:shutil.copyfile(root/'public'/c['path'].lstrip('/'),cursor_out/Path(c['path']).name)
 (cursor_out/'README.txt').write_text('Mojo cursors — original standalone vectors\n'+''.join(f"{c['name']}: {c['size']} × {c['size']} CSS pixels; hotspot {c['hotspot'][0]} {c['hotspot'][1]}; native fallback {c['fallback']}.\n" for c in cursors)+'Use cursor: url(file.svg) x y, fallback; inside @media (hover:hover) and (pointer:fine). Keep pointer on clickable controls and text on selectable/editable content. Preserve native selection and the insertion caret. SVGs have transparent backgrounds and need no external files.\n')
-with zipfile.ZipFile(out/'mojo-cursors.zip','w',zipfile.ZIP_DEFLATED) as z:
- for p in sorted(cursor_out.iterdir()):z.write(p,p.name)
+write_archive(out/'mojo-cursors.zip',[(p,p.name) for p in sorted(cursor_out.iterdir())])
 subprocess.run(['node','scripts/guide.mjs'],cwd=root,check=True)
-with zipfile.ZipFile(out/'mojo-fonts.zip','w',zipfile.ZIP_DEFLATED) as z:
- for f in brand['fonts']:z.write(root/'public'/f['path'].lstrip('/'),Path(f['path']).name)
- for name in ['Font-usage.txt','NunitoSans-OFL.txt','NunitoSans-Variable.woff2','NunitoSans-Italic-Variable.woff2','NunitoSans-source.json']:z.write(out/name,name)
-with zipfile.ZipFile(out/'mojo-starter-pack.zip','w',zipfile.ZIP_DEFLATED) as z:
- for p in sorted(out.rglob('*')):
-  if p.is_file() and p.name!='mojo-starter-pack.zip' and p.name not in legacy_fonts:z.write(p,str(p.relative_to(out)))
+write_archive(out/'mojo-fonts.zip',[(root/'public'/f['path'].lstrip('/'),Path(f['path']).name) for f in brand['fonts']]+[(out/name,name) for name in ['Font-usage.txt','NunitoSans-OFL.txt','NunitoSans-Variable.woff2','NunitoSans-Italic-Variable.woff2','NunitoSans-source.json']])
+write_archive(out/'mojo-starter-pack.zip',[(p,str(p.relative_to(out))) for p in sorted(out.rglob('*')) if p.is_file() and p.name!='mojo-starter-pack.zip' and p.name not in legacy_fonts])
 print('Generated supplied assets, Quick Guide and archives; retired templates removed.')

@@ -60,6 +60,7 @@ export const completion={
  ]
 };
 export const changelog=[
+ {date:'2026-10-17',title:'Cream toolkit icon and construction guide',label:'Updated',summary:'The supplied cream favicon replaces the forest-green toolkit icon. Logo & mascot now documents its centred 75% cat, margins and corner radius, with an exact spacing diagram, supplied icon ZIP and construction specification. The starter pack includes the new icons; the main website keeps its orange icon.',href:'#logos/toolkit-icon'},
  {date:'2026-10-17',title:'Forest-green toolkit favicon',label:'Updated',summary:'The supplied forest-green cat favicon now identifies the toolkit in browser tabs, bookmarks and home-screen icons. SVG, multi-size ICO and PNG assets replace the cream icon; versioned references refresh caches and existing icon URLs remain available.',href:'#logos'},
  {date:'2026-10-16',title:'Compact navigation and calmer colour cards',label:'Updated',summary:'Shared 44px navigation rows, twelve custom pixel icons and shorter labels. Cursors reduced to 19px; repeated slogans, the Overview status strip and sidebar footer removed. Swatches use an internal keyboard underline with no added border or shadow.',href:'#overview'},
  {date:'2026-10-16',title:'Scroll, typography and palette refinements',label:'Updated',commit:'1877608',summary:'Gentle desktop wheel easing, a shared typography scale, local pixel cursors and copyable expanding colour swatches. Touch and reduced-motion scrolling remain native; fonts and palette values are unchanged.',href:'#colour'},
