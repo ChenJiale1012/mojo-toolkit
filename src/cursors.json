@@ -1,0 +1,5 @@
+[
+ {"id":"arrow","name":"Arrow","path":"/cursors/arrow.svg","size":19,"hotspot":[1,1],"fallback":"auto"},
+ {"id":"pointer","name":"Clickable pointer","path":"/cursors/pointer.svg","size":19,"hotspot":[8,1],"fallback":"pointer"},
+ {"id":"text","name":"Text selection","path":"/cursors/text.svg","size":19,"hotspot":[9,9],"fallback":"text"}
+]

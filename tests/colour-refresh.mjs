@@ -4,7 +4,7 @@ const browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['-
 try{
  const context=await browser.newContext({viewport:{width:1440,height:1000},permissions:['clipboard-read','clipboard-write']});const page=await context.newPage();
  await page.goto((process.env.TEST_URL||'http://localhost:5173')+'/#colour');await page.evaluate(()=>document.fonts.ready);
- assert.equal(await page.locator('.nav-link[href="#logos"] image').count(),0);assert.equal(await page.locator('.nav-link[href="#logos"] path').count(),2);
+ assert.equal(await page.locator('.nav-link[href="#logos"] image').count(),0);assert.equal(await page.locator('.nav-link[href="#logos"] path').count(),1);
  assert.equal(await page.locator('.palette-usage>div').count(),5);
  const cards=page.locator('.swatch');assert.equal(await cards.count(),5);
  for(const width of [1600,1440,1200,1024,800,390,320]){

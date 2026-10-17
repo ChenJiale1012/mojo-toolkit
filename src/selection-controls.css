@@ -3,11 +3,11 @@
 .preview-background-controls .logo-background{display:block;position:relative;margin:0;min-width:0;cursor:pointer}
 .logo-background input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:inherit;z-index:1}
 .logo-background .selection-face{display:flex;align-items:center;justify-content:center;gap:7px;min-height:var(--button-min-height);padding:7px 10px;border-radius:5px;font:500 14px/1.2 var(--font-body);letter-spacing:var(--button-tracking);color:var(--muted);background:transparent;transition:background-color var(--motion-hover) var(--motion-ease),color var(--motion-hover) var(--motion-ease)}
-.logo-background input:checked+.selection-face{background:var(--cream);color:var(--ink);font-weight:600}
-.logo-background input:focus-visible+.selection-face{outline:2px solid var(--ink);outline-offset:-2px}
+.logo-background input:checked+.selection-face{background:var(--page-bg);color:var(--text);font-weight:600}
+.logo-background input:focus-visible+.selection-face{outline:2px solid var(--focus);outline-offset:-2px}
 .logo-background .background-swatch{display:block;width:12px;height:12px;border:1px solid rgba(29,27,24,.2);border-radius:3px;flex-shrink:0}
 .catalogue-tools .filters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));width:min(100%,320px);gap:3px;flex-wrap:nowrap}
 .catalogue-tools .filter{min-width:0;padding-inline:8px}
-@media(hover:hover) and (pointer:fine){.logo-background input:not(:checked):hover+.selection-face{background:rgba(29,27,24,.05);color:var(--ink)}}
+@media(hover:hover) and (pointer:fine){.logo-background input:not(:checked):hover+.selection-face{background:rgba(29,27,24,.05);color:var(--text)}}
 @media(max-width:600px){.preview-background-controls{width:100%;grid-template-columns:repeat(2,minmax(0,1fr))}.logo-background .selection-face{justify-content:flex-start;padding-inline:12px}}
 @media(prefers-reduced-motion:reduce){.logo-background .selection-face{transition:none}}

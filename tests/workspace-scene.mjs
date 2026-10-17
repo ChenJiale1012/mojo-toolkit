@@ -16,7 +16,7 @@ const pixels=await page.evaluate(async()=>{
  svg.setAttribute('width',width);svg.setAttribute('height',height);svg.querySelector('.mug-steam').remove();
  const blob=await (await fetch('/sunlit-workspace.png')).blob();
  const data=await new Promise(resolve=>{const reader=new FileReader();reader.onload=()=>resolve(reader.result);reader.readAsDataURL(blob)});
- svg.querySelector('image').setAttribute('href',data);
+ svg.querySelectorAll('image').forEach(i=>i.setAttribute('href',data));svg.querySelector('.workspace-dark').remove();
  async function render(src){const image=new Image();image.src=src;await image.decode();const c=document.createElement('canvas');c.width=width;c.height=height;const ctx=c.getContext('2d');ctx.fillStyle='#FFF8F0';ctx.fillRect(0,0,width,height);ctx.drawImage(image,0,0);return ctx.getImageData(0,0,width,height).data}
  const source=await render(data),masked=await render('data:image/svg+xml;base64,'+btoa(new XMLSerializer().serializeToString(svg)));
  const sample=(a,x,y)=>[...a.slice((y*width+x)*4,(y*width+x)*4+3)];

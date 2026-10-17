@@ -2,7 +2,7 @@
 @media(hover:hover) and (pointer:fine){
  body{cursor:url('/cursors/arrow.svg') 1 1,auto}
  :where(p,li,h1,h2,h3,h4,h5,h6,pre,code,blockquote,dt,dd,figcaption,caption,footer,.font-sample,.font-row,.technical,.muted,.brand-word,.brand-line,.sidebar-label,.badge,.hero-foot,.toolkit-status,#toast,#feedback,td,th){cursor:url('/cursors/text.svg') 9 9,text}
- :is(a,button,summary,[role="button"],label[for],.logo-background){cursor:url('/cursors/pointer.svg') 8 1,pointer}
+ :is(a,button,summary,[role="button"],select,label[for],.logo-background){cursor:url('/cursors/pointer.svg') 8 1,pointer}
  :is(a,button,summary,[role="button"],.logo-background) *{cursor:inherit}
  :is(input:not([type]),input[type="text"],input[type="search"],input[type="email"],input[type="url"],input[type="tel"],input[type="password"],input[type="number"],textarea,[contenteditable]:not([contenteditable="false"])){cursor:url('/cursors/text.svg') 9 9,text}
  :is(button:disabled,[aria-disabled="true"]){cursor:not-allowed}

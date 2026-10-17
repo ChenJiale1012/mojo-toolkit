@@ -21,7 +21,7 @@ assert.equal(await page.locator('.overview-hero').evaluate(e=>getComputedStyle(e
 
 for(const width of [1920,1440,1024,768,390,320]){
  await page.setViewportSize({width,height:1100});await page.reload();await page.evaluate(()=>window.scrollTo(0,0));await page.waitForFunction(()=>document.querySelector('.workspace-scene').dataset.motionState==='running');
- const aligned=await page.locator('.workspace-scene').evaluate(svg=>{const image=svg.querySelector('.workspace-source');const m=svg.getScreenCTM(),i=image.getScreenCTM();return ['a','b','c','d','e','f'].every(k=>Math.abs(m[k]-i[k])<.001)});assert.ok(aligned,'Image and steam coordinate system '+width);
+ const aligned=await page.locator('.workspace-scene').evaluate(svg=>{const image=svg.querySelector('.workspace-light');const m=svg.getScreenCTM(),i=image.getScreenCTM();return ['a','b','c','d','e','f'].every(k=>Math.abs(m[k]-i[k])<.001)});assert.ok(aligned,'Image and steam coordinate system '+width);
  const moving=await page.locator('.steam-wisp').first().getAttribute('transform');await page.waitForTimeout(130);assert.notEqual(await page.locator('.steam-wisp').first().getAttribute('transform'),moving);
  await page.screenshot({path:'.playwright/scene-'+width+'.png',fullPage:true});assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
 }

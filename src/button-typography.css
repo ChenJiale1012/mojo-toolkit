@@ -5,8 +5,8 @@
  --motion-hover:160ms;--motion-press:100ms;--motion-release:160ms;--motion-ease:cubic-bezier(.2,0,.2,1);
 }
 :where(button,.button,.action,.download,.text-link,.commit-link,.top-guide,[role="button"]){
- --button-face:var(--cream,#FFF8F0);--button-hover:#f2eade;--button-ink:var(--ink,#1D1B18);
- --button-edge:rgba(29,27,24,.18);--button-depth:rgba(29,27,24,.16);
+ --button-face:var(--control-bg,#FFF8F0);--button-hover:var(--surface-soft);--button-ink:var(--control-text,#1D1B18);
+ --button-edge:var(--line);--button-depth:var(--depth);
 }
 :is(button,input[type="button"],input[type="submit"],input[type="reset"],[role="button"],.button,.action,.download,.text-link,.commit-link,.top-guide,summary){font:var(--button-font);letter-spacing:var(--button-tracking)}
 /* The stationary element owns the hit area. Only its decorative face and
@@ -24,17 +24,17 @@
  background:var(--button-face);border:1px solid var(--button-edge);box-shadow:0 2px 0 var(--button-depth);
  transform:translateY(0);transition:background-color var(--motion-hover) var(--motion-ease),border-color var(--motion-hover) var(--motion-ease),box-shadow var(--motion-release) var(--motion-ease),transform var(--motion-release) var(--motion-ease);
 }
-:is(.button.primary,.action.primary):not(.swatch){--button-face:var(--orange,#F06A21);--button-hover:#e9611b}
+:is(.button.primary,.action.primary):not(.swatch){--button-face:var(--orange,#F06A21);--button-hover:#e9611b;--button-ink:#1D1B18}
 :is(.top-guide,.guide-top button):not(.swatch){--button-face:var(--forest,#35594A);--button-hover:#2e5042;--button-ink:var(--cream,#FFF8F0)}
-:is(.button.quiet,.text-link,.commit-link,.ambient-toggle,.intro-skip):not(.swatch){--button-face:transparent;--button-hover:rgba(53,89,74,.07);--button-ink:var(--forest,#35594A);--button-edge:transparent;--button-depth:transparent}
+:is(.button.quiet,.text-link,.commit-link,.ambient-toggle,.intro-skip):not(.swatch){--button-face:transparent;--button-hover:var(--surface-soft);--button-ink:var(--green,#35594A);--button-edge:var(--line);--button-depth:transparent}
 @media(hover:hover) and (pointer:fine){
- :is(button,.button,.action,.download,.text-link,.commit-link,.top-guide):not(.swatch):not(.nav-link):not(.filter):not(:disabled):not([aria-disabled="true"]):hover::before{background:var(--button-hover);border-color:rgba(29,27,24,.28)}
+ :is(button,.button,.action,.download,.text-link,.commit-link,.top-guide):not(.swatch):not(.nav-link):not(.filter):not(:disabled):not([aria-disabled="true"]):hover::before{background:var(--button-hover);border-color:var(--line-strong)}
 }
 :is(button,.button,.action,.download,.text-link,.commit-link,.top-guide):not(.swatch):not(.nav-link):not(.filter):not(:disabled):not([aria-disabled="true"]):active{
  padding-top:calc(var(--button-padding-block) + 1px);padding-bottom:calc(var(--button-padding-block) - 1px);transition-duration:var(--motion-press);
 }
 :is(button,.button,.action,.download,.text-link,.commit-link,.top-guide):not(.swatch):not(.nav-link):not(.filter):not(:disabled):not([aria-disabled="true"]):active::before{transform:translateY(1px);box-shadow:0 1px 0 var(--button-depth);transition-duration:var(--motion-press)}
-:is(button,.button,.action,.download,.text-link,.commit-link,.top-guide):not(.swatch):not(.nav-link):not(.filter):focus-visible{outline:2px solid var(--ink,#1D1B18);outline-offset:3px;box-shadow:none;text-decoration:none}
+:is(button,.button,.action,.download,.text-link,.commit-link,.top-guide):not(.swatch):not(.nav-link):not(.filter):focus-visible{outline:2px solid var(--focus,#35594A);outline-offset:3px;box-shadow:none;text-decoration:none}
 :is(button:disabled,[aria-disabled="true"]):not(.swatch){opacity:.5;transform:none;filter:none;cursor:not-allowed}
 /* Small icon-only submit, within a full-height search field. */
 .search-control button,#global-search button{--button-padding-block:1px;min-height:32px;min-width:32px;padding:1px 0;flex-shrink:0}
@@ -46,9 +46,9 @@ summary{min-height:36px;padding-block:9px}
 /* Selection controls share typography, but no raised face or press movement. */
 .filter{display:inline-flex;align-items:center;justify-content:center;min-height:var(--button-min-height);padding:8px 13px;border:0;border-radius:5px;background:transparent;color:var(--muted);box-shadow:none;transform:none;transition:background-color var(--motion-hover) var(--motion-ease),color var(--motion-hover) var(--motion-ease)}
 .filters{display:flex;gap:3px;padding:3px;background:rgba(29,27,24,.04);border-radius:8px}
-.filter[aria-pressed="true"]{background:var(--cream);color:var(--ink);font-weight:600}
-.filter:focus-visible{outline:2px solid var(--ink);outline-offset:-2px;box-shadow:none}
-@media(hover:hover) and (pointer:fine){.filter:not([aria-pressed="true"]):hover{background:rgba(29,27,24,.05);color:var(--ink)}}
+.filter[aria-pressed="true"]{background:var(--page-bg);color:var(--text);font-weight:600}
+.filter:focus-visible{outline:2px solid var(--focus);outline-offset:-2px;box-shadow:none}
+@media(hover:hover) and (pointer:fine){.filter:not([aria-pressed="true"]):hover{background:rgba(29,27,24,.05);color:var(--text)}}
 @media(any-pointer:coarse){:root{--button-min-height:44px}.search-control button,#global-search button{min-width:38px;min-height:38px}.search-control,#global-search{min-height:44px;padding:2px 6px}}
 @media(prefers-reduced-motion:reduce){:is(button,.button,.action,.download,.text-link,.commit-link,.top-guide),:is(button,.button,.action,.download,.text-link,.commit-link,.top-guide)::before{transition:none!important}}
 .search-control button,#global-search button{--button-face:transparent;--button-hover:rgba(29,27,24,.06);--button-ink:var(--muted);--button-edge:rgba(29,27,24,.16);--button-depth:rgba(29,27,24,.1)}

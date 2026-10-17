@@ -1,7 +1,7 @@
 /* Fades, supplied artwork and motion share one source-sized SVG coordinate system. */
 .workspace-scene{position:absolute;inset:0;display:block;width:100%;height:100%;overflow:hidden;pointer-events:none}
 .workspace-source{image-rendering:auto}.mug-steam{pointer-events:none}.steam-wisp{transform-origin:0 0}
-.overview-hero{background:var(--cream);isolation:isolate}
+.overview-hero{background:var(--page-bg);isolation:isolate}
 .hero-surface{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:fill;pointer-events:none;user-select:none}
 .overview-hero .hero-environment{z-index:1;pointer-events:none;border-radius:0}
 .overview-hero .hero-copy{z-index:2}
@@ -16,3 +16,8 @@
  .hero-surface{opacity:1}
 }
 @media(prefers-reduced-motion:reduce){.mug-steam{display:none!important}}
+.workspace-dark{display:none}
+:root[data-theme="dark"] .workspace-light{display:none}
+:root[data-theme="dark"] .workspace-dark{display:inline}
+:root[data-theme="dark"] .hero-surface{opacity:0}
+.outdoor-foliage{image-rendering:pixelated}

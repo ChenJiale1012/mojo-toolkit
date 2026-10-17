@@ -43,3 +43,21 @@ assert brand['contact'] in guide and brand['contact'] in readme
 assert 'Download cat SVG' in guide and 'cat only' in guide
 assert 'Under development' in guide
 print('PASS: five category references, precise cat label and contact; retired templates and previews absent from files and pack.')
+
+# The downloadable vectors are byte-identical to the implemented cursor sources.
+import xml.etree.ElementTree as ET
+cursors=json.loads((root/'src/cursors.json').read_text())
+with zipfile.ZipFile(downloads/'mojo-cursors.zip') as pack:
+    assert pack.testzip() is None
+    for cursor in cursors:
+        path=root/'public'/cursor['path'].lstrip('/')
+        assert pack.read(path.name)==path.read_bytes()
+        assert (downloads/'cursors'/path.name).read_bytes()==path.read_bytes()
+        svg=ET.fromstring(path.read_text())
+        assert svg.attrib['width']==svg.attrib['height']==str(cursor['size'])
+        assert 'viewBox' in svg.attrib
+        assert all(e.tag.rsplit('}',1)[-1] not in ['image','script','foreignObject'] for e in svg.iter())
+        assert str(cursor['hotspot'][0])+' '+str(cursor['hotspot'][1]) in pack.read('README.txt').decode()
+with zipfile.ZipFile(downloads/'mojo-starter-pack.zip') as pack:
+    assert pack.read('mojo-cursors.zip')==(downloads/'mojo-cursors.zip').read_bytes()
+print('PASS: three genuine standalone cursor SVGs, exact runtime bytes, display sizes/hotspots/fallback README and bundled cursor ZIP.')

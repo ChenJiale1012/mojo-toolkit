@@ -20,7 +20,14 @@ shutil.copyfile(root/'public/brand/mojo-cat-transparent.svg',out/'mojo-cat-trans
 for name in ['NunitoSans-Variable.woff2','NunitoSans-Italic-Variable.woff2','NunitoSans-source.json']:shutil.copyfile(root/'public/fonts'/name,out/name)
 shutil.copyfile(root/'public/fonts/NunitoSans-OFL.txt',out/'NunitoSans-OFL.txt')
 (out/'Font-usage.txt').write_text('Mojo font usage\n'+''.join(f"{f['name']} v{f['version']}: {f['role']}. Supplied TTF.\n" for f in brand['fonts'])+'Custom Mojo licence documents and WOFF/WOFF2 files have not been supplied. Nunito Sans SIL OFL licence and self-hosted WOFF2 files are included.\n')
-(out/'README.txt').write_text('Mojo Toolkit — current brand resources\n'+''.join(f'{k}: {v}.\n' for k,v in brand['statuses'].items())+brand['contact']+'\nIncludes supplied fonts, Nunito Sans licence, original cat SVG, primary palette tokens and Quick Guide. The cat SVG does not contain a wordmark or combined logo. Templates are under development; this pack contains no templates.\nQuick Guide: full-section links work when served by the running toolkit; standalone downloads refer to files in this folder.\n')
+(out/'README.txt').write_text('Mojo Toolkit — current brand resources\n'+''.join(f'{k}: {v}.\n' for k,v in brand['statuses'].items())+brand['contact']+'\nIncludes supplied fonts, Nunito Sans licence, original cat SVG, primary palette tokens, cursor SVGs and Quick Guide. The cat SVG does not contain a wordmark or combined logo. Templates are under development; this pack contains no templates.\nQuick Guide: full-section links work when served by the running toolkit; standalone downloads refer to files in this folder.\n')
+# Runtime SVGs are the single source for previews and downloads.
+cursors=json.loads((root/'src/cursors.json').read_text())
+cursor_out=out/'cursors';cursor_out.mkdir(exist_ok=True)
+for c in cursors:shutil.copyfile(root/'public'/c['path'].lstrip('/'),cursor_out/Path(c['path']).name)
+(cursor_out/'README.txt').write_text('Mojo cursors — original standalone vectors\n'+''.join(f"{c['name']}: {c['size']} × {c['size']} CSS pixels; hotspot {c['hotspot'][0]} {c['hotspot'][1]}; native fallback {c['fallback']}.\n" for c in cursors)+'Use cursor: url(file.svg) x y, fallback; inside @media (hover:hover) and (pointer:fine). Keep pointer on clickable controls and text on selectable/editable content. Preserve native selection and the insertion caret. SVGs have transparent backgrounds and need no external files.\n')
+with zipfile.ZipFile(out/'mojo-cursors.zip','w',zipfile.ZIP_DEFLATED) as z:
+ for p in sorted(cursor_out.iterdir()):z.write(p,p.name)
 subprocess.run(['node','scripts/guide.mjs'],cwd=root,check=True)
 with zipfile.ZipFile(out/'mojo-fonts.zip','w',zipfile.ZIP_DEFLATED) as z:
  for f in brand['fonts']:z.write(root/'public'/f['path'].lstrip('/'),Path(f['path']).name)
