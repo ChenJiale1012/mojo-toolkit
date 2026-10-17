@@ -1,0 +1,15 @@
+/* Canonical compact search, shared by the header and component examples.
+   Include the existing header ID so legacy header rules cannot fork its sizing. */
+:root{--search-control-height:40px}
+:is(.search-control,#global-search){display:flex;align-items:center;align-self:center;flex:none;gap:8px;width:var(--search-control-width,clamp(160px,20vw,280px));max-width:100%;min-width:0;height:var(--search-control-height);min-height:var(--search-control-height);box-sizing:border-box;margin:0;padding:3px 6px;border:1px solid var(--line);border-radius:6px;background:var(--surface-soft);font:400 12px/1.3 var(--font-body)}
+:is(.search-control,#global-search) label{display:block;flex:none;margin:0;padding:0;color:var(--green);font-size:22px;line-height:1}
+:is(.search-control,#global-search) .pixel-search-icon svg{display:block;flex:none;width:16px;height:16px}
+:is(.search-control,#global-search) input{flex:1;min-width:0;width:100%;margin:0;padding:0;border:0;border-radius:0;background:transparent;color:var(--text);font:400 14px/1.3 var(--font-body);letter-spacing:var(--tracking);text-overflow:ellipsis;outline:none;box-shadow:none}
+:is(.search-control,#global-search) button{--button-padding-block:1px;--button-face:transparent;--button-hover:rgba(29,27,24,.06);--button-ink:var(--muted);--button-edge:rgba(29,27,24,.16);--button-depth:rgba(29,27,24,.1);flex:none;width:32px;min-width:32px;height:32px;min-height:32px;padding:1px 0;cursor:pointer}
+:is(.search-control,#global-search) button::before{inset:4px;border-radius:4px;box-shadow:0 1px 0 var(--button-depth)}
+:is(.search-control,#global-search) button:active::before{box-shadow:none}
+:is(.search-control,#global-search):focus-within{outline:none;box-shadow:none;border-color:var(--focus);background:var(--surface-tint)}
+:is(.search-control,#global-search) input:focus-visible{outline:none;box-shadow:none;border:0;border-radius:0}
+@media(hover:hover) and (pointer:fine){:is(.search-control,#global-search):hover:not(:focus-within){border-color:var(--green)}}
+@media(max-width:800px){:is(.search-control,#global-search){width:var(--search-control-width,280px)}.header-controls{--search-control-width:100%}}
+@media(any-pointer:coarse){:root{--search-control-height:44px}:is(.search-control,#global-search) button{width:38px;min-width:38px;height:38px;min-height:38px}}

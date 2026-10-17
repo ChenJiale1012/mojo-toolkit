@@ -16,6 +16,7 @@ import './typography.css';
 import './page-flow.css';
 import './cursor.css';
 import './theme.css';
+import './search-control.css';
 import {foundationsPage} from './foundations.js';
 import {logoPage,colourPage,typographyPage} from './reference-pages.js';
 import {meta,palette,chapters,assets,foundations,brandLine,brandStatuses,templates} from './content.js';

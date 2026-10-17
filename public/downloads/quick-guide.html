@@ -190,9 +190,6 @@ h3,.merchandise-card h3,.completion-grid h3,.changelog h3,.guidance h3,.asset-in
 :is(button,.button,.action,.download,.text-link,.commit-link,.top-guide):not(.swatch):not(.nav-link):not(.filter):not(.theme-option):not(:disabled):not([aria-disabled="true"]):active::before{transform:translateY(1px);box-shadow:0 1px 0 var(--button-depth);transition-duration:var(--motion-press)}
 :is(button,.button,.action,.download,.text-link,.commit-link,.top-guide):not(.swatch):not(.nav-link):not(.filter):not(.theme-option):focus-visible{outline:2px solid var(--focus,#35594A);outline-offset:3px;box-shadow:none;text-decoration:none}
 :is(button:disabled,[aria-disabled="true"]):not(.swatch){opacity:.5;transform:none;filter:none;cursor:not-allowed}
-/* Small icon-only submit, within a full-height search field. */
-.search-control button,#global-search button{--button-padding-block:1px;min-height:32px;min-width:32px;padding:1px 0;flex-shrink:0}
-.search-control,#global-search{padding:3px 6px;min-height:40px;border-radius:6px}
 :is(button,.button,.action,.download,.text-link,.commit-link,.top-guide) :is(.pixel-icon,.inline-icon){flex-shrink:0;width:16px;height:16px}
 .copy-text{font:inherit;letter-spacing:inherit}
 :is(button,.button,.action,.download,.text-link,.commit-link,.top-guide)>span:has(>svg){display:inline-flex;align-items:center}
@@ -203,11 +200,8 @@ summary{min-height:36px;padding-block:9px}
 .filter[aria-pressed="true"]{background:var(--page-bg);color:var(--text);font-weight:600}
 .filter:focus-visible{outline:2px solid var(--focus);outline-offset:-2px;box-shadow:none}
 @media(hover:hover) and (pointer:fine){.filter:not([aria-pressed="true"]):hover{background:rgba(29,27,24,.05);color:var(--text)}}
-@media(any-pointer:coarse){:root{--button-min-height:44px}.search-control button,#global-search button{min-width:38px;min-height:38px}.search-control,#global-search{min-height:44px;padding:2px 6px}}
+@media(any-pointer:coarse){:root{--button-min-height:44px}}
 @media(prefers-reduced-motion:reduce){:is(button,.button,.action,.download,.text-link,.commit-link,.top-guide),:is(button,.button,.action,.download,.text-link,.commit-link,.top-guide)::before{transition:none!important}}
-.search-control button,#global-search button{--button-face:transparent;--button-hover:rgba(29,27,24,.06);--button-ink:var(--muted);--button-edge:rgba(29,27,24,.16);--button-depth:rgba(29,27,24,.1)}
-.search-control button::before,#global-search button::before{inset:4px;border-radius:4px;box-shadow:0 1px 0 var(--button-depth)}
-.search-control button:active::before,#global-search button:active::before{box-shadow:none}
 
 :root{--muted:var(--text-muted);--border:var(--line);color:var(--text);background:var(--page-bg)}
 body{color:var(--text);background:var(--page-bg)}
