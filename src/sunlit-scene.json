@@ -38,5 +38,6 @@
         "phase": 2000
       }
     ]
-  }
+  },
+  "foliageRepair": "/workspace-foliage-repair.png"
 }

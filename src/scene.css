@@ -16,8 +16,11 @@
  .hero-surface{opacity:1}
 }
 @media(prefers-reduced-motion:reduce){.mug-steam{display:none!important}}
-.workspace-dark{display:none}
-:root[data-theme="dark"] .workspace-light{display:none}
-:root[data-theme="dark"] .workspace-dark{display:inline}
+.workspace-dark{opacity:0}
+.workspace-light{opacity:1}
+.workspace-scene[data-art-ready] :is(.workspace-light,.workspace-dark){transition:opacity 180ms ease-out}
+:root[data-theme="dark"] .workspace-light{opacity:0}
+:root[data-theme="dark"] .workspace-dark{opacity:1}
 :root[data-theme="dark"] .hero-surface{opacity:0}
 .outdoor-foliage{image-rendering:pixelated}
+@media(prefers-reduced-motion:reduce){.workspace-scene[data-art-ready] :is(.workspace-light,.workspace-dark){transition:none}}

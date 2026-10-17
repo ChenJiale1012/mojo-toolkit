@@ -11,7 +11,7 @@
 :is(button,input[type="button"],input[type="submit"],input[type="reset"],[role="button"],.button,.action,.download,.text-link,.commit-link,.top-guide,summary){font:var(--button-font);letter-spacing:var(--button-tracking)}
 /* The stationary element owns the hit area. Only its decorative face and
    internal padding respond to a press, so a click never moves its own target. */
-:is(button,.button,.action,.download,.text-link,.commit-link,.top-guide,[role="button"]):not(.swatch):not(.nav-link):not(.filter){
+:is(button,.button,.action,.download,.text-link,.commit-link,.top-guide,[role="button"]):not(.swatch):not(.nav-link):not(.filter):not(.theme-option){
  display:inline-flex;align-items:center;justify-content:center;gap:7px;
  min-height:var(--button-min-height);min-width:36px;position:relative;isolation:isolate;
  padding:var(--button-padding-block) var(--button-padding-inline);border:0;border-radius:6px;
@@ -19,7 +19,7 @@
  clip-path:none;box-shadow:none;transform:none;filter:none;
  transition:padding-top var(--motion-release) var(--motion-ease),padding-bottom var(--motion-release) var(--motion-ease),color var(--motion-hover) var(--motion-ease);
 }
-:is(button,.button,.action,.download,.text-link,.commit-link,.top-guide,[role="button"]):not(.swatch):not(.nav-link):not(.filter)::before{
+:is(button,.button,.action,.download,.text-link,.commit-link,.top-guide,[role="button"]):not(.swatch):not(.nav-link):not(.filter):not(.theme-option)::before{
  content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;border-radius:inherit;
  background:var(--button-face);border:1px solid var(--button-edge);box-shadow:0 2px 0 var(--button-depth);
  transform:translateY(0);transition:background-color var(--motion-hover) var(--motion-ease),border-color var(--motion-hover) var(--motion-ease),box-shadow var(--motion-release) var(--motion-ease),transform var(--motion-release) var(--motion-ease);
@@ -28,13 +28,13 @@
 :is(.top-guide,.guide-top button):not(.swatch){--button-face:var(--forest,#35594A);--button-hover:#2e5042;--button-ink:var(--cream,#FFF8F0)}
 :is(.button.quiet,.text-link,.commit-link,.ambient-toggle,.intro-skip):not(.swatch){--button-face:transparent;--button-hover:var(--surface-soft);--button-ink:var(--green,#35594A);--button-edge:var(--line);--button-depth:transparent}
 @media(hover:hover) and (pointer:fine){
- :is(button,.button,.action,.download,.text-link,.commit-link,.top-guide):not(.swatch):not(.nav-link):not(.filter):not(:disabled):not([aria-disabled="true"]):hover::before{background:var(--button-hover);border-color:var(--line-strong)}
+ :is(button,.button,.action,.download,.text-link,.commit-link,.top-guide):not(.swatch):not(.nav-link):not(.filter):not(.theme-option):not(:disabled):not([aria-disabled="true"]):hover::before{background:var(--button-hover);border-color:var(--line-strong)}
 }
-:is(button,.button,.action,.download,.text-link,.commit-link,.top-guide):not(.swatch):not(.nav-link):not(.filter):not(:disabled):not([aria-disabled="true"]):active{
+:is(button,.button,.action,.download,.text-link,.commit-link,.top-guide):not(.swatch):not(.nav-link):not(.filter):not(.theme-option):not(:disabled):not([aria-disabled="true"]):active{
  padding-top:calc(var(--button-padding-block) + 1px);padding-bottom:calc(var(--button-padding-block) - 1px);transition-duration:var(--motion-press);
 }
-:is(button,.button,.action,.download,.text-link,.commit-link,.top-guide):not(.swatch):not(.nav-link):not(.filter):not(:disabled):not([aria-disabled="true"]):active::before{transform:translateY(1px);box-shadow:0 1px 0 var(--button-depth);transition-duration:var(--motion-press)}
-:is(button,.button,.action,.download,.text-link,.commit-link,.top-guide):not(.swatch):not(.nav-link):not(.filter):focus-visible{outline:2px solid var(--focus,#35594A);outline-offset:3px;box-shadow:none;text-decoration:none}
+:is(button,.button,.action,.download,.text-link,.commit-link,.top-guide):not(.swatch):not(.nav-link):not(.filter):not(.theme-option):not(:disabled):not([aria-disabled="true"]):active::before{transform:translateY(1px);box-shadow:0 1px 0 var(--button-depth);transition-duration:var(--motion-press)}
+:is(button,.button,.action,.download,.text-link,.commit-link,.top-guide):not(.swatch):not(.nav-link):not(.filter):not(.theme-option):focus-visible{outline:2px solid var(--focus,#35594A);outline-offset:3px;box-shadow:none;text-decoration:none}
 :is(button:disabled,[aria-disabled="true"]):not(.swatch){opacity:.5;transform:none;filter:none;cursor:not-allowed}
 /* Small icon-only submit, within a full-height search field. */
 .search-control button,#global-search button{--button-padding-block:1px;min-height:32px;min-width:32px;padding:1px 0;flex-shrink:0}
